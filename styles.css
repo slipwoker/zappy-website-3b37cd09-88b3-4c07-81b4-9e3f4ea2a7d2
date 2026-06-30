@@ -12712,6 +12712,243 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
     font-size: 0.85rem;
   }
 }
+
+/* AI-generated section */
+/* ===== T9 Topics Section ===== */
+.t9-topics-section {
+  background-color: #f4f6f9;
+  padding: 80px 24px;
+  direction: rtl;
+  font-family: system-ui, sans-serif;
+}
+
+.t9-topics-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header */
+.t9-topics-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.t9-topics-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--primary, #18324A);
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+.t9-topics-subtitle {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #4a5568;
+  margin: 0 auto;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Grid */
+.t9-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+/* Topic Card */
+.t9-topic-card {
+  background: #ffffff;
+  border: 1px solid rgba(24, 50, 74, 0.12);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.t9-topic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--primary, #18324A);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: 0 14px 14px 0;
+}
+
+.t9-topic-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(24, 50, 74, 0.12);
+  border-color: rgba(24, 50, 74, 0.25);
+}
+
+.t9-topic-card:hover::before {
+  opacity: 1;
+}
+
+.t9-topic-number {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--primary, #18324A);
+  opacity: 0.2;
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 48px;
+  text-align: center;
+  user-select: none;
+}
+
+.t9-topic-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.t9-topic-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary, #18324A);
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.t9-topic-desc {
+  font-size: 0.9rem;
+  color: #5a6878;
+  margin: 0 0 14px 0;
+  line-height: 1.6;
+}
+
+.t9-topic-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.t9-topic-lessons {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #6b7280;
+  background: #f0f2f5;
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.t9-topic-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  background: rgba(24, 50, 74, 0.08);
+  color: var(--primary, #18324A);
+}
+
+.t9-topic-badge:contains('מתקדם') {
+  background: rgba(220, 38, 38, 0.08);
+  color: #b91c1c;
+}
+
+.t9-topic-icon {
+  flex-shrink: 0;
+  color: var(--primary, #18324A);
+  opacity: 0.5;
+  margin-top: 4px;
+  transition: opacity 0.25s ease;
+}
+
+.t9-topic-card:hover .t9-topic-icon {
+  opacity: 0.9;
+}
+
+/* Visual Image */
+.t9-topics-visual {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.t9-topics-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .t9-topics-section {
+    padding: 56px 16px;
+  }
+
+  .t9-topics-title {
+    font-size: 1.8rem;
+  }
+
+  .t9-topics-subtitle {
+    font-size: 1rem;
+  }
+
+  .t9-topics-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .t9-topic-card {
+    padding: 18px 20px;
+    gap: 14px;
+  }
+
+  .t9-topic-number {
+    font-size: 2rem;
+    min-width: 36px;
+  }
+
+  .t9-topic-name {
+    font-size: 1rem;
+  }
+
+  .t9-topic-desc {
+    font-size: 0.85rem;
+  }
+
+  .t9-topic-icon {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .t9-topics-title {
+    font-size: 1.5rem;
+  }
+
+  .t9-topic-card {
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .t9-topic-number {
+    font-size: 1.6rem;
+    min-width: auto;
+    text-align: right;
+  }
+
+  .t9-topic-meta {
+    gap: 8px;
+  }
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
