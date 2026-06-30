@@ -12949,6 +12949,12 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
     gap: 8px;
   }
 }
+
+.index-hero-section ~ .featured-products-section,
+.index-hero-section ~ .featured-categories-section,
+.index-hero-section ~ .index-cta-section {
+  display: none !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
