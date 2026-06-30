@@ -7,21 +7,21 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://example.com/topics</loc>
+    <loc>https://example.com/7th-layer</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://example.com/about</loc>
+    <loc>https://example.com/eighth-grade-class</loc>
     <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://example.com/contact</loc>
+    <loc>https://example.com/9th-grade-class</loc>
     <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
