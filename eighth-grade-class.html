@@ -760,7 +760,7 @@
     </div>
   
 <script>window.ZAPPY_PRODUCTS_LISTING_PATH = "/courses";</script>
-<script>window.ZAPPY_WEBSITE_ID = "3b37cd09-88b3-4c07-81b4-9e3f4ea2a7d2";window.ZAPPY_API_BASE = "https://api.zappy5.com";</script><a class="skip-link" href="#main">דלג לתוכן הראשי</a>
+<script>window.ZAPPY_WEBSITE_ID = "3b37cd09-88b3-4c07-81b4-9e3f4ea2a7d2";window.ZAPPY_API_BASE = (window.location.pathname.includes('/preview') ? "https://api.zappy5.com" : "https://api.zappy5.com");</script><a class="skip-link" href="#main">דלג לתוכן הראשי</a>
   <nav class="navbar" dir="rtl">
   <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
     <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -1267,39 +1267,31 @@
 </script>
   
   <main id="main">
-    <section class="about-mission-section" data-layout-spec="אודות-mission" dir="rtl">
+    <section class="about-mission-section" data-layout-spec="אודות-mission" dir="rtl" id="about-mission-section">
   <div class="about-mission-section__container">
     <!-- Editorial Grid: Text on START (Right), Image on END (Left) -->
     <div class="about-mission-section__editorial-grid">
       
       <!-- Content Column (Right) -->
       <div class="about-mission-section__content">
-        <h2 class="about-mission-section__heading">
-          להפוך חרדה מתמטית<br>לחשיבה בטוחה
-        </h2>
+        
         
         <!-- Hand-drawn underline accent -->
         <svg class="about-mission-section__accent-underline" data-element-type="icon" data-icon-type="svg" viewBox="0 0 240 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M0,6 Q30,12 60,8 T120,6 T180,8 T240,4" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"></path>
         </svg>
 
-        <p class="about-mission-section__paragraph">
-          מתמטיקה בחטיבת הביניים היא הרבה יותר מסתם תרגילים ומשוואות — היא מפתח לחשיבה לוגית, יצירתית ובטוחה. ב<b>מתמטיקאי</b> אנחנו מאמינים שכל תלמיד ותלמידה יכולים להצליח במתמטיקה, אם רק נותנים להם את הכלים הנכונים, הקצב המתאים והסביבה התומכת.
-        </p>
         
-        <p class="about-mission-section__paragraph">
-          בנינו פלטפורמה ייחודית לתלמידי כיתות ז'-ט', המתמקדת בתוכנית הלימודים הישראלית. אנחנו מפרקים נושאים מורכבים כמו <b>פונקציה קווית</b>, <b>משוואות</b>, <b>גאומטריה</b> ו<b>שאלות מילוליות</b> לשלבים קטנים וברורים, ומלווים כל תלמיד בדרך חווייתית שמחזקת את הביטחון העצמי.
-        </p>
+        
+        
 
-        <p class="about-mission-section__paragraph">
-          המטרה שלנו היא להפוך את לימודי המתמטיקה מחוויה מלחיצה לחוויה מעצימה — כזו שמכינה את התלמידים להצלחה לא רק במבחנים, אלא גם בחיים עצמם.
-        </p>
+        
       </div>
 
       <!-- Image Column (Left) -->
       <div class="about-mission-section__image-wrapper">
         <div class="about-mission-section__image-card">
-          <img loading="eager" fetchpriority="high" data-placeholder="about-mission-image-1" data-context="A warm, inviting study desk environment for middle school students. The desk features an open squared notebook with handwritten math formulas and geometric sketches, colorful pencils, a protractor, a ruler, and a laptop displaying a friendly math learning interface. The background is softly blurred with a cozy home library feel, bathed in gentle morning light. The style is editorial, calm, and aspirational." width="600" height="400" src="/assets/site-about-mission-image-1.webp" alt="סביבת למידה מתמטית חמה ומזמינה לתלמידי חטיבת הביניים" class="about-mission-section__image">
+          <img loading="eager" fetchpriority="high" data-placeholder="about-mission-image-1" data-context="A warm, inviting study desk environment for middle school students. The desk features an open squared notebook with handwritten math formulas and geometric sketches, colorful pencils, a protractor, a ruler, and a laptop displaying a friendly math learning interface. The background is softly blurred with a cozy home library feel, bathed in gentle morning light. The style is editorial, calm, and aspirational." width="600" height="400" src="/assets/site-about-mission-image-1.webp" alt="סביבת למידה מתמטית חמה ומזמינה לתלמידי חטיבת הביניים" class="about-mission-section__image" data-element-type="image" data-element-id="img-1782844983914-wm3u0m5jr" style="">
           
           <!-- Decorative paper texture overlay -->
           <div class="about-mission-section__paper-texture" aria-hidden="true"></div>
@@ -1463,7 +1455,7 @@
 
     <!-- Illustration Image -->
     <div class="topics-illustration">
-      <img data-placeholder="eighth-grade-topics-illustration" data-context="Colorful illustration of math concepts for 8th grade: algebra equations, geometric shapes like triangles and quadrilaterals, function graphs, and probability dice, arranged in a playful educational style with Hebrew labels" src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27600%27 height=%27400%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="איור נושאי הלימוד במתמטיקה לשכבת ח'" class="topics-image" width="600" height="400">
+      <img data-placeholder="eighth-grade-topics-illustration" data-context="Colorful illustration of math concepts for 8th grade: algebra equations, geometric shapes like triangles and quadrilaterals, function graphs, and probability dice, arranged in a playful educational style with Hebrew labels" src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27600%27 height=%27400%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="איור נושאי הלימוד במתמטיקה לשכבת ח'" data-zappy-editable-image="true" class="topics-image" width="600" height="400">
     </div>
   </div>
 </section>
