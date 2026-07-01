@@ -88,7 +88,7 @@ Description: גלו עולם שבו מתמטיקה לחטיבת הביניים �
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -339,7 +339,7 @@ Description: משוואות, גאומטריה, פרבולה, פונקציה קו
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -380,45 +380,10 @@ Description: משוואות, גאומטריה, פרבולה, פונקציה קו
 
 
 
+מספרים מכוונים - חלק א'
 
 
-
-01
-
-
-
-
-
-
-### מערכת צירים – הרביע הראשון
-
-- מערכת צירים - הקדמה
-- מציאת נקודות על מערכת צירים
-- קנה מידה
-- שיעורי נקודות על הצירים
-- חישוב אורכים ושטחים
-
-
-
-
-
-
-
-02
-
-
-
-
-
-
-### מספרים מכוונים - חלק א'
-
-- ציר המספרים
-- מספרים נגדיים וערך מוחלט
-- חיבור וחיסור מספרים מכוונים
-- חיסור מספרים מכוונים והשמטת סוגריים
-
-
+מספרים מכוונים - חלק א'
 
 
 
@@ -1107,7 +1072,7 @@ Description: מאחורי מתמטיקאי עומד צוות מורים נלהב
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -1505,7 +1470,7 @@ Description: צריכים עזרה במשוואות? רוצים לשמוע עו�
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -2012,7 +1977,7 @@ Description: עגלת הקניות שלך
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -2218,7 +2183,7 @@ Description: תשלום
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -2610,7 +2575,7 @@ Description: התחברות לקוחות
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -2823,7 +2788,7 @@ Description: החשבון שלי
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -3191,7 +3156,7 @@ Description: תודה שנרשמת לקורס
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -3421,7 +3386,7 @@ Description: מדיניות החזרת מוצרים - זכויותיכם להח�
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -3645,7 +3610,7 @@ Description: מדיניות הפרטיות שלנו - כיצד אנו אוספי
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -3895,7 +3860,7 @@ Description: הצהרת הנגישות שלנו - מחויבותנו לנגיש�
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -4154,7 +4119,7 @@ Description: תנאי השימוש באתר - הזכויות והחובות של
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -4474,7 +4439,7 @@ Description: מתמטיקאי - תודה שפניתם אלינו
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -4584,10 +4549,10 @@ Description: מתמטיקאי - תודה שפניתם אלינו
 
 ## מערכת צירים – רביע ראשון
 
-URL: https://example.com/topics/coordinate-system-first-quadrant
+URL: https://example.com/topics/directed-numbers-part-1
 Description: מתמטיקאי - מערכת צירים – רביע ראשון
 
-מערכת צירים – רביע ראשון
+מספרים מכוונים - חלק א'
 
 
 
@@ -4675,7 +4640,7 @@ Description: מתמטיקאי - מערכת צירים – רביע ראשון
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -5145,7 +5110,7 @@ Description: Browse all available courses.
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -5251,7 +5216,7 @@ Description: Browse courses in this category.
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -5360,7 +5325,7 @@ Description: Course details and curriculum.
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -5486,7 +5451,7 @@ Description: Lesson player.
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -5603,7 +5568,7 @@ Description: Your enrolled courses and progress.
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 
@@ -5712,7 +5677,7 @@ Description: Verify a course completion certificate.
 - lesson/:lessonId
 - courses/:slug
 - lesson/:lessonId
-- צירים
+- מספרים מכוונים - חלק א'
 - certificate/:code
 0
 

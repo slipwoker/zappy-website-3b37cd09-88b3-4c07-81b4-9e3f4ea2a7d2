@@ -46,8 +46,8 @@ https://example.com/order-success
 https://example.com/thank-you
 מתמטיקאי - תודה שפניתם אלינו
 
-### מערכת צירים – רביע ראשון
-https://example.com/topics/coordinate-system-first-quadrant
+### מספרים מכוונים - חלק א'
+https://example.com/topics/directed-numbers-part-1
 מתמטיקאי - מערכת צירים – רביע ראשון
 
 ### Courses
