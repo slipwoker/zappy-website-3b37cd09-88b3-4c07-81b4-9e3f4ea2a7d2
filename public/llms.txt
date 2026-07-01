@@ -46,6 +46,10 @@ https://example.com/order-success
 https://example.com/thank-you
 מתמטיקאי - תודה שפניתם אלינו
 
+### מערכת צירים – רביע ראשון
+https://example.com/topics/coordinate-system-first-quadrant
+מתמטיקאי - מערכת צירים – רביע ראשון
+
 ### Courses
 https://example.com/courses
 Browse all available courses.
