@@ -12955,6 +12955,12 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 .index-hero-section ~ .index-cta-section {
   display: none !important;
 }
+
+#seventh-grade-topics .topic-card-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
