@@ -13761,6 +13761,204 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
     margin-top: 32px;
   }
 }
+
+/* AI-generated section */
+/* ===== Directed Numbers Overview Section ===== */
+.directed-numbers-overview-section {
+  background-color: #EEF7FF;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='1' fill='%23B0C4DE' opacity='0.35'/%3E%3C/svg%3E");
+  background-size: 20px 20px;
+  padding: 80px 20px;
+  direction: rtl;
+  font-family: system-ui, sans-serif;
+  box-sizing: border-box;
+}
+
+.directed-numbers-overview-section *,
+.directed-numbers-overview-section *::before,
+.directed-numbers-overview-section *::after {
+  box-sizing: border-box;
+}
+
+.directed-numbers-overview-section__container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* ===== Header ===== */
+.directed-numbers-overview-section__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.directed-numbers-overview-section__title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #18324A;
+  margin: 0 0 12px 0;
+  position: relative;
+  display: inline-block;
+  line-height: 1.3;
+}
+
+.directed-numbers-overview-section__title-underline {
+  display: block;
+  width: 80px;
+  height: 5px;
+  background: #FFC107;
+  border-radius: 3px;
+  margin: 10px auto 0;
+}
+
+.directed-numbers-overview-section__description {
+  font-size: 1.125rem;
+  color: #4A5C6C;
+  max-width: 650px;
+  margin: 20px auto 0;
+  line-height: 1.7;
+}
+
+/* ===== Card Grid ===== */
+.directed-numbers-overview-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* Center the 4th card when it's alone in the last row */
+.directed-numbers-overview-section__card:nth-child(4):nth-last-child(1) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: calc((100% - 56px) / 3);
+  width: 100%;
+}
+
+/* ===== Individual Card ===== */
+.directed-numbers-overview-section__card {
+  background: #FFFFFF;
+  border: 1px solid rgba(24, 50, 74, 0.1);
+  border-radius: 16px;
+  padding: 36px 28px 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(24, 50, 74, 0.06), 0 1px 3px rgba(24, 50, 74, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.directed-numbers-overview-section__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(24, 50, 74, 0.12), 0 2px 6px rgba(24, 50, 74, 0.06);
+}
+
+/* Notebook tab accent - coral top-left */
+.directed-numbers-overview-section__card-tab {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  background: #FF6B6B;
+  border-radius: 0 0 0 16px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+/* Yellow highlighter triangle at bottom-right */
+.directed-numbers-overview-section__card-highlighter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 193, 7, 0.35);
+  border-radius: 0 16px 0 0;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+/* Circular number badge */
+.directed-numbers-overview-section__card-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #FFC107;
+  color: #18324A;
+  font-weight: 800;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.directed-numbers-overview-section__card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #18324A;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+}
+
+.directed-numbers-overview-section__card-text {
+  font-size: 0.95rem;
+  color: #5A6D7E;
+  line-height: 1.7;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Responsive Breakpoints ===== */
+@media (max-width: 1024px) {
+  .directed-numbers-overview-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .directed-numbers-overview-section__card:nth-child(4):nth-last-child(1) {
+    grid-column: span 2;
+    max-width: calc(50% - 12px);
+  }
+}
+
+@media (max-width: 768px) {
+  .directed-numbers-overview-section {
+    padding: 56px 16px;
+  }
+
+  .directed-numbers-overview-section__header {
+    margin-bottom: 40px;
+  }
+
+  .directed-numbers-overview-section__title {
+    font-size: 1.75rem;
+  }
+
+  .directed-numbers-overview-section__description {
+    font-size: 1rem;
+  }
+
+  .directed-numbers-overview-section__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .directed-numbers-overview-section__card:nth-child(4):nth-last-child(1) {
+    grid-column: span 1;
+    max-width: 100%;
+  }
+
+  .directed-numbers-overview-section__card {
+    padding: 28px 22px 26px;
+  }
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
