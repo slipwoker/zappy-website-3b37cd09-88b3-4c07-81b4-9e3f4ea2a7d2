@@ -22,10 +22,6 @@ https://example.com/eighth-grade-class
 https://example.com/9th-grade-class
 צריכים עזרה במשוואות? רוצים לשמוע עוד על התוכנית? צרו קשר עם צוות מתמטיקאי ונשמח לחזור אליכם במהירות עם כל התשובות. ההצלחה שלכם במתמטיקה מתחילה כאן.
 
-### מערכת צירים – רביע ראשון
-https://example.com/topics/coordinate-system-first-quadrant
-מתמטיקאי - מערכת צירים – רביע ראשון
-
 ### עגלת קניות
 https://example.com/cart
 עגלת הקניות שלך
@@ -49,6 +45,10 @@ https://example.com/order-success
 ### תודה שפניתם אלינו
 https://example.com/thank-you
 מתמטיקאי - תודה שפניתם אלינו
+
+### מערכת צירים – רביע ראשון
+https://example.com/topics/coordinate-system-first-quadrant
+מתמטיקאי - מערכת צירים – רביע ראשון
 
 ### Courses
 https://example.com/courses
