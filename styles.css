@@ -14608,6 +14608,194 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
     border-right-width: 2px;
   }
 }
+
+/* AI-generated section */
+/* === CTA Section: Directed Numbers === */
+.directed-numbers-cta-section {
+  position: relative;
+  background-color: #EEF7FF;
+  padding: 80px 24px;
+  text-align: center;
+  direction: rtl;
+  font-family: system-ui, sans-serif;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Subtle graph-paper dot pattern overlay */
+.directed-numbers-cta-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(24, 50, 74, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Content container */
+.directed-numbers-cta-container {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Headline */
+.directed-numbers-cta-headline {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--primary, #18324A);
+  margin: 0 0 20px 0;
+  letter-spacing: -0.02em;
+}
+
+/* Yellow accent underline on "המספרים המכוונים?" */
+.directed-numbers-cta-highlight {
+  display: inline-block;
+  position: relative;
+}
+.directed-numbers-cta-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-color: #F4C542;
+  border-radius: 4px;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+/* Subtext */
+.directed-numbers-cta-subtext {
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #3B5568;
+  max-width: 560px;
+  margin: 0 auto 36px auto;
+}
+
+/* Actions wrapper */
+.directed-numbers-cta-actions {
+  margin-bottom: 28px;
+}
+
+/* Primary CTA button – yellow pill */
+.directed-numbers-cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #F4C542;
+  color: #18324A;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  box-shadow: 0 4px 14px rgba(244, 197, 66, 0.35);
+  position: relative;
+}
+.directed-numbers-cta-btn-primary:hover,
+.directed-numbers-cta-btn-primary:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(244, 197, 66, 0.5);
+  background-color: #F8D35C;
+  outline: none;
+}
+.directed-numbers-cta-btn-primary:focus-visible {
+  outline: 3px solid var(--primary, #18324A);
+  outline-offset: 3px;
+}
+.directed-numbers-cta-btn-primary:active {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(244, 197, 66, 0.3);
+}
+
+/* Arrow icon inside primary button – flipped for RTL */
+.directed-numbers-cta-btn-icon {
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+.directed-numbers-cta-btn-primary:hover .directed-numbers-cta-btn-icon {
+  transform: translateX(4px);
+}
+
+/* Secondary text link */
+.directed-numbers-cta-link-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #4A6A82;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+  border-bottom: 1.5px solid transparent;
+  padding-bottom: 2px;
+}
+.directed-numbers-cta-link-secondary:hover,
+.directed-numbers-cta-link-secondary:focus-visible {
+  color: var(--primary, #18324A);
+  border-bottom-color: var(--primary, #18324A);
+  gap: 10px;
+  outline: none;
+}
+.directed-numbers-cta-link-secondary:focus-visible {
+  outline: 2px solid var(--primary, #18324A);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Secondary link arrow */
+.directed-numbers-cta-link-icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.directed-numbers-cta-link-secondary:hover .directed-numbers-cta-link-icon {
+  transform: translateX(3px);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .directed-numbers-cta-section {
+    padding: 60px 20px;
+  }
+  .directed-numbers-cta-headline {
+    font-size: 1.7rem;
+  }
+  .directed-numbers-cta-subtext {
+    font-size: 1.05rem;
+  }
+  .directed-numbers-cta-btn-primary {
+    font-size: 1.05rem;
+    padding: 14px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .directed-numbers-cta-section {
+    padding: 48px 16px;
+  }
+  .directed-numbers-cta-headline {
+    font-size: 1.45rem;
+  }
+  .directed-numbers-cta-subtext {
+    font-size: 0.95rem;
+  }
+  .directed-numbers-cta-btn-primary {
+    font-size: 1rem;
+    padding: 14px 24px;
+    width: 100%;
+    max-width: 320px;
+  }
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
