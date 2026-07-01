@@ -13374,6 +13374,393 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
     margin-right: 21px;
   }
 }
+
+/* AI-generated section */
+/* ==============================================
+   Directed Numbers Intro Section - Main Styles
+   ============================================== */
+
+.directed-numbers-intro-section {
+  background: #FFFFFF;
+  padding: 80px 24px 0 24px;
+  position: relative;
+  overflow: hidden;
+  font-family: system-ui, sans-serif;
+  direction: rtl;
+}
+
+.directed-numbers-intro-section__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==============================================
+   Content Column (Right on desktop)
+   ============================================== */
+
+.directed-numbers-intro-section__content {
+  flex: 0 0 55%;
+  max-width: 55%;
+}
+
+.directed-numbers-intro-section__heading-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.directed-numbers-intro-section__heading {
+  font-family: 'Assistant', 'Rubik', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1.25;
+  color: #18324A;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.directed-numbers-intro-section__underline {
+  position: absolute;
+  bottom: -12px;
+  left: 10%;
+  width: 85%;
+  height: 18px;
+  z-index: 1;
+  transform: rotate(-1.5deg);
+}
+
+.directed-numbers-intro-section__subheading {
+  font-family: 'Heebo', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 1.35rem;
+  line-height: 1.55;
+  color: #3A5A7C;
+  margin: 0 0 20px 0;
+  max-width: 580px;
+}
+
+.directed-numbers-intro-section__description {
+  font-family: 'Heebo', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #4A5568;
+  margin: 0 0 36px 0;
+  max-width: 560px;
+}
+
+/* ==============================================
+   Action Buttons
+   ============================================== */
+
+.directed-numbers-intro-section__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.directed-numbers-intro-section__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-family: 'Heebo', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+}
+
+.directed-numbers-intro-section__btn--primary {
+  background: #F4C542;
+  color: #18324A;
+  border: 2px solid #F4C542;
+  box-shadow: 0 4px 14px rgba(244, 197, 66, 0.35);
+}
+
+.directed-numbers-intro-section__btn--primary:hover,
+.directed-numbers-intro-section__btn--primary:focus-visible {
+  background: #F0B800;
+  border-color: #F0B800;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(244, 197, 66, 0.5);
+  color: #18324A;
+}
+
+.directed-numbers-intro-section__btn--secondary {
+  background: transparent;
+  color: #18324A;
+  border: 2px solid #18324A;
+  box-shadow: none;
+}
+
+.directed-numbers-intro-section__btn--secondary:hover,
+.directed-numbers-intro-section__btn--secondary:focus-visible {
+  background: rgba(24, 50, 74, 0.06);
+  border-color: #18324A;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(24, 50, 74, 0.12);
+  color: #18324A;
+}
+
+.directed-numbers-intro-section__btn-icon {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.directed-numbers-intro-section__btn:hover .directed-numbers-intro-section__btn-icon,
+.directed-numbers-intro-section__btn:focus-visible .directed-numbers-intro-section__btn-icon {
+  transform: translateX(-4px);
+}
+
+.directed-numbers-intro-section__btn:focus-visible {
+  outline: 3px solid #18324A;
+  outline-offset: 3px;
+}
+
+/* ==============================================
+   Illustration Column (Left on desktop)
+   ============================================== */
+
+.directed-numbers-intro-section__illustration {
+  flex: 0 0 45%;
+  max-width: 45%;
+}
+
+.directed-numbers-intro-section__card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 32px 24px 24px 24px;
+  border: 1.5px solid #D9E8F5;
+  box-shadow: 0 8px 32px rgba(24, 50, 74, 0.08), 0 2px 8px rgba(24, 50, 74, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.directed-numbers-intro-section__card:hover {
+  box-shadow: 0 14px 44px rgba(24, 50, 74, 0.12), 0 4px 12px rgba(24, 50, 74, 0.06);
+  transform: translateY(-4px);
+}
+
+.directed-numbers-intro-section__grid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+.directed-numbers-intro-section__number-line {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.directed-numbers-intro-section__card-label {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.directed-numbers-intro-section__card-label span {
+  display: inline-block;
+  background: #EEF7FF;
+  color: #18324A;
+  font-family: 'Heebo', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 6px 18px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+
+/* ==============================================
+   Wave Divider
+   ============================================== */
+
+.directed-numbers-intro-section__wave {
+  position: relative;
+  width: 100%;
+  margin-top: 60px;
+  line-height: 0;
+  z-index: 1;
+}
+
+.directed-numbers-intro-section__wave svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==============================================
+   Responsive - Tablet (768px - 1024px)
+   ============================================== */
+
+@media (max-width: 1024px) {
+  .directed-numbers-intro-section {
+    padding: 60px 20px 0 20px;
+  }
+  
+  .directed-numbers-intro-section__container {
+    gap: 40px;
+  }
+  
+  .directed-numbers-intro-section__heading {
+    font-size: 2.5rem;
+  }
+  
+  .directed-numbers-intro-section__subheading {
+    font-size: 1.2rem;
+  }
+  
+  .directed-numbers-intro-section__description {
+    font-size: 1rem;
+  }
+  
+  .directed-numbers-intro-section__card {
+    padding: 24px 16px 16px 16px;
+  }
+}
+
+/* ==============================================
+   Responsive - Mobile (up to 768px)
+   ============================================== */
+
+@media (max-width: 768px) {
+  .directed-numbers-intro-section {
+    padding: 48px 16px 0 16px;
+  }
+  
+  .directed-numbers-intro-section__container {
+    flex-direction: column;
+    gap: 36px;
+  }
+  
+  .directed-numbers-intro-section__content {
+    flex: 0 0 100%;
+    max-width: 100%;
+    order: 1;
+    text-align: center;
+  }
+  
+  .directed-numbers-intro-section__heading-wrapper {
+    margin-bottom: 16px;
+  }
+  
+  .directed-numbers-intro-section__heading {
+    font-size: 2.2rem;
+  }
+  
+  .directed-numbers-intro-section__underline {
+    left: 5%;
+    width: 90%;
+    bottom: -10px;
+  }
+  
+  .directed-numbers-intro-section__subheading {
+    font-size: 1.1rem;
+    max-width: 100%;
+    margin: 0 auto 16px auto;
+  }
+  
+  .directed-numbers-intro-section__description {
+    font-size: 0.95rem;
+    max-width: 100%;
+    margin: 0 auto 28px auto;
+  }
+  
+  .directed-numbers-intro-section__actions {
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .directed-numbers-intro-section__btn {
+    padding: 12px 22px;
+    font-size: 0.95rem;
+  }
+  
+  .directed-numbers-intro-section__illustration {
+    flex: 0 0 100%;
+    max-width: 100%;
+    order: 2;
+  }
+  
+  .directed-numbers-intro-section__card {
+    max-width: 480px;
+    margin: 0 auto;
+    border-radius: 16px;
+    padding: 20px 12px 16px 12px;
+  }
+  
+  .directed-numbers-intro-section__wave {
+    margin-top: 40px;
+  }
+}
+
+/* ==============================================
+   Responsive - Small Mobile (up to 480px)
+   ============================================== */
+
+@media (max-width: 480px) {
+  .directed-numbers-intro-section {
+    padding: 36px 12px 0 12px;
+  }
+  
+  .directed-numbers-intro-section__heading {
+    font-size: 1.8rem;
+  }
+  
+  .directed-numbers-intro-section__subheading {
+    font-size: 1rem;
+  }
+  
+  .directed-numbers-intro-section__description {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+  
+  .directed-numbers-intro-section__actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .directed-numbers-intro-section__btn {
+    width: 100%;
+    max-width: 260px;
+    justify-content: center;
+  }
+  
+  .directed-numbers-intro-section__card {
+    border-radius: 14px;
+    padding: 16px 8px 12px 8px;
+  }
+  
+  .directed-numbers-intro-section__card-label span {
+    font-size: 0.8rem;
+    padding: 5px 14px;
+  }
+  
+  .directed-numbers-intro-section__wave {
+    margin-top: 32px;
+  }
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
