@@ -7,85 +7,81 @@
 ## Pages
 
 ### לשלוט במתמטיקה בכיף — מתמטיקאי
-https://example.com
+https://matematikai.zappy5.app
 גלו עולם שבו מתמטיקה לחטיבת הביניים הופכת להרפתקה מרתקת. תרגולים, הסרטונים ומשחקים מותאמים לתלמידי ז&#39;-ט&#39; שיהפכו כל תרגיל לניצחון. הצטרפו עוד היום!
 
 ### כל הנושאים שצריכים למבחן, במקום אחד — מתמטיקאי
-https://example.com/7th-layer
+https://matematikai.zappy5.app/7th-layer
 משוואות, גאומטריה, פרבולה, פונקציה קווית ועוד – כל נושאי הליבה במתמטיקה לחטיבת הביניים מחכים לכם כאן. היכנסו לחקור, ללמוד ולהצליח בכל מבחן.
 
 ### הצוות שהופך מתמטיקה למגרש משחקים — מתמטיקאי
-https://example.com/eighth-grade-class
+https://matematikai.zappy5.app/eighth-grade-class
 מאחורי מתמטיקאי עומד צוות מורים נלהב ששם לו למטרה לשנות את הדרך שבה תלמידים חווים מתמטיקה לחטיבת הביניים. בואו להכיר את האנשים שיגרמו לכם להתאהב בזוויות ומשוואות.
 
 ### יש שאלה? בואו נפתור אותה ביחד — מתמטיקאי
-https://example.com/9th-grade-class
+https://matematikai.zappy5.app/9th-grade-class
 צריכים עזרה במשוואות? רוצים לשמוע עוד על התוכנית? צרו קשר עם צוות מתמטיקאי ונשמח לחזור אליכם במהירות עם כל התשובות. ההצלחה שלכם במתמטיקה מתחילה כאן.
 
+### Courses
+https://matematikai.zappy5.app/contact-us
+Browse all available courses.
+
 ### עגלת קניות
-https://example.com/cart
+https://matematikai.zappy5.app/cart
 עגלת הקניות שלך
 
 ### תשלום
-https://example.com/checkout
+https://matematikai.zappy5.app/checkout
 תשלום
 
 ### התחברות
-https://example.com/login
+https://matematikai.zappy5.app/login
 התחברות לקוחות
 
 ### החשבון שלי
-https://example.com/account
+https://matematikai.zappy5.app/account
 החשבון שלי
 
 ### ההזמנה התקבלה!
-https://example.com/order-success
+https://matematikai.zappy5.app/order-success
 תודה שנרשמת לקורס
 
-### תודה שפניתם אלינו
-https://example.com/thank-you
-מתמטיקאי - תודה שפניתם אלינו
-
-### מערכת צירים – רביע ראשון
-https://example.com/topics/coordinate-system-first-quadrant
-מתמטיקאי - מערכת צירים – רביע ראשון
-
 ### Courses
-https://example.com/courses
-Browse all available courses.
-
-### Course Category
-https://example.com/category/:slug
+https://matematikai.zappy5.app/category/:slug
 Browse courses in this category.
 
-### Course Detail
-https://example.com/courses/:slug
+### Course
+https://matematikai.zappy5.app/courses/:slug
 Course details and curriculum.
 
 ### Lesson
-https://example.com/lesson/:lessonId
+https://matematikai.zappy5.app/lesson/:lessonId
 Lesson player.
 
-### My Learning
-https://example.com/my-learning
-Your enrolled courses and progress.
-
-### Certificate
-https://example.com/certificate/:code
+### Certificate Verification
+https://matematikai.zappy5.app/certificate/:code
 Verify a course completion certificate.
+
+### תודה שפניתם אלינו
+https://matematikai.zappy5.app/thank-you
+מתמטיקאי - תודה שפניתם אלינו
+
+### מערכת צירים – רביע ראשון
+https://matematikai.zappy5.app/topics/coordinate-system-first-quadrant
+מתמטיקאי - מערכת צירים – רביע ראשון
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://example.com/privacy
+https://matematikai.zappy5.app/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://example.com/terms
+https://matematikai.zappy5.app/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://example.com/accessibility
+https://matematikai.zappy5.app/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
@@ -115,8 +111,8 @@ Education
 
 # Machine-readable feeds
 
-- Sitemap (XML): https://example.com/sitemap.xml
-- Robots: https://example.com/robots.txt
-- Flattened page text (for LLMs): https://example.com/llms-full.txt
-- Products (JSON): https://example.com/products.json
-- Products (Google Merchant RSS): https://example.com/product-feed.xml
+- Sitemap (XML): https://matematikai.zappy5.app/sitemap.xml
+- Robots: https://matematikai.zappy5.app/robots.txt
+- Flattened page text (for LLMs): https://matematikai.zappy5.app/llms-full.txt
+- Products (JSON): https://matematikai.zappy5.app/products.json
+- Products (Google Merchant RSS): https://matematikai.zappy5.app/product-feed.xml
