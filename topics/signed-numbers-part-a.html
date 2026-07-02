@@ -1,0 +1,3208 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>מספרים מכוונים – חלק א׳</title>
+    <meta name="description" content="מתמטיקאי - מספרים מכוונים – חלק א׳">
+    <meta name="keywords" content="">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: '3b37cd09-88b3-4c07-81b4-9e3f4ea2a7d2',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        var clickMeta = {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        };
+        
+        trackEvent('click', clickMeta);
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        var navMeta = {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        };
+        
+        trackEvent('navigation', navMeta);
+      }
+    }, true);
+  }
+  
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+    <meta property="og:title" content="מספרים מכוונים – חלק א׳">
+    <meta property="og:description" content="מתמטיקאי - מספרים מכוונים – חלק א׳">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="מספרים מכוונים – חלק א׳">
+    <meta name="twitter:description" content="מתמטיקאי - מספרים מכוונים – חלק א׳">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .skip-link { position: absolute; top: 0; left: 0; transform: translateY(-200%); padding: 12px 18px; background: var(--bg-dark, #1a1a1a); color: var(--text-light, #fff); font-weight: 600; border-radius: 0 0 8px 0; z-index: 10000; }
+    .skip-link:focus { transform: none; outline: 2px solid var(--ring, #fff); outline-offset: 2px; }
+    :focus-visible { outline: 2px solid var(--ring, currentColor); outline-offset: 3px; }
+  </style>
+
+
+  
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+
+          <style id="zappy-cta-mobile-style">
+            /* Hide CTA list item on desktop (tablets and up) */
+            @media (min-width: 769px) {
+              .nav-cta-item-mobile {
+                display: none !important;
+              }
+            }
+            /* Show CTA list item on mobile */
+            @media (max-width: 768px) {
+              .nav-cta-item-mobile {
+                display: list-item !important;
+              }
+            }
+          </style>
+        
+          <style id="zappy-nested-menu-style">
+            /* Desktop only: vertically center nav items */
+            @media (min-width: 769px) {
+              .nav-menu,
+              #navMenu {
+                align-items: center !important;
+              }
+            }
+            
+            /* Menu Group styling (non-clickable parent) - TOP LEVEL ONLY with ultra-specific selector */
+            .nav-menu > li > .menu-group-title,
+            #navMenu > li > .menu-group-title {
+              display: inline-block !important;
+              padding: 0.5rem 1rem !important;
+              color: var(--nav-color) !important;
+              font-weight: 500 !important;
+              line-height: 1.7 !important;
+              cursor: default !important;
+              user-select: none !important;
+              vertical-align: middle !important;
+              text-decoration: none !important;
+              margin: 0 !important;
+              transition: color 0.3s ease !important;
+            }
+            
+            .nav-menu > li > .menu-group-title:hover,
+            #navMenu > li > .menu-group-title:hover {
+              color: var(--nav-hover-color) !important;
+            }
+            
+            /* Desktop: show submenu on Menu Group hover */
+            li:has(.menu-group-title):hover > .sub-menu {
+              opacity: 1 !important;
+              visibility: visible !important;
+              transform: translateY(0) !important;
+              pointer-events: auto !important; /* Enable interaction when hovering */
+            }
+            
+            /* Hide menu items marked as hidden (overrides hover states) */
+            .zappy-hidden-menu-item,
+            li:has(.menu-group-title):hover > .sub-menu .zappy-hidden-menu-item {
+              display: none !important;
+              opacity: 0 !important;
+              visibility: hidden !important;
+              pointer-events: none !important;
+            }
+            
+            /* Keep submenu visible when hovering over the submenu itself */
+            .sub-menu:hover {
+              opacity: 1 !important;
+              visibility: visible !important;
+              pointer-events: auto !important;
+            }
+            
+            /* Nested dropdown menu styles - using more specific selectors */
+            .nav-menu .sub-menu,
+            nav .sub-menu,
+            .navbar .sub-menu {
+              display: block !important; /* Ensure submenu is in the DOM */
+              position: absolute !important;
+              top: 100%;
+              left: 0;
+              right: auto;
+              min-width: 200px;
+              background: white;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              border-radius: 8px;
+              padding: 8px 0;
+              margin-top: 0px; /* Remove gap to prevent hover loss */
+              opacity: 0 !important;
+              visibility: hidden !important;
+              transform: translateY(-10px);
+              transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+              z-index: 1000;
+              list-style: none;
+              pointer-events: none; /* Prevent interaction when hidden */
+            }
+            
+            /* RTL (Hebrew/Arabic) submenu positioning - align to right instead of left */
+            [dir="rtl"] .nav-menu .sub-menu,
+            [dir="rtl"] nav .sub-menu,
+            [dir="rtl"] .navbar .sub-menu,
+            html[lang="he"] .nav-menu .sub-menu,
+            html[lang="he"] nav .sub-menu,
+            html[lang="he"] .navbar .sub-menu,
+            html[lang="ar"] .nav-menu .sub-menu,
+            html[lang="ar"] nav .sub-menu,
+            html[lang="ar"] .navbar .sub-menu {
+              left: auto;
+              right: 0;
+            }
+            
+            /* Show submenu on parent hover - more specific selectors */
+            .nav-menu li:hover > .sub-menu,
+            nav li:hover > .sub-menu,
+            .navbar li:hover > .sub-menu {
+              opacity: 1 !important;
+              visibility: visible !important;
+              transform: translateY(0) !important;
+              pointer-events: auto !important; /* Enable interaction when visible */
+            }
+            
+            /* Parent item must be relatively positioned */
+            .nav-menu li:has(.sub-menu),
+            nav li:has(.sub-menu),
+            .navbar li:has(.sub-menu) {
+              position: relative;
+            }
+            
+            /* Style for submenu items */
+            .sub-menu li {
+              list-style: none;
+              margin: 0;
+              padding: 0;
+            }
+            
+            .sub-menu a,
+            .sub-menu .menu-group-title {
+              display: block !important;
+              padding: 10px 12px !important;
+              color: #333 !important;
+              font-weight: 600 !important;
+              text-decoration: none;
+              transition: background-color 0.2s;
+              white-space: nowrap;
+              cursor: default;
+            }
+            
+            .sub-menu a:hover {
+              background-color: #f5f5f5;
+            }
+            
+            /* CRITICAL: Override submenu styles for TOP-LEVEL Menu Groups only - must come AFTER submenu styles */
+            .nav-menu > li > .menu-group-title,
+            #navMenu > li > .menu-group-title {
+              display: inline-block !important;
+              padding: 0.5rem 1rem !important;
+              color: var(--nav-color) !important;
+              font-weight: 500 !important;
+              line-height: 1.7 !important;
+              cursor: default !important;
+              user-select: none !important;
+              vertical-align: middle !important;
+              text-decoration: none !important;
+              margin: 0 !important;
+              transition: color 0.3s ease !important;
+            }
+            
+            .nav-menu > li > .menu-group-title:hover,
+            #navMenu > li > .menu-group-title:hover {
+              color: var(--nav-hover-color) !important;
+              background-color: transparent !important;
+            }
+            
+            /* On mobile, show nested menus as expandable accordion */
+            @media (max-width: 768px) {
+              /* Mobile submenu styling */
+              .nav-menu .sub-menu,
+              nav .sub-menu,
+              .navbar .sub-menu {
+                position: static !important;
+                transform: none !important;
+                box-shadow: none !important;
+                background: transparent !important;
+                margin-top: 0 !important;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                visibility: hidden;
+                transition: max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease, padding 0.3s ease;
+                padding: 0 !important;
+                border-radius: 0 !important;
+              }
+              
+              /* Expanded state — no internal scroll; parent navMenu scrolls */
+              .sub-menu.mobile-expanded {
+                max-height: none !important;
+                overflow-y: visible !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                padding: 8px 0 8px 16px !important;
+              }
+              
+              /* RTL padding adjustment */
+              [dir="rtl"] .sub-menu.mobile-expanded,
+              html[lang="he"] .sub-menu.mobile-expanded,
+              html[lang="ar"] .sub-menu.mobile-expanded {
+                padding: 8px 16px 8px 0 !important;
+              }
+              
+              /* Disable hover behavior on mobile */
+              .nav-menu li:hover > .sub-menu,
+              nav li:hover > .sub-menu,
+              .navbar li:hover > .sub-menu {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+              }
+              
+              /* Enable visibility for expanded submenus */
+              .nav-menu li > .sub-menu.mobile-expanded,
+              nav li > .sub-menu.mobile-expanded,
+              .navbar li > .sub-menu.mobile-expanded {
+                opacity: 1 !important;
+                visibility: visible !important;
+                pointer-events: auto !important;
+              }
+              
+              .sub-menu a {
+                padding: 10px 0 !important;
+                display: block !important;
+                font-size: 14px !important;
+                white-space: normal !important;
+              }
+              
+              .sub-menu a:hover {
+                background-color: transparent !important;
+              }
+              
+              /* Parent item wrapper - flex layout with relative positioning for absolute toggle */
+              .nav-menu li:has(.sub-menu),
+              nav li:has(.sub-menu),
+              .navbar li:has(.sub-menu) {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                align-items: center !important;
+                position: relative !important;
+                min-height: 44px !important;
+              }
+              
+              /* Parent link - takes full width since toggle is absolute (not a flex child) */
+              .nav-menu li:has(.sub-menu) > a,
+              nav li:has(.sub-menu) > a,
+              .navbar li:has(.sub-menu) > a,
+              .nav-menu > li > .menu-group-title,
+              #navMenu > li > .menu-group-title {
+                flex: 1 !important;
+                min-width: 0 !important;
+              }
+              
+              /* Normalize menu-group-title in mobile nav to match link alignment */
+              .nav-menu > li > .menu-group-title,
+              #navMenu > li > .menu-group-title {
+                padding: 0 !important;
+                line-height: inherit !important;
+              }
+              
+              /* Submenu takes full width below parent */
+              .nav-menu li:has(.sub-menu) > .sub-menu,
+              nav li:has(.sub-menu) > .sub-menu,
+              .navbar li:has(.sub-menu) > .sub-menu {
+                flex-basis: 100% !important;
+                width: 100% !important;
+              }
+              
+              /* HIDE EXISTING CHEVRONS/ARROWS from cloned sites to prevent duplicates */
+              .nav-menu li:has(.sub-menu) > a .fa-chevron-down,
+              .nav-menu li:has(.sub-menu) > a .fa-angle-down,
+              .nav-menu li:has(.sub-menu) > a [class*="chevron"],
+              .nav-menu li:has(.sub-menu) > a [class*="arrow"],
+              nav li:has(.sub-menu) > a [class*="chevron"],
+              nav li:has(.sub-menu) > a [class*="arrow"],
+              #navMenu li:has(.sub-menu) > a [class*="chevron"],
+              #navMenu li:has(.sub-menu) > a [class*="arrow"] {
+                display: none !important;
+                visibility: hidden !important;
+              }
+              
+              /* Toggle arrow button - flex child that stretches to match nav-link height */
+              .mobile-submenu-toggle {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 44px !important;
+                height: auto !important;
+                background: transparent !important;
+                border: none !important;
+                cursor: pointer !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                position: static !important;
+                flex-shrink: 0 !important;
+                align-self: stretch !important;
+                z-index: 2 !important;
+                -webkit-tap-highlight-color: transparent;
+              }
+              
+              .mobile-submenu-toggle::after {
+                content: '' !important;
+                display: block !important;
+                width: 0 !important;
+                height: 0 !important;
+                border-left: 6px solid transparent !important;
+                border-right: 6px solid transparent !important;
+                border-top: 7px solid currentColor !important;
+                transition: transform 0.3s ease !important;
+              }
+              
+              /* Rotate arrow when expanded */
+              .mobile-submenu-toggle.expanded::after {
+                transform: rotate(180deg) !important;
+              }
+            }
+            
+            /* Hide toggle button on desktop */
+            @media (min-width: 769px) {
+              .mobile-submenu-toggle {
+                display: none !important;
+              }
+            }
+          </style>
+          
+          <script id="zappy-mobile-menu-script">
+            // Mobile menu toggle for nested submenus (including Menu Groups)
+            // Uses separate toggle button - link navigates, arrow toggles submenu
+            (function() {
+              function initMobileMenuToggles() {
+                // Only run on mobile
+                if (window.innerWidth > 768) {
+                  // Remove any toggle buttons on desktop
+                  document.querySelectorAll('.mobile-submenu-toggle').forEach(btn => btn.remove());
+                  document.querySelectorAll('.sub-menu.mobile-expanded').forEach(menu => {
+                    menu.classList.remove('mobile-expanded');
+                  });
+                  console.log('[MOBILE MENU] Desktop mode - cleanup done');
+                  return;
+                }
+                
+                console.log('[MOBILE MENU] Initializing mobile menu toggles...');
+                
+                // Find all parent menu items (items with .sub-menu)
+                const menuItemsWithSubmenus = document.querySelectorAll(
+                  '.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)'
+                );
+                
+                console.log('[MOBILE MENU] Found', menuItemsWithSubmenus.length, 'items with submenus');
+                
+                menuItemsWithSubmenus.forEach(function(li) {
+                  // Skip if already has toggle button
+                  if (li.querySelector('.mobile-submenu-toggle')) {
+                    return;
+                  }
+                  
+                  const submenu = li.querySelector('.sub-menu');
+                  const parentLink = li.querySelector(':scope > a') || li.querySelector(':scope > .menu-group-title');
+                  
+                  if (!submenu || !parentLink) return;
+                  
+                  // Create toggle button
+                  const toggleBtn = document.createElement('button');
+                  toggleBtn.className = 'mobile-submenu-toggle';
+                  toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+                  toggleBtn.setAttribute('type', 'button');
+
+                  // Insert toggle button after the link
+                  parentLink.insertAdjacentElement('afterend', toggleBtn);
+                  
+                  console.log('[MOBILE MENU] Created toggle button for:', parentLink.textContent?.trim());
+                  
+                  // Handle toggle button click - only toggles submenu
+                  toggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const isExpanded = submenu.classList.contains('mobile-expanded');
+                    
+                    // Close all other submenus first
+                    document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+                      if (menu !== submenu) {
+                        menu.classList.remove('mobile-expanded');
+                        const otherToggle = menu.parentElement.querySelector('.mobile-submenu-toggle');
+                        if (otherToggle) otherToggle.classList.remove('expanded');
+                      }
+                    });
+                    
+                    // Toggle this submenu
+                    submenu.classList.toggle('mobile-expanded');
+                    toggleBtn.classList.toggle('expanded');
+                    
+                    console.log('[MOBILE MENU] Toggled submenu:', !isExpanded ? 'expanded' : 'collapsed');
+                  });
+                  
+                  // Parent link navigates normally - no preventDefault
+                });
+              }
+              
+              // Initialize on DOM load
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenuToggles);
+              } else {
+                initMobileMenuToggles();
+              }
+              
+              // Re-initialize on window resize (but use debounce to avoid too many calls)
+              let resizeTimer;
+              window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(initMobileMenuToggles, 250);
+              });
+              
+              // Also initialize when mobile menu becomes visible
+              // This handles cases where the mobile menu is hidden initially
+              const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                  if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    const target = mutation.target;
+                    if (target.classList.contains('active') || target.style.display !== 'none') {
+                      console.log('[MOBILE MENU] Mobile menu became visible, re-initializing...');
+                      setTimeout(initMobileMenuToggles, 100);
+                    }
+                  }
+                });
+              });
+              
+              // Observe mobile menu containers
+              const mobileMenus = document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu');
+              mobileMenus.forEach(function(menu) {
+                observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+              });
+            })();
+          </script>
+        
+
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="article">
+    
+    
+    
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="מספרים מכוונים – חלק א׳">
+    <meta property="og:locale" content="en_US">
+    <!-- Twitter Card Meta Tags -->
+    
+    
+    
+    
+    <meta name="twitter:image:alt" content="מספרים מכוונים – חלק א׳"><style id="zappy-ai-page-styles">.topics-signed-numbers-part-a-intro-section {
+  position: relative;
+  background-color: #FFFFFF;
+  color: var(--text-dark);
+  padding: 96px 16px 152px;
+  overflow: visible;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Graph paper grid background */
+.topics-signed-numbers-part-a-intro-section__grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: 
+    linear-gradient(to right, rgba(147, 197, 253, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(147, 197, 253, 0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse at 30% 40%, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 30% 40%, black 30%, transparent 70%);
+}
+
+/* Content container */
+.topics-signed-numbers-part-a-intro-section__container {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 48px;
+}
+
+/* Text column (right side in RTL, 55% width) */
+.topics-signed-numbers-part-a-intro-section__text-col {
+  flex: 0 0 55%;
+  max-width: 55%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: right;
+}
+
+/* Heading */
+.topics-signed-numbers-part-a-intro-section__heading {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-dark);
+  margin: 0 0 8px 0;
+  letter-spacing: -0.01em;
+}
+
+.topics-signed-numbers-part-a-intro-section__heading-part {
+  display: block;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 4px;
+}
+
+/* Hand-drawn underline accent */
+.topics-signed-numbers-part-a-intro-section__underline {
+  width: 180px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 3px;
+  margin-bottom: 24px;
+  position: relative;
+  transform: rotate(-1deg);
+  opacity: 0.9;
+  align-self: flex-start;
+}
+
+/* Subtitle */
+.topics-signed-numbers-part-a-intro-section__subtitle {
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--primary);
+  margin: 0 0 16px 0;
+  text-align: right;
+}
+
+/* Description paragraph */
+.topics-signed-numbers-part-a-intro-section__description {
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin: 0 0 32px 0;
+  text-align: right;
+  max-width: 540px;
+}
+
+/* CTA button group */
+.topics-signed-numbers-part-a-intro-section__cta-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Primary CTA button (yellow pencil) */
+.topics-signed-numbers-part-a-intro-section__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: #FFFFFF;
+  border-radius: 50px;
+  border: none;
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(244, 197, 66, 0.35);
+  white-space: nowrap;
+}
+
+.topics-signed-numbers-part-a-intro-section__btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(244, 197, 66, 0.5);
+}
+
+.topics-signed-numbers-part-a-intro-section__btn-primary svg {
+  transform: rotate(180deg);
+  color: #FFFFFF;
+}
+
+/* Secondary CTA button (dark blue outline) */
+.topics-signed-numbers-part-a-intro-section__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--primary);
+  border-radius: 50px;
+  border: 2px solid var(--primary);
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.topics-signed-numbers-part-a-intro-section__btn-secondary:hover {
+  background-color: var(--primary);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.topics-signed-numbers-part-a-intro-section__btn-secondary svg {
+  transform: rotate(180deg);
+  color: currentColor;
+}
+
+/* Illustration column (left side in RTL, 45% width) */
+.topics-signed-numbers-part-a-intro-section__illustration-col {
+  flex: 0 0 45%;
+  max-width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.topics-signed-numbers-part-a-intro-section__illustration {
+  width: 100%;
+  max-width: 520px;
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(24, 50, 74, 0.08);
+  border: 1px solid var(--border-light);
+}
+
+.topics-signed-numbers-part-a-intro-section__illustration img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Bottom diagonal divider */
+.topics-signed-numbers-part-a-intro-section__divider-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.topics-signed-numbers-part-a-intro-section__divider-wrapper svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  .topics-signed-numbers-part-a-intro-section {
+    padding: 100px 16px 120px;
+  }
+
+  .topics-signed-numbers-part-a-intro-section__container {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .topics-signed-numbers-part-a-intro-section__text-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+    align-items: flex-start;
+  }
+
+  .topics-signed-numbers-part-a-intro-section__heading {
+    font-size: 2.25rem;
+  }
+
+  .topics-signed-numbers-part-a-intro-section__heading-part {
+    font-size: 1.5rem;
+  }
+
+  .topics-signed-numbers-part-a-intro-section__subtitle {
+    font-size: 1.1rem;
+  }
+
+  .topics-signed-numbers-part-a-intro-section__description {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .topics-signed-numbers-part-a-intro-section__cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .topics-signed-numbers-part-a-intro-section__btn-primary,
+  .topics-signed-numbers-part-a-intro-section__btn-secondary {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .topics-signed-numbers-part-a-intro-section__illustration-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+    order: -1;
+  }
+
+  .topics-signed-numbers-part-a-intro-section__illustration {
+    max-width: 100%;
+  }
+
+  .topics-signed-numbers-part-a-intro-section__underline {
+    width: 140px;
+    height: 5px;
+  }
+}
+
+
+.topics-signed-numbers-part-a-overview-section {
+  background-color: var(--bg-light);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(147, 197, 253, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(147, 197, 253, 0.08) 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C9E4F7' stroke-width='0.6'%3E%3Cpath d='M0 10h40M0 20h40M0 30h40M10 0v40M20 0v40M30 0v40'/%3E%3C/g%3E%3C/svg%3E");
+  color: var(--text-dark);
+  padding: 84px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.topics-signed-numbers-part-a-overview-section__container {
+  max-width: 1180px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.topics-signed-numbers-part-a-overview-section__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.topics-signed-numbers-part-a-overview-section__title {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  position: relative;
+  display: inline-block;
+}
+
+.topics-signed-numbers-part-a-overview-section__title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent);
+  border-radius: 2px;
+}
+
+.topics-signed-numbers-part-a-overview-section__subtitle {
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Grid */
+.topics-signed-numbers-part-a-overview-section__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  direction: rtl;
+}
+
+/* Card */
+.topics-signed-numbers-part-a-overview-section__card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid rgba(147, 197, 253, 0.4);
+  box-shadow: 0 4px 24px rgba(27, 58, 107, 0.08);
+  padding: 28px 28px 32px;
+  position: relative;
+  text-align: right;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.topics-signed-numbers-part-a-overview-section__card:hover {
+  box-shadow: 0 12px 40px rgba(27, 58, 107, 0.12);
+  transform: translateY(-4px);
+}
+
+.topics-signed-numbers-part-a-overview-section__tab {
+  position: absolute;
+  top: -1px;
+  right: 20px;
+  background: var(--accent);
+  color: var(--text-dark);
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 4px 16px;
+  border-radius: 0 0 12px 12px;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(244, 197, 66, 0.3);
+}
+
+.topics-signed-numbers-part-a-overview-section__step-number {
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(244, 197, 66, 0.25);
+}
+
+.topics-signed-numbers-part-a-overview-section__card-title {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+.topics-signed-numbers-part-a-overview-section__card-desc {
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.topics-signed-numbers-part-a-overview-section__notes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topics-signed-numbers-part-a-overview-section__notes li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+.topics-signed-numbers-part-a-overview-section__check-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #4CAF7D;
+}
+
+/* Responsive: Tablet */
+@media (max-width: 992px) {
+  .topics-signed-numbers-part-a-overview-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 768px) {
+  .topics-signed-numbers-part-a-overview-section {
+    padding: 64px 16px;
+  }
+
+  .topics-signed-numbers-part-a-overview-section__title {
+    font-size: 1.8rem;
+  }
+
+  .topics-signed-numbers-part-a-overview-section__grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  .topics-signed-numbers-part-a-overview-section__card {
+    padding: 24px 20px 28px;
+  }
+
+  .topics-signed-numbers-part-a-overview-section__card-title {
+    font-size: 1.3rem;
+  }
+
+  .topics-signed-numbers-part-a-overview-section__subtitle {
+    font-size: 0.95rem;
+  }
+
+  .topics-signed-numbers-part-a-overview-section__tab {
+    right: 16px;
+    font-size: 0.75rem;
+    padding: 3px 12px;
+  }
+}
+/* ZAPPY_POSTGEN_GUARD_SECTION_HEADER:מספרים מכוונים – חלק א׳-overview */
+[data-layout-spec="מספרים מכוונים – חלק א׳-overview"] > header {
+  max-width: min(92vw, 60ch) !important;
+  margin-inline: auto !important;
+  padding-inline: 16px;
+  text-align: center !important;
+}
+[data-layout-spec="מספרים מכוונים – חלק א׳-overview"] > header > * { margin-inline: auto !important; max-width: 100% !important; }
+
+
+.topics-signed-numbers-part-a-curriculum-section {
+  position: relative;
+  background-color: var(--bg-dark);
+  background-image:
+    /* Coordinate grid lines */
+    repeating-linear-gradient(
+      0deg,
+      rgba(201, 228, 247, 0.04) 0px,
+      rgba(201, 228, 247, 0.04) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(201, 228, 247, 0.04) 0px,
+      rgba(201, 228, 247, 0.04) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    /* Deep blue gradient base */
+    linear-gradient(160deg, #1B3A6B 0%, #0F2347 100%);
+  color: var(--text-light);
+  padding: 96px 16px;
+  overflow: hidden;
+  direction: rtl;
+  text-align: right;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(244, 197, 66, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 197, 66, 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__bg-dots {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(244, 197, 66, 0.12) 2px, transparent 2px),
+    radial-gradient(circle at 85% 75%, rgba(244, 197, 66, 0.1) 3px, transparent 3px),
+    radial-gradient(circle at 70% 15%, rgba(244, 197, 66, 0.08) 2px, transparent 2px),
+    radial-gradient(circle at 30% 85%, rgba(244, 197, 66, 0.1) 3px, transparent 3px);
+  background-size: 200px 200px, 300px 300px, 250px 250px, 350px 350px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__header {
+  text-align: center;
+  margin-bottom: 64px;
+  position: relative;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__title {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--text-light);
+  margin: 0 0 16px 0;
+  text-align: center;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__subtitle {
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__title-underline {
+  width: 200px;
+  margin: 16px auto 0;
+  pointer-events: none;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__path {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+  direction: rtl;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__path-line {
+  display: none;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__path-line {
+    display: block;
+    position: absolute;
+    top: 30px;
+    inset-inline-start: 5%;
+    width: 90%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__station {
+  position: relative;
+  z-index: 1;
+  background: rgba(248, 252, 255, 0.06);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1px solid rgba(244, 197, 66, 0.2);
+  padding: 32px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  min-width: 0;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__station-number {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  opacity: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__station-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__station-title {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-light);
+  margin: 0;
+  text-align: right;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__station-text {
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0;
+  text-align: right;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__cta-wrapper {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.topics-signed-numbers-part-a-curriculum-section__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--text-dark);
+  padding: 14px 36px;
+  border-radius: 100px;
+  border: none;
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 16px rgba(244, 197, 66, 0.3);
+}
+
+.topics-signed-numbers-part-a-curriculum-section {
+    padding: 80px 16px;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__header {
+    margin-bottom: 48px;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__title {
+    font-size: 1.75rem;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__subtitle {
+    font-size: 1rem;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__path {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__station {
+    padding: 24px 20px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__station-number {
+    font-size: 2rem;
+    min-width: 48px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__station-content {
+    gap: 8px;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__station-title {
+    font-size: 1.15rem;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__cta {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section {
+    padding: 64px 12px;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__title {
+    font-size: 1.5rem;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__station {
+    padding: 20px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+.topics-signed-numbers-part-a-curriculum-section__station-number {
+    font-size: 1.75rem;
+    min-width: auto;
+  }
+
+.topics-signed-numbers-part-a-examples-section {
+  position: relative;
+  overflow: hidden;
+  background: #FFFFFF;
+  background-color: #FFFFFF;
+  color: var(--text-dark);
+  padding: 88px 16px;
+  direction: rtl;
+  text-align: right;
+}
+
+.topics-signed-numbers-part-a-examples-section__bg-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2393C5FD' stroke-width='0.5' opacity='0.15'%3E%3Cpath d='M0 10h40M0 20h40M0 30h40M10 0v40M20 0v40M30 0v40'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.topics-signed-numbers-part-a-examples-section__container {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.topics-signed-numbers-part-a-examples-section__header {
+  margin-bottom: 48px;
+  text-align: right;
+}
+
+.topics-signed-numbers-part-a-examples-section__title {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-dark);
+  margin: 0 0 12px 0;
+  position: relative;
+  display: inline-block;
+}
+
+.topics-signed-numbers-part-a-examples-section__title::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  right: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+.topics-signed-numbers-part-a-examples-section__subtitle {
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 600px;
+  text-align: right;
+}
+
+.topics-signed-numbers-part-a-examples-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  direction: rtl;
+}
+
+.topics-signed-numbers-part-a-examples-section__card {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(27,58,107,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  min-width: 0;
+}
+
+.topics-signed-numbers-part-a-examples-section__card:hover {
+  box-shadow: 0 12px 40px rgba(27,58,107,0.12);
+  transform: translateY(-4px);
+}
+
+.topics-signed-numbers-part-a-examples-section__card-header {
+  background-color: #EEF7FF;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.topics-signed-numbers-part-a-examples-section__card-title {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-dark);
+  margin: 0;
+  text-align: right;
+}
+
+.topics-signed-numbers-part-a-examples-section__card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.topics-signed-numbers-part-a-examples-section__card-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: right;
+}
+
+.topics-signed-numbers-part-a-examples-section__card-label {
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--primary);
+  display: block;
+  text-align: right;
+}
+
+.topics-signed-numbers-part-a-examples-section__card-text {
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-dark);
+  margin: 0;
+  text-align: right;
+}
+
+.topics-signed-numbers-part-a-examples-section__pencil-mark {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 24px;
+  height: 24px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.topics-signed-numbers-part-a-examples-section__illustration {
+  position: absolute;
+  bottom: 40px;
+  left: 20px;
+  width: 240px;
+  height: 240px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 1;
+  display: block;
+}
+
+.topics-signed-numbers-part-a-examples-section__illustration img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .topics-signed-numbers-part-a-examples-section {
+    padding: 60px 16px;
+  }
+
+  .topics-signed-numbers-part-a-examples-section__grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  .topics-signed-numbers-part-a-examples-section__header {
+    margin-bottom: 32px;
+  }
+
+  .topics-signed-numbers-part-a-examples-section__title {
+    font-size: 1.75rem;
+  }
+
+  .topics-signed-numbers-part-a-examples-section__illustration {
+    width: 140px;
+    height: 140px;
+    bottom: 20px;
+    left: 10px;
+    opacity: 0.06;
+  }
+
+  .topics-signed-numbers-part-a-examples-section__card-body {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .topics-signed-numbers-part-a-examples-section__card-header {
+    padding: 14px 16px;
+  }
+}
+
+.topics-signed-numbers-part-a-faq-section {
+    background-color: #EEF7FF;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C9E4F7' stroke-width='0.5'%3E%3Cpath d='M0 10h40M0 20h40M0 30h40M10 0v40M20 0v40M30 0v40'/%3E%3C/g%3E%3C/svg%3E");
+    color: var(--text-dark);
+    padding: 84px 16px;
+    text-align: right;
+    direction: rtl;
+}
+
+.topics-signed-numbers-part-a-faq-section .faq-container {
+    max-width: 980px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.topics-signed-numbers-part-a-faq-section h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--text-dark);
+    text-align: center;
+    margin: 0 0 12px 0;
+    max-width: none !important;
+}
+
+.topics-signed-numbers-part-a-faq-section .faq-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 0 0 48px 0;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+.topics-signed-numbers-part-a-faq-section .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 48px;
+}
+
+.topics-signed-numbers-part-a-faq-section .faq-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    box-shadow: 0 4px 24px rgba(27, 58, 107, 0.05);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.topics-signed-numbers-part-a-faq-section .faq-card:hover {
+    box-shadow: 0 12px 32px rgba(27, 58, 107, 0.1);
+    transform: translateY(-2px);
+}
+
+.topics-signed-numbers-part-a-faq-section .faq-icon-wrapper {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: rgba(76, 175, 125, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4CAF7D;
+    margin-top: 2px;
+}
+
+.topics-signed-numbers-part-a-faq-section .faq-icon-wrapper svg {
+    width: 24px;
+    height: 24px;
+}
+
+.topics-signed-numbers-part-a-faq-section .faq-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.topics-signed-numbers-part-a-faq-section .faq-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text-dark);
+    margin: 0 0 12px 0;
+    text-align: start;
+}
+
+.topics-signed-numbers-part-a-faq-section .faq-content p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin: 0;
+    text-align: start;
+}
+
+.topics-signed-numbers-part-a-faq-section .faq-ruler {
+    width: 100%;
+    color: var(--border-light);
+    opacity: 0.6;
+    margin-top: 8px;
+}
+
+.topics-signed-numbers-part-a-faq-section .faq-ruler svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .topics-signed-numbers-part-a-faq-section {
+        padding: 60px 16px;
+    }
+
+    .topics-signed-numbers-part-a-faq-section h2 {
+        font-size: 1.75rem;
+    }
+
+    .topics-signed-numbers-part-a-faq-section .faq-subtitle {
+        font-size: 1rem;
+        margin-bottom: 36px;
+    }
+
+    .topics-signed-numbers-part-a-faq-section .faq-card {
+        padding: 20px;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .topics-signed-numbers-part-a-faq-section .faq-icon-wrapper {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .topics-signed-numbers-part-a-faq-section .faq-icon-wrapper svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .topics-signed-numbers-part-a-faq-section .faq-content h3 {
+        font-size: 1.125rem;
+    }
+}
+
+.topics-signed-numbers-part-a-cta-section {
+  position: relative;
+  background-color: var(--bg-dark);
+  background-image: linear-gradient(160deg, #1B3A6B 0%, #0F2347 100%);
+  color: var(--text-light);
+  overflow: visible;
+  padding: 92px 24px 92px 24px;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Decorative Background Layer */
+.topics-signed-numbers-part-a-cta-section .cta-decorative-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-graph-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Chalk-like geometric shapes */
+.topics-signed-numbers-part-a-cta-section .cta-geo-shape {
+  position: absolute;
+  border: 2px solid var(--text-light);
+  opacity: 0.08;
+  border-radius: 4px;
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-geo-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  top: 15%;
+  left: 10%;
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-geo-triangle {
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-bottom: 100px solid rgba(248, 252, 255, 0.08);
+  border-radius: 0;
+  border: none;
+  background: none;
+  top: 60%;
+  right: 5%;
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-geo-square {
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  right: 15%;
+  transform: rotate(25deg);
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-formula-scatter {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 40%;
+  height: 80%;
+}
+
+/* Main Content Container */
+.topics-signed-numbers-part-a-cta-section .cta-content-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-headline {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-light);
+  margin: 0 0 16px 0;
+  max-width: 800px;
+  text-align: center;
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-accent-underline {
+  width: 200px;
+  height: 12px;
+  margin: 0 auto 24px auto;
+  display: block;
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-description {
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-light);
+  max-width: 650px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--accent);
+  color: var(--text-dark);
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 16px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  margin-bottom: 24px;
+  z-index: 10;
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-primary-button svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text-dark);
+  transform: scaleX(-1); /* Flip arrow for RTL */
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-primary-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  background: #F5B830;
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-sub-note {
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-light);
+  opacity: 0.7;
+  margin: 0;
+  text-align: center;
+  max-width: 500px;
+}
+
+/* Bottom Divider */
+.topics-signed-numbers-part-a-cta-section .cta-divider-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.topics-signed-numbers-part-a-cta-section .cta-divider-wrapper svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .topics-signed-numbers-part-a-cta-section {
+    padding: 64px 16px 64px 16px;
+  }
+
+  .topics-signed-numbers-part-a-cta-section .cta-headline {
+    font-size: 2rem;
+    max-width: 100%;
+  }
+
+  .topics-signed-numbers-part-a-cta-section .cta-description {
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+
+  .topics-signed-numbers-part-a-cta-section .cta-primary-button {
+    font-size: 1rem;
+    padding: 14px 28px;
+    border-radius: 12px;
+  }
+
+  .topics-signed-numbers-part-a-cta-section .cta-sub-note {
+    font-size: 0.8rem;
+  }
+
+  /* Hide some decorative elements on mobile for performance/clarity */
+  .topics-signed-numbers-part-a-cta-section .cta-geo-triangle,
+  .topics-signed-numbers-part-a-cta-section .cta-geo-square {
+    display: none;
+  }
+
+  .topics-signed-numbers-part-a-cta-section .cta-geo-circle {
+    width: 80px;
+    height: 80px;
+    top: 10%;
+    left: 5%;
+  }
+
+  .topics-signed-numbers-part-a-cta-section .cta-formula-scatter {
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 10%;
+  }
+}
+
+@media (max-width: 480px) {
+  .topics-signed-numbers-part-a-cta-section .cta-headline {
+    font-size: 1.75rem;
+  }
+  
+  .topics-signed-numbers-part-a-cta-section .cta-primary-button {
+    width: 100%;
+    justify-content: center;
+  }
+}</style>
+    <link rel="stylesheet" href="/styles.css">
+
+    <style id="zappy-widget-visibility">
+      html[dir="rtl"] .whatsapp-float { right: 20px !important; left: auto !important; }
+      html[dir="ltr"] .whatsapp-float, html:not([dir]) .whatsapp-float { left: 20px !important; right: auto !important; }
+      html[dir="rtl"] #mic-access-tool-general-button, html[dir="rtl"] .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="rtl"] ._access-icon { left: 20px !important; right: auto !important; }
+      html[dir="ltr"] #mic-access-tool-general-button, html[dir="ltr"] .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="ltr"] ._access-icon,
+      html:not([dir]) #mic-access-tool-general-button, html:not([dir]) .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool #mic-access-tool-general-button,
+      html:not([dir]) ._access-icon { right: 20px !important; left: auto !important; }
+      @media (max-width: 768px) { .whatsapp-float { display: flex !important; } }
+      @media (min-width: 769px) { .whatsapp-float { display: flex !important; } }
+      @media (max-width: 768px) {
+        #mic-access-tool-general-button, .mic-access-tool-general-button,
+        #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        #mic-access-tool-box.opened-mic-access-tool, .mic-access-tool-box.opened-mic-access-tool,
+        #mic-init-access-tool #mic-access-tool-box.opened-mic-access-tool {
+          visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+        }
+      }
+      @media (min-width: 769px) {
+        #mic-access-tool-general-button, .mic-access-tool-general-button,
+        #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        #mic-access-tool-box.opened-mic-access-tool, .mic-access-tool-box.opened-mic-access-tool,
+        #mic-init-access-tool #mic-access-tool-box.opened-mic-access-tool {
+          visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+        }
+      }
+    </style>
+</head>
+<body>
+<div class="mobile-search-panel" id="mobile-search-panel">
+      <div class="search-wrapper">
+        <input type="text" id="mobile-search-input" placeholder="חיפוש קורסים..." autocomplete="off">
+        <button class="search-submit" id="mobile-search-submit" title="חיפוש">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+        </button>
+        <button class="close-search" id="close-mobile-search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div class="search-results" id="mobile-search-results"></div>
+    </div>
+  
+<script>window.ZAPPY_PRODUCTS_LISTING_PATH = "/courses";</script>
+<script>window.ZAPPY_WEBSITE_ID = "3b37cd09-88b3-4c07-81b4-9e3f4ea2a7d2";window.ZAPPY_API_BASE = "https://api.zappy5.com";</script><a class="skip-link" href="#main">דלג לתוכן הראשי</a>
+  <nav class="navbar" dir="rtl">
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+  </button>
+  
+  <button class="phone-header-btn" data-phone="0526816808" aria-label="Call">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </button>
+
+  <div class="nav-container">
+    <div class="nav-right-group"><div class="nav-brand">
+      <a href="/" class="logo-link"><img class="logo" src="/assets/site--------image-1.webp" alt="מתמטיקאי"></a>
+    </div><ul class="nav-menu" id="navMenu"><li><a href="/7th-layer">שכבת ז'</a></li><li><a href="/eighth-grade-class">שכבת ח'</a></li><li><a href="/9th-grade-class">שכבת ט'</a></li><li class="menu-item-has-children zappy-products-dropdown zappy-hidden-menu-item" style="display: none !important;">
+      <a href="/contact-us">קורסים</a>
+      <ul class="sub-menu" id="zappy-nav-category-links">
+        <li><a href="/courses" data-i18n="ecom_products">כל הקורסים</a></li>
+        <!-- Categories will be loaded dynamically -->
+      </ul>
+    </li><li class="zappy-hidden-menu-item"><a href="/lesson/:lessonId">lesson/:lessonId</a></li><li class="zappy-hidden-menu-item"><a href="/courses/:slug">courses/:slug</a></li><li class="zappy-hidden-menu-item"><a href="/lesson/:lessonId">lesson/:lessonId</a></li><li><a href="/topics/coordinate-system-first-quadrant" class="nav-link">צירים</a></li><li class="zappy-hidden-menu-item"><a href="/certificate/:code">certificate/:code</a></li><li><a href="/topics/signed-numbers-part-a" class="nav-link">מכוונים א׳</a></li></ul><div class="nav-ecommerce-icons nav-icons-left"><a href="/login" class="login-link nav-login" title="התחברות"><svg class="login-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a><a href="#cart" class="cart-link nav-cart" id="cart-drawer-toggle" title="עגלת קניות"><svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg><span class="cart-count">0</span></a><div class="nav-search-box">
+    <input type="text" class="nav-search-input" id="nav-search-input" placeholder="חיפוש קורסים..." autocomplete="off">
+    <button class="nav-search-btn" id="nav-search-btn" title="חיפוש">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+    </button>
+    <div class="nav-search-results" id="nav-search-results"></div>
+  </div></div><div class="nav-ecommerce-icons nav-icons-right"><button class="nav-search-toggle" id="mobile-search-toggle" title="חיפוש"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg></button></div></div>
+    
+    
+    
+    
+  </div>
+</nav>
+
+    <nav class="zappy-catalog-menu rtl" id="zappy-catalog-menu" dir="rtl" style="display:none">
+      <div class="catalog-menu-container">
+        <a href="/contact-us" class="catalog-menu-item catalog-menu-all zappy-hidden-menu-item" style="display: none !important;">צור קשר</a>
+        <div class="catalog-menu-categories" id="zappy-category-links">
+          <!-- Categories will be loaded dynamically -->
+        </div>
+      </div>
+    </nav>
+  
+<script>
+
+// Navbar Mobile Menu Toggle and Contrast Fix
+(function() {
+  // Use 'load' event instead of 'DOMContentLoaded' to ensure we run AFTER all other scripts
+  window.addEventListener('load', function() {
+    
+    // FIX MOBILE BUTTON CONTRAST
+    // Detect navbar background color and apply contrasting color to mobile buttons
+    const navbar = document.querySelector('.navbar, nav, header');
+    if (!navbar) {
+      console.log('[Navbar] Navbar element not found');
+      return;
+    }
+    
+    // DECLARE VARIABLES EARLY to avoid Temporal Dead Zone errors
+    // These are used in multiple places below
+    let mobileToggle = document.getElementById('mobileToggle') ||
+                       document.querySelector('.mobile-toggle') ||
+                       document.querySelector('.hamburger') ||
+                       document.querySelector('.hamburger-menu') ||
+                       document.querySelector('.menu-toggle') ||
+                       document.querySelector('.burger-menu') ||
+                       document.querySelector('[aria-label="Menu"]') ||
+                       document.querySelector('[aria-label="תפריט"]');
+    
+    const phoneBtn = document.querySelector('.phone-header-btn');
+    
+    const computedStyle = window.getComputedStyle(navbar);
+    let bgColor = computedStyle.backgroundColor;
+    
+    console.log('[Navbar] Initial navbar background:', bgColor);
+    
+    // Check if background is transparent or rgba with 0 alpha
+    const isTransparent = bgColor === 'transparent' || 
+                         bgColor === 'rgba(0, 0, 0, 0)' ||
+                         (bgColor.startsWith('rgba') && bgColor.includes(', 0)'));
+    
+    if (isTransparent) {
+      // Check for background-image or gradient
+      const bgImage = computedStyle.backgroundImage;
+      if (bgImage && bgImage !== 'none') {
+        console.log('[Navbar] Navbar has background image/gradient, using dark text');
+        bgColor = 'rgb(240, 240, 240)'; // Assume light background
+      } else {
+        // Transparent navbar - check body background
+        const bodyBg = window.getComputedStyle(document.body).backgroundColor;
+        console.log('[Navbar] Navbar transparent, using body background:', bodyBg);
+        bgColor = bodyBg;
+      }
+    }
+    
+    // Calculate luminance to determine if background is light or dark
+    const rgb = bgColor.match(/\d+/g);
+    if (rgb && rgb.length >= 3) {
+      const r = parseInt(rgb[0]);
+      const g = parseInt(rgb[1]);
+      const b = parseInt(rgb[2]);
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      
+      // Mobile button colors are set by Claude's AI-generated CSS (same as .nav-menu a)
+      // No dynamic color overrides needed - colors come from the generated navbar CSS
+      console.log('[Navbar] Mobile button colors preserved from Claude CSS (luminance:', luminance.toFixed(2) + ')');
+      
+      // FIX ICON SIZES - Ensure SVGs are properly sized and visible
+      // INJECT CRITICAL CSS TO OVERRIDE ANY CONFLICTING RULES
+      const criticalCSS = document.createElement('style');
+      criticalCSS.id = 'zappy-mobile-nav-fix';
+      const htmlLang = document.documentElement.lang || 'en';
+      const htmlDir = document.documentElement.dir || 'ltr';
+      // Check both dir attribute AND lang for RTL detection
+      // dir="rtl" is the most reliable indicator
+      const isRTL = htmlDir === 'rtl' || htmlLang === 'he' || htmlLang === 'ar';
+      
+      criticalCSS.textContent = `
+        /* Hide mobile buttons on desktop, show only on mobile */
+        @media (min-width: 769px) {
+          .mobile-toggle,
+          .phone-header-btn {
+            display: none !important;
+          }
+        }
+        
+        /* Show and position mobile buttons correctly on mobile */
+        @media (max-width: 768px) {
+          .navbar,
+          nav.navbar {
+            min-height: 70px !important;
+          }
+
+          .mobile-toggle,
+          .phone-header-btn {
+            position: absolute !important;
+            top: 0 !important;
+            bottom: 0 !important;
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+            transform: none !important;
+            z-index: 1001 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 50% !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 6px !important;
+            background: none !important;
+            color: var(--nav-text, var(--text-dark)) !important;
+            touch-action: manipulation !important;
+            -webkit-tap-highlight-color: transparent !important;
+          }
+
+          html[data-zappy-site-type="ecommerce"] .phone-header-btn,
+          body[data-zappy-site-type="ecommerce"] .phone-header-btn,
+          html[data-zappy-site-type="ecommerce"] header .phone-header-btn,
+          html[data-zappy-site-type="ecommerce"] nav .phone-header-btn {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+          }
+          
+          /* LTR positioning (default): hamburger LEFT, phone RIGHT */
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle,
+          html[dir="ltr"] .mobile-toggle {
+            left: 12px !important;
+            right: auto !important;
+          }
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn,
+          html[dir="ltr"] .phone-header-btn {
+            right: 12px !important;
+            left: auto !important;
+          }
+          
+          /* RTL positioning: hamburger RIGHT, phone LEFT */
+          html[dir="rtl"] .mobile-toggle,
+          html[lang="he"] .mobile-toggle,
+          html[lang="ar"] .mobile-toggle {
+            right: 12px !important;
+            left: auto !important;
+          }
+          html[dir="rtl"] .phone-header-btn,
+          html[lang="he"] .phone-header-btn,
+          html[lang="ar"] .phone-header-btn {
+            left: 12px !important;
+            right: auto !important;
+          }
+          
+          /* CRITICAL: Ensure nav-container has min-height on mobile */
+          /* All children are positioned absolutely/fixed on mobile, so height:auto collapses to 0 */
+          .nav-container {
+            min-height: 70px !important;
+            position: relative !important;
+          }
+          
+          /* Ensure SVG icons are properly sized and inherit color */
+          .mobile-toggle svg,
+          .phone-header-btn svg {
+            width: 24px !important;
+            height: 24px !important;
+            /* Don't force display - let JavaScript control hamburger/close toggle */
+          }
+          
+          /* Reset nav-cta-container on mobile - remove desktop box-shadow/padding */
+          /* that creates a visible ghost box when CTA button is hidden */
+          .nav-cta-container {
+            box-shadow: none !important;
+            padding: 0 !important;
+          }
+          
+          /* Hide nav-cta-container entirely on mobile when there's no lang-switcher */
+          /* (only the CTA button is inside, and it's hidden on mobile) */
+          .nav-cta-container:not(:has(.lang-switcher)) {
+            display: none !important;
+          }
+          
+          /* CRITICAL: Prevent hero image fade gradient from bleeding over headline text */
+          /* The .image-fade-gradient has bottom: -30px (extends below parent) */
+          /* On mobile stacked layout, this overlaps the h1 text below the image */
+          .hero-image-column {
+            overflow: hidden !important;
+          }
+          .image-fade-gradient {
+            bottom: 0 !important;
+          }
+          
+          /* Hide desktop language switcher on mobile - hamburger menu handles it */
+          /* High specificity to override stored CSS */
+          .lang-switcher,
+          .nav-cta-container .lang-switcher,
+          .nav-container .lang-switcher,
+          .navbar .lang-switcher,
+          .navbar .nav-cta-container .lang-switcher {
+            display: none !important;
+          }
+        }
+      `;
+      
+      // Remove existing fix if present and inject new one
+      const existing = document.getElementById('zappy-mobile-nav-fix');
+      if (existing) existing.remove();
+      document.head.appendChild(criticalCSS);
+      
+      console.log('[Navbar] Critical CSS injected for mobile nav positioning');
+      
+      // ONLY apply inline positioning styles on mobile viewport
+      // On desktop, the CSS handles hiding these buttons with display: none
+      // Inline styles were breaking desktop layout by overriding CSS
+      const isMobileViewport = window.innerWidth <= 768;
+      
+      if (mobileToggle) {
+        // Icon sizing applies to all viewports for consistency
+        const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon');
+        const closeIcon = mobileToggle.querySelector('.close-icon');
+        
+        if (hamburgerIcon) {
+          hamburgerIcon.style.setProperty('width', '24px', 'important');
+          hamburgerIcon.style.setProperty('height', '24px', 'important');
+          hamburgerIcon.style.setProperty('display', 'block', 'important'); // Show hamburger by default
+        }
+        if (closeIcon) {
+          closeIcon.style.setProperty('width', '24px', 'important');
+          closeIcon.style.setProperty('height', '24px', 'important');
+          closeIcon.style.setProperty('display', 'none', 'important'); // Hide close icon by default
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          mobileToggle.style.setProperty('position', 'absolute', 'important');
+          mobileToggle.style.setProperty('top', '0', 'important');
+          mobileToggle.style.setProperty('bottom', '0', 'important');
+          mobileToggle.style.setProperty('margin-top', 'auto', 'important');
+          mobileToggle.style.setProperty('margin-bottom', 'auto', 'important');
+          mobileToggle.style.setProperty('transform', 'none', 'important');
+          mobileToggle.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          
+          console.log('[Navbar] Mobile toggle positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          mobileToggle.style.removeProperty('position');
+          mobileToggle.style.removeProperty('top');
+          mobileToggle.style.removeProperty('transform');
+          mobileToggle.style.removeProperty('z-index');
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared mobile toggle inline positioning');
+        }
+      }
+      
+      if (phoneBtn) {
+        // Icon sizing applies to all viewports
+        const phoneIcon = phoneBtn.querySelector('svg');
+        if (phoneIcon) {
+          phoneIcon.style.width = '24px';
+          phoneIcon.style.height = '24px';
+          phoneIcon.setAttribute('width', '24');
+          phoneIcon.setAttribute('height', '24');
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          phoneBtn.style.setProperty('position', 'absolute', 'important');
+          phoneBtn.style.setProperty('top', '0', 'important');
+          phoneBtn.style.setProperty('bottom', '0', 'important');
+          phoneBtn.style.setProperty('margin-top', 'auto', 'important');
+          phoneBtn.style.setProperty('margin-bottom', 'auto', 'important');
+          phoneBtn.style.setProperty('transform', 'none', 'important');
+          phoneBtn.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          
+          console.log('[Navbar] Phone button positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          phoneBtn.style.removeProperty('position');
+          phoneBtn.style.removeProperty('top');
+          phoneBtn.style.removeProperty('transform');
+          phoneBtn.style.removeProperty('z-index');
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared phone button inline positioning');
+        }
+      }
+    } else {
+      console.log('[Navbar] Could not parse background color:', bgColor);
+    }
+    
+    // MOBILE MENU TOGGLE
+    // Re-query in case DOM changed (mobileToggle already declared at top of function)
+    mobileToggle = document.getElementById('mobileToggle') ||
+                   document.querySelector('.mobile-toggle') ||
+                   document.querySelector('.hamburger') ||
+                   document.querySelector('.hamburger-menu') ||
+                   document.querySelector('.menu-toggle') ||
+                   document.querySelector('.burger-menu') ||
+                   document.querySelector('[aria-label="Menu"]') ||
+                   document.querySelector('[aria-label="תפריט"]');
+    
+    // EXPANDED SEARCH: Find nav menu by ID or class
+    const navMenu = document.getElementById('navMenu') ||
+                  document.querySelector('.nav-menu') ||
+                  document.querySelector('.nav-links') ||
+                  document.querySelector('nav ul:not(.submenu)');
+    
+    if (!mobileToggle || !navMenu) {
+      console.log('[Navbar] Mobile toggle or menu not found:', { toggle: !!mobileToggle, menu: !!navMenu });
+      return;
+    }
+    
+    // Ensure navMenu has ID for CSS targeting
+    if (!navMenu.id) {
+      navMenu.id = 'navMenu';
+    }
+    
+    console.log('[Navbar] Initializing mobile menu...');
+    
+    // Remove any existing event listeners by cloning the button
+    const newToggle = mobileToggle.cloneNode(true);
+    mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
+    
+    // Toggle menu handler (shared by click and touchend)
+    function handleToggle(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+      const closeIcon = newToggle.querySelector('.close-icon');
+      const isActive = navMenu.classList.contains('active');
+      
+      if (isActive) {
+        // Close menu
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+        console.log('[Navbar] Menu closed');
+      } else {
+        // Open menu
+        navMenu.classList.add('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important');
+        document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
+        console.log('[Navbar] Menu opened');
+      }
+    }
+    
+    // Use click for desktop/emulation and touchend as iOS Safari fallback.
+    // Prevent double-fire with a timestamp guard.
+    var lastToggleTime = 0;
+    function guardedToggle(e) {
+      var now = Date.now();
+      if (now - lastToggleTime < 300) return;
+      lastToggleTime = now;
+      handleToggle(e);
+    }
+    
+    newToggle.addEventListener('click', guardedToggle);
+    newToggle.addEventListener('touchend', guardedToggle);
+
+    // Close the full-screen overlay menu on Escape
+    document.addEventListener('keydown', function(e) {
+      if ((e.key === 'Escape' || e.key === 'Esc') && navMenu.classList.contains('active')) {
+        const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+        const closeIcon = newToggle.querySelector('.close-icon');
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+        console.log('[Navbar] Menu closed (Escape)');
+      }
+    });
+    
+    // Close menu when clicking nav links (but NOT dropdown toggles)
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        // Don't close if it's a dropdown child (unless it's a real navigation link)
+        if (this.getAttribute('href') === '#') return;
+        
+        const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+        const closeIcon = newToggle.querySelector('.close-icon');
+        
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
+        console.log('[Navbar] Menu closed (link clicked)');
+      });
+    });
+    
+    // DROPDOWN MENU TOGGLE (for mobile and touch devices)
+    var dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var parent = this.closest('.nav-dropdown');
+        if (!parent) return;
+        
+        // Close other open dropdowns at the same level
+        var siblings = parent.parentNode.querySelectorAll('.nav-dropdown.open');
+        siblings.forEach(function(sib) {
+          if (sib !== parent) sib.classList.remove('open');
+        });
+        
+        parent.classList.toggle('open');
+        console.log('[Navbar] Dropdown toggled:', parent.classList.contains('open') ? 'open' : 'closed');
+      });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        var openDropdowns = document.querySelectorAll('.nav-dropdown.open');
+        openDropdowns.forEach(function(dd) { dd.classList.remove('open'); });
+      }
+    });
+    
+    console.log('[Navbar] Dropdown handlers initialized for ' + dropdownToggles.length + ' dropdowns');
+    
+    // Phone button functionality (phoneBtn already declared at top of function)
+    if (phoneBtn) {
+      phoneBtn.addEventListener('click', function() {
+        // Get phone number from placeholder in page or use default
+        const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+        const phoneNumber = phoneLinks.length > 0 
+          ? phoneLinks[0].getAttribute('href').replace('tel:', '')
+          : '050-1234567';
+        
+        window.location.href = 'tel:' + phoneNumber;
+        console.log('[Navbar] Phone button clicked');
+      });
+    }
+    
+    console.log('[Navbar] Mobile menu initialized successfully');
+    
+    // WhatsApp button visibility is now controlled via CSS (siteSettings).
+    // No JS-based desktop hiding — the button is visible on both mobile and desktop by default.
+  });
+})();
+
+</script>
+  
+  <main id="main" class="blog-page ai-generated-page"><section class="topics-signed-numbers-part-a-intro-section" data-layout-spec="מספרים מכוונים – חלק א׳-intro">
+  <!-- Background grid pattern -->
+  <div class="topics-signed-numbers-part-a-intro-section__grid-bg" aria-hidden="true"></div>
+  
+  <!-- Content container -->
+  <div class="topics-signed-numbers-part-a-intro-section__container">
+    
+    <!-- Right column: Text block -->
+    <div class="topics-signed-numbers-part-a-intro-section__text-col">
+      <h1 class="topics-signed-numbers-part-a-intro-section__heading">
+        מספרים מכוונים
+        <span class="topics-signed-numbers-part-a-intro-section__heading-part">חלק א׳</span>
+      </h1>
+      <div class="topics-signed-numbers-part-a-intro-section__underline" aria-hidden="true"></div>
+      <p class="topics-signed-numbers-part-a-intro-section__subtitle">הבסיס להבנת המספרים החיוביים והשליליים</p>
+      <p class="topics-signed-numbers-part-a-intro-section__description">
+        ברוכים הבאים לעולם המרתק של המספרים המכוונים! בחלק זה נלמד להכיר את ציר המספרים,
+        להבין את המשמעות של מספרים חיוביים ושליליים, ולגלות איך מתמטיקה עוזרת לנו לתאר
+        מצבים יומיומיים – מטמפרטורות מתחת לאפס ועד לקומות במעלית. הקורס מותאם במיוחד
+        לתלמידי כיתות ז׳-ט׳, עם הסברים ברורים, דוגמאות מהחיים ותרגולים אינטראקטיביים
+        שיהפכו אתכם לאלופי המספרים המכוונים.
+      </p>
+      
+      <div class="topics-signed-numbers-part-a-intro-section__cta-group">
+        <a href="#contact" class="topics-signed-numbers-part-a-intro-section__btn-primary">
+          צרו קשר לייעוץ לימודים
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg"><path d="M7 5L12 10L7 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </a>
+        <a href="#examples" class="topics-signed-numbers-part-a-intro-section__btn-secondary">
+          לדוגמאות בפרק
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" data-element-type="icon" data-icon-type="svg"><path d="M7 5L12 10L7 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Left column: Static illustration -->
+    <div class="topics-signed-numbers-part-a-intro-section__illustration-col" aria-hidden="true">
+      <div class="topics-signed-numbers-part-a-intro-section__illustration">
+        <img data-context="A playful graph-paper style illustration of a number line for a middle school math platform. The number line runs horizontally on a light grid paper background. Marked points include negative numbers on the left (-5, -4, -3, -2, -1), zero in the center, and positive numbers on the right (1, 2, 3, 4, 5). Small plus and minus signs are scattered near the corresponding sides. A double-headed arrow extends beneath the line indicating the direction of increasing and decreasing values. The style uses pencil-like strokes and soft pastel accents, matching a classroom notebook aesthetic." width="600" height="400" src="/assets/education-section-intro-topics-signed-numbers-part-a-intro-image-1.webp" alt="ציר מספרים עם מספרים חיוביים ושליליים">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom diagonal divider -->
+  <div class="topics-signed-numbers-part-a-intro-section__divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 L0,15 L1200,80 L1200,80 Z" fill="var(--secondary)"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="topics-signed-numbers-part-a-overview-section" data-layout-spec="מספרים מכוונים – חלק א׳-overview">
+  <div class="topics-signed-numbers-part-a-overview-section__container">
+    <header class="topics-signed-numbers-part-a-overview-section__header">
+      <h2 class="topics-signed-numbers-part-a-overview-section__title">מספרים מכוונים – חלק א׳</h2>
+      <p class="topics-signed-numbers-part-a-overview-section__subtitle">ארבעה נושאים מרכזיים שיהפכו את לימודי המתמטיקה לחוויה ברורה ומהנה. כל נושא מלווה בהסבר קצר, דוגמאות מעשיות ונקודות מפתח שיעזרו לך לשלוט בחומר בקלות.</p>
+    </header>
+
+    <div class="topics-signed-numbers-part-a-overview-section__grid">
+      
+      <!-- Card 1 -->
+      <article class="topics-signed-numbers-part-a-overview-section__card">
+        <div class="topics-signed-numbers-part-a-overview-section__tab">שלב 1</div>
+        <div class="topics-signed-numbers-part-a-overview-section__step-number">1</div>
+        <h3 class="topics-signed-numbers-part-a-overview-section__card-title">הכרת המספרים המכוונים</h3>
+        <p class="topics-signed-numbers-part-a-overview-section__card-desc">נכיר את עולם המספרים החיוביים והשליליים, נלמד לזהות אותם על ציר המספרים, ונבין את המשמעות של מספרים מכוונים בחיי היומיום – כמו טמפרטורות מתחת לאפס, קומות תת-קרקעיות וחישובי יתרות בבנק.</p>
+        <ul class="topics-signed-numbers-part-a-overview-section__notes">
+          <li>
+            <svg class="topics-signed-numbers-part-a-overview-section__check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-element-type="icon" data-icon-type="svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>הגדרת מספרים חיוביים, שליליים ואפס</span>
+          </li>
+          <li>
+            <svg class="topics-signed-numbers-part-a-overview-section__check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-element-type="icon" data-icon-type="svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>ציר המספרים – ייצוג חזותי</span>
+          </li>
+          <li>
+            <svg class="topics-signed-numbers-part-a-overview-section__check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-element-type="icon" data-icon-type="svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>שימושים יומיומיים למספרים מכוונים</span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="topics-signed-numbers-part-a-overview-section__card">
+        <div class="topics-signed-numbers-part-a-overview-section__tab">שלב 2</div>
+        <div class="topics-signed-numbers-part-a-overview-section__step-number">2</div>
+        <h3 class="topics-signed-numbers-part-a-overview-section__card-title">ערך מוחלט ומספרים נגדיים</h3>
+        <p class="topics-signed-numbers-part-a-overview-section__card-desc">נלמד מהו ערך מוחלט – המרחק של מספר מאפס על ציר המספרים, ומדוע הוא תמיד חיובי. נבין את המושג "מספרים נגדיים" (כמו 5+ ו-5-), ונתרגל השוואה בין מספרים מכוונים בעזרת סימני אי-שוויון.</p>
+        <ul class="topics-signed-numbers-part-a-overview-section__notes">
+          <li>
+            <svg class="topics-signed-numbers-part-a-overview-section__check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-element-type="icon" data-icon-type="svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>הגדרת ערך מוחלט ומשמעותו</span>
+          </li>
+          <li>
+            <svg class="topics-signed-numbers-part-a-overview-section__check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-element-type="icon" data-icon-type="svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>זיהוי מספרים נגדיים על ציר</span>
+          </li>
+          <li>
+            <svg class="topics-signed-numbers-part-a-overview-section__check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-element-type="icon" data-icon-type="svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>השוואה בין מספרים חיוביים ושליליים</span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="topics-signed-numbers-part-a-overview-section__card">
+        <div class="topics-signed-numbers-part-a-overview-section__tab">שלב 3</div>
+        <div class="topics-signed-numbers-part-a-overview-section__step-number">3</div>
+        <h3 class="topics-signed-numbers-part-a-overview-section__card-title">חיבור וחיסור מספרים מכוונים</h3>
+        <p class="topics-signed-numbers-part-a-overview-section__card-desc">נלמד את הכללים לחיבור וחיסור מספרים בעלי סימנים זהים ושונים. נשתמש באנלוגיה של "צעדים על ציר המספרים" ובטכניקת "חיבור מספרים נגדיים" כדי להפוך את הפעולות לאינטואיטיביות וקלות לזכירה.</p>
+        <ul class="topics-signed-numbers-part-a-overview-section__notes">
+          <li>
+            <svg class="topics-signed-numbers-part-a-overview-section__check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-element-type="icon" data-icon-type="svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>חיבור מספרים בעלי סימנים זהים</span>
+          </li>
+          <li>
+            <svg class="topics-signed-numbers-part-a-overview-section__check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-element-type="icon" data-icon-type="svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>חיבור מספרים בעלי סימנים שונים</span>
+          </li>
+          <li>
+            <svg class="topics-signed-numbers-part-a-overview-section__check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-element-type="icon" data-icon-type="svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>חיסור כחיבור של מספר נגדי</span>
+          </li>
+        </ul>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="topics-signed-numbers-part-a-overview-section__card">
+        <div class="topics-signed-numbers-part-a-overview-section__tab">שלב 4</div>
+        <div class="topics-signed-numbers-part-a-overview-section__step-number">4</div>
+        <h3 class="topics-signed-numbers-part-a-overview-section__card-title">כפל וחילוק מספרים מכוונים</h3>
+        <p class="topics-signed-numbers-part-a-overview-section__card-desc">נגלה את חוקי הסימנים בכפל וחילוק: חיובי כפול שלילי, שלילי כפול שלילי, ומדוע "מינוס כפול מינוס שווה פלוס". נתרגל תרגילים מדורגים ונבין את ההיגיון שמאחורי הכללים, כך שלא נצטרך לשנן אותם בעל-פה.</p>
+        <ul class="topics-signed-numbers-part-a-overview-section__notes">
+          <li>
+            <svg class="topics-signed-numbers-part-a-overview-section__check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-element-type="icon" data-icon-type="svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>חוקי הסימנים בכפל</span>
+          </li>
+          <li>
+            <svg class="topics-signed-numbers-part-a-overview-section__check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-element-type="icon" data-icon-type="svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>חוקי הסימנים בחילוק</span>
+          </li>
+          <li>
+            <svg class="topics-signed-numbers-part-a-overview-section__check-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-element-type="icon" data-icon-type="svg">
+              <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+              <path d="M6 10.5l2.5 2.5L14 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <span>תרגול מדורג מפשוט למורכב</span>
+          </li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="topics-signed-numbers-part-a-curriculum-section" data-layout-spec="מספרים מכוונים – חלק א׳-curriculum">
+  <!-- Background decorative elements -->
+  <div class="topics-signed-numbers-part-a-curriculum-section__bg-grid" aria-hidden="true"></div>
+  <div class="topics-signed-numbers-part-a-curriculum-section__bg-dots" aria-hidden="true"></div>
+
+  <div class="topics-signed-numbers-part-a-curriculum-section__container">
+    <!-- Section Header -->
+    <div class="topics-signed-numbers-part-a-curriculum-section__header">
+      <h2 class="topics-signed-numbers-part-a-curriculum-section__title">מספרים מכוונים – חלק א׳</h2>
+      <p class="topics-signed-numbers-part-a-curriculum-section__subtitle" style="color: #FFFFFF !important">מסע מרתק על ציר המספרים: נגלה כיצד מספרים נעים, נפגשים ויוצרים חוקיות מתמטית פשוטה והגיונית</p>
+      <div class="topics-signed-numbers-part-a-curriculum-section__title-underline" aria-hidden="true">
+        <svg viewBox="0 0 200 8" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,7 Q50,0 100,4 T200,6" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Learning Path / Stations -->
+    <div class="topics-signed-numbers-part-a-curriculum-section__path">
+      <!-- Connecting line (desktop) -->
+      <div class="topics-signed-numbers-part-a-curriculum-section__path-line" aria-hidden="true">
+        <svg viewBox="0 0 900 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M60,60 L200,60 Q220,60 220,40 L220,20 Q220,0 240,0 L660,0 Q680,0 680,20 L680,40 Q680,60 700,60 L840,60" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="8 6" opacity="0.6"></path>
+          <polygon points="840,52 860,60 840,68" fill="var(--accent)" opacity="0.6"></polygon>
+        </svg>
+      </div>
+
+      <!-- Station 1 -->
+      <div class="topics-signed-numbers-part-a-curriculum-section__station">
+        <div class="topics-signed-numbers-part-a-curriculum-section__station-number">01</div>
+        <div class="topics-signed-numbers-part-a-curriculum-section__station-content">
+          <h3 class="topics-signed-numbers-part-a-curriculum-section__station-title">ציר המספרים והכיוונים</h3>
+          <p class="topics-signed-numbers-part-a-curriculum-section__station-text" style="color: #FFFFFF !important">היכרות עם ציר המספרים כמפה מתמטית: אפס כנקודת ייחוס, מספרים חיוביים מימין ומספרים שליליים משמאל. נלמד לזהות כיוונים ולתרגם תנועה ימינה ושמאלה לפעולות חשבון.</p>
+        </div>
+      </div>
+
+      <!-- Station 2 -->
+      <div class="topics-signed-numbers-part-a-curriculum-section__station">
+        <div class="topics-signed-numbers-part-a-curriculum-section__station-number">02</div>
+        <div class="topics-signed-numbers-part-a-curriculum-section__station-content">
+          <h3 class="topics-signed-numbers-part-a-curriculum-section__station-title">מספרים נגדיים וערך מוחלט</h3>
+          <p class="topics-signed-numbers-part-a-curriculum-section__station-text" style="color: #FFFFFF !important">מהו מספר נגדי? כיצד מרחק מאפס מגדיר ערך מוחלט? נבין את הקשר בין מספרים נגדיים, נלמד לזהות זוגות של מספרים הופכיים, ונתרגל חישוב ערך מוחלט של מספרים חיוביים ושליליים.</p>
+        </div>
+      </div>
+
+      <!-- Station 3 -->
+      <div class="topics-signed-numbers-part-a-curriculum-section__station">
+        <div class="topics-signed-numbers-part-a-curriculum-section__station-number">03</div>
+        <div class="topics-signed-numbers-part-a-curriculum-section__station-content">
+          <h3 class="topics-signed-numbers-part-a-curriculum-section__station-title">חיבור וחיסור על הציר</h3>
+          <p class="topics-signed-numbers-part-a-curriculum-section__station-text" style="color: #FFFFFF !important">נהפוך חיבור וחיסור של מספרים מכוונים לתנועה ויזואלית על ציר המספרים. נזהה תבניות סימנים, נבין מתי "מינוס מינוס הופך לפלוס", ונתרגל חיבור וחיסור באמצעות קפיצות ימינה ושמאלה.</p>
+        </div>
+      </div>
+
+      <!-- Station 4 -->
+      <div class="topics-signed-numbers-part-a-curriculum-section__station">
+        <div class="topics-signed-numbers-part-a-curriculum-section__station-number">04</div>
+        <div class="topics-signed-numbers-part-a-curriculum-section__station-content">
+          <h3 class="topics-signed-numbers-part-a-curriculum-section__station-title">חיסור כחיבור הנגדי</h3>
+          <p class="topics-signed-numbers-part-a-curriculum-section__station-text" style="color: #FFFFFF !important">העיקרון המרכזי: חיסור מספר זהה לחיבור המספר הנגדי. נלמד להשמיט סוגריים, לפשט ביטויים עם סימנים עוקבים, ולהפוך כל תרגיל חיסור לתרגיל חיבור פשוט וברור.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="topics-signed-numbers-part-a-curriculum-section__cta-wrapper">
+      <a href="#" class="topics-signed-numbers-part-a-curriculum-section__cta btn-primary">התחילו ללמוד עכשיו</a>
+    </div>
+  </div>
+</section>
+
+<section class="topics-signed-numbers-part-a-examples-section" data-layout-spec="מספרים מכוונים – חלק א׳-examples">
+  <div class="topics-signed-numbers-part-a-examples-section__bg-grid" aria-hidden="true"></div>
+  <div class="topics-signed-numbers-part-a-examples-section__container">
+    <div class="topics-signed-numbers-part-a-examples-section__header">
+      <h2 class="topics-signed-numbers-part-a-examples-section__title">דוגמאות מעשיות – מספרים מכוונים</h2>
+      <p class="topics-signed-numbers-part-a-examples-section__subtitle">הנה כמה דוגמאות שיעזרו לך להבין איך עובדים עם מספרים חיוביים ושליליים על ציר המספרים</p>
+    </div>
+    <div class="topics-signed-numbers-part-a-examples-section__grid">
+      
+      <article class="topics-signed-numbers-part-a-examples-section__card">
+        <div class="topics-signed-numbers-part-a-examples-section__card-header">
+          <h3 class="topics-signed-numbers-part-a-examples-section__card-title">מיקום על ציר המספרים</h3>
+        </div>
+        <div class="topics-signed-numbers-part-a-examples-section__card-body">
+          <div class="topics-signed-numbers-part-a-examples-section__card-row">
+            <span class="topics-signed-numbers-part-a-examples-section__card-label">הרעיון:</span>
+            <p class="topics-signed-numbers-part-a-examples-section__card-text">מספרים שליליים נמצאים משמאל לאפס, וחיוביים מימין לאפס. ככל שהמספר קטן יותר, הוא רחוק יותר שמאלה.</p>
+          </div>
+          <div class="topics-signed-numbers-part-a-examples-section__card-row">
+            <span class="topics-signed-numbers-part-a-examples-section__card-label">דוגמה:</span>
+            <p class="topics-signed-numbers-part-a-examples-section__card-text">‎-4 נמצא ארבע יחידות משמאל לאפס. 3 נמצא שלוש יחידות מימין לאפס.</p>
+          </div>
+          <div class="topics-signed-numbers-part-a-examples-section__card-row">
+            <span class="topics-signed-numbers-part-a-examples-section__card-label">מה לזכור:</span>
+            <p class="topics-signed-numbers-part-a-examples-section__card-text">סימן המינוס מציין כיוון שמאלה על הציר, וסימן הפלוס (או חוסר סימן) מציין כיוון ימינה.</p>
+          </div>
+        </div>
+        <svg class="topics-signed-numbers-part-a-examples-section__pencil-mark" data-element-type="icon" data-icon-type="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.2322 5.23223L18.7678 8.76777M16.7322 3.73223C17.7085 2.75592 19.2915 2.75592 20.2678 3.73223C21.2441 4.70854 21.2441 6.29146 20.2678 7.26777L6.5 21.0355H2.96447V17.5L16.7322 3.73223Z" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </article>
+
+      <article class="topics-signed-numbers-part-a-examples-section__card">
+        <div class="topics-signed-numbers-part-a-examples-section__card-header">
+          <h3 class="topics-signed-numbers-part-a-examples-section__card-title">ערך מוחלט ומספר נגדי</h3>
+        </div>
+        <div class="topics-signed-numbers-part-a-examples-section__card-body">
+          <div class="topics-signed-numbers-part-a-examples-section__card-row">
+            <span class="topics-signed-numbers-part-a-examples-section__card-label">הרעיון:</span>
+            <p class="topics-signed-numbers-part-a-examples-section__card-text">הערך המוחלט של מספר הוא המרחק שלו מאפס, ולכן הוא תמיד חיובי. המספר הנגדי נמצא במרחק שווה מאפס, אך בצד השני.</p>
+          </div>
+          <div class="topics-signed-numbers-part-a-examples-section__card-row">
+            <span class="topics-signed-numbers-part-a-examples-section__card-label">דוגמה:</span>
+            <p class="topics-signed-numbers-part-a-examples-section__card-text">‎|‎-7| = 7. המספר הנגדי של 5 הוא ‎-5.</p>
+          </div>
+          <div class="topics-signed-numbers-part-a-examples-section__card-row">
+            <span class="topics-signed-numbers-part-a-examples-section__card-label">מה לזכור:</span>
+            <p class="topics-signed-numbers-part-a-examples-section__card-text">ערך מוחלט תמיד יהיה אי-שלילי. מספר נגדי מתקבל על ידי שינוי הסימן בלבד.</p>
+          </div>
+        </div>
+        <svg class="topics-signed-numbers-part-a-examples-section__pencil-mark" data-element-type="icon" data-icon-type="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.2322 5.23223L18.7678 8.76777M16.7322 3.73223C17.7085 2.75592 19.2915 2.75592 20.2678 3.73223C21.2441 4.70854 21.2441 6.29146 20.2678 7.26777L6.5 21.0355H2.96447V17.5L16.7322 3.73223Z" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </article>
+
+      <article class="topics-signed-numbers-part-a-examples-section__card">
+        <div class="topics-signed-numbers-part-a-examples-section__card-header">
+          <h3 class="topics-signed-numbers-part-a-examples-section__card-title">חיסור והשמטת סוגריים</h3>
+        </div>
+        <div class="topics-signed-numbers-part-a-examples-section__card-body">
+          <div class="topics-signed-numbers-part-a-examples-section__card-row">
+            <span class="topics-signed-numbers-part-a-examples-section__card-label">הרעיון:</span>
+            <p class="topics-signed-numbers-part-a-examples-section__card-text">כאשר מחסרים מספר שלילי, זה בעצם כמו לחבר את המספר החיובי המתאים. סימן המינוס הופך את הסימן שבתוך הסוגריים.</p>
+          </div>
+          <div class="topics-signed-numbers-part-a-examples-section__card-row">
+            <span class="topics-signed-numbers-part-a-examples-section__card-label">דוגמה:</span>
+            <p class="topics-signed-numbers-part-a-examples-section__card-text">‎3 - (‎-2) = 3 + 2 = 5</p>
+          </div>
+          <div class="topics-signed-numbers-part-a-examples-section__card-row">
+            <span class="topics-signed-numbers-part-a-examples-section__card-label">מה לזכור:</span>
+            <p class="topics-signed-numbers-part-a-examples-section__card-text">שני סימני מינוס צמודים הופכים לפלוס. תמיד תסתכל על הסימן שלפני הסוגריים כדי להחליט איך להשמיט אותם.</p>
+          </div>
+        </div>
+        <svg class="topics-signed-numbers-part-a-examples-section__pencil-mark" data-element-type="icon" data-icon-type="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.2322 5.23223L18.7678 8.76777M16.7322 3.73223C17.7085 2.75592 19.2915 2.75592 20.2678 3.73223C21.2441 4.70854 21.2441 6.29146 20.2678 7.26777L6.5 21.0355H2.96447V17.5L16.7322 3.73223Z" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </article>
+
+    </div>
+  </div>
+  <div class="topics-signed-numbers-part-a-examples-section__illustration" aria-hidden="true">
+    <img data-context="A small, low-opacity illustration of a ruler and a compass on a light graph paper background, suited for a middle school math learning platform. The illustration should feel hand-drawn and playful, using soft blue and yellow accents." width="240" height="240" src="/assets/education-section-examples-topics-signed-numbers-part-a-examples-image-1.webp" alt="סרגל ומחוגה באיור מתמטי">
+  </div>
+</section>
+
+<section class="topics-signed-numbers-part-a-faq-section" data-layout-spec="מספרים מכוונים – חלק א׳-faq">
+    <div class="faq-container">
+        <h2>שאלות נפוצות על מספרים מכוונים – חלק א׳</h2>
+        <p class="faq-subtitle">בלבולים נפוצים? כאן תמצאו תשובות ברורות שיעזרו לכם לצלוח את הנושא בקלות</p>
+
+        <div class="faq-list">
+            <article class="faq-card">
+                <div class="faq-icon-wrapper" aria-hidden="true">
+                    <svg data-element-type="icon" data-icon-type="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <div class="faq-content">
+                    <h3>למה ערך מוחלט תמיד לא שלילי?</h3>
+                    <p>ערך מוחלט מייצג את המרחק של מספר מהאפס על ציר המספרים. מרחק הוא תמיד חיובי או אפס — אי אפשר להיות במרחק שלילי מנקודה כלשהי. לכן, הערך המוחלט של כל מספר, חיובי או שלילי, יהיה תמיד מספר שאינו שלילי. למשל, המרחק של 5- מהאפס הוא 5, והמרחק של 5+ מהאפס הוא גם 5.</p>
+                </div>
+            </article>
+
+            <article class="faq-card">
+                <div class="faq-icon-wrapper" aria-hidden="true">
+                    <svg data-element-type="icon" data-icon-type="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <div class="faq-content">
+                    <h3>מה ההבדל בין מינוס כסימן למינוס כפעולת חיסור?</h3>
+                    <p>מינוס יכול להופיע בשני תפקידים שונים בביטוי מתמטי. כסימן, הוא מציין שמספר הוא שלילי, כמו בביטוי 5- — כאן המינוס הוא חלק בלתי נפרד מהמספר. כפעולת חיסור, הוא מורה לנו לחסר ערך אחד מערך אחר, כמו בתרגיל 8 - 3. ההקשר שבו מופיע המינוס קובע את תפקידו, ולעיתים קרובות נראה את שני התפקידים באותו ביטוי, למשל: 4 - (3-).</p>
+                </div>
+            </article>
+
+            <article class="faq-card">
+                <div class="faq-icon-wrapper" aria-hidden="true">
+                    <svg data-element-type="icon" data-icon-type="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <div class="faq-content">
+                    <h3>למה חיסור מספר שלילי הופך לחיבור?</h3>
+                    <p>כאשר אנו מחסרים מספר שלילי, אנו בעצם "מסירים" חוב או כיוון שלילי. חשבו על ציר המספרים: חיסור של מספר חיובי מזיז אותנו שמאלה, אך חיסור של מספר שלילי הוא כמו להסיר תנועה שמאלה — מה שמשאיר אותנו לנוע ימינה, כלומר לחבר. לכן, 4 - (2-) שקול ל-4 + 2. כלל זה נובע מההגדרה המתמטית של חיסור כפעולה ההפוכה לחיבור.</p>
+                </div>
+            </article>
+
+            <article class="faq-card">
+                <div class="faq-icon-wrapper" aria-hidden="true">
+                    <svg data-element-type="icon" data-icon-type="svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <div class="faq-content">
+                    <h3>איך יודעים מתי להשמיט סוגריים?</h3>
+                    <p>סוגריים סביב מספר שלילי נחוצים כדי למנוע בלבול בין סימן המינוס של המספר לבין פעולת חיסור או סימן שליליות. כאשר מספר שלילי מופיע מיד אחרי סימן פעולה (כמו חיסור או חיבור), יש לשים אותו בסוגריים: 5 - (3-). לעומת זאת, כשהמספר השלילי עומד בפני עצמו או כתוצאה של תרגיל, לרוב אין צורך בסוגריים. הכלל המנחה הוא: אם השמטת הסוגריים יוצרת שני סימנים צמודים (כמו -- או +-), יש להוסיף סוגריים.</p>
+                </div>
+            </article>
+        </div>
+
+        <div class="faq-ruler" aria-hidden="true">
+            <svg data-no-icon-edit="true" aria-hidden="true" width="100%" height="4" viewBox="0 0 1200 4" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="2" x2="1200" y2="2" stroke="currentColor" stroke-width="1" stroke-dasharray="8 6"></line>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<section class="topics-signed-numbers-part-a-cta-section" data-layout-spec="מספרים מכוונים – חלק א׳-cta">
+  <!-- Decorative Background Layer -->
+  <div class="cta-decorative-bg" aria-hidden="true">
+    <!-- Graph Grid Lines -->
+    <svg class="cta-graph-grid" viewBox="0 0 1200 800" preserveAspectRatio="none">
+      <defs>
+        <pattern id="cta-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="var(--text-light)" stroke-width="0.5" opacity="0.08"></path>
+        </pattern>
+        <pattern id="cta-dots" width="60" height="60" patternUnits="userSpaceOnUse">
+          <circle cx="30" cy="30" r="2" fill="var(--accent)" opacity="0.4"></circle>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#cta-grid)"></rect>
+      <rect width="100%" height="100%" fill="url(#cta-dots)"></rect>
+    </svg>
+
+    <!-- Geometric Chalk Shapes -->
+    <div class="cta-geo-shape cta-geo-circle"></div>
+    <div class="cta-geo-shape cta-geo-triangle"></div>
+    <div class="cta-geo-shape cta-geo-square"></div>
+    
+    <!-- Math Formula Scatter -->
+    <svg class="cta-formula-scatter" viewBox="0 0 400 300" preserveAspectRatio="none">
+      <text x="20" y="50" font-family="'Courier New', monospace" font-size="24" fill="var(--text-light)" opacity="0.06" transform="rotate(-15, 20, 50)">y = mx + b</text>
+      <text x="180" y="120" font-family="'Courier New', monospace" font-size="32" fill="var(--text-light)" opacity="0.05" transform="rotate(8, 180, 120)">a² + b² = c²</text>
+      <text x="50" y="220" font-family="'Courier New', monospace" font-size="28" fill="var(--text-light)" opacity="0.07" transform="rotate(-5, 50, 220)">π ≈ 3.14159</text>
+      <text x="250" y="60" font-family="'Courier New', monospace" font-size="20" fill="var(--text-light)" opacity="0.04" transform="rotate(12, 250, 60)">∑ xᵢ</text>
+      <text x="280" y="250" font-family="'Courier New', monospace" font-size="26" fill="var(--text-light)" opacity="0.06" transform="rotate(-8, 280, 250)">f(x) = x²</text>
+    </svg>
+  </div>
+
+  <!-- Main Content Container -->
+  <div class="cta-content-container">
+    <h2 class="cta-headline">מוכנים להפוך את המתמטיקה לחוויה מהנה?</h2>
+    
+    <!-- Hand-drawn underline accent -->
+    <svg class="cta-accent-underline" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M 10,6 Q 50,0 100,8 T 190,4" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"></path>
+    </svg>
+
+    <p class="cta-description">
+      הצטרפו לאלפי תלמידים, הורים ומורים שכבר גילו את הדרך הקלה והמהנה ללמוד מתמטיקה. 
+      שיעורים מותאמים אישית, תרגולים אינטראקטיביים ומעקב התקדמות – הכל במקום אחד.
+    </p>
+
+    <a href="#" class="cta-primary-button">
+      <span>התחילו ללמוד עכשיו</span>
+      <svg data-element-type="icon" data-icon-type="svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </a>
+
+    <p class="cta-sub-note">
+      מתאים לתלמידי חטיבת הביניים, להורים שרוצים לעזור בבית, ולמורים המחפשים כלים דיגיטליים לכיתה.
+    </p>
+  </div>
+
+  <!-- Bottom Divider: Wave transition -->
+  <div class="cta-divider-wrapper" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 L0,30 Q75,15 150,32 T300,28 Q375,40 450,25 T600,35 Q675,20 750,38 T900,30 Q975,42 1050,25 T1200,35 L1200,80 Z" fill="var(--bg-dark)"></path>
+    </svg>
+  </div>
+</section></main>
+  
+  <footer class="site-footer" dir="rtl">
+  <div class="footer-container">
+    <div class="footer-top">
+      <div class="footer-col footer-brand-col">
+        <img src="/assets/education-logo.webp" alt="מתמטיקאי" class="logo">
+        <p class="footer-tagline">פלטפורמת לימוד מתמטיקה מקוונת לחטיבת הביניים – הופכים מספרים לחברים.</p>
+      </div>
+      <div class="footer-col footer-links-col">
+        <h4>עמודי תוכן</h4>
+        <ul>
+          <li><a href="/">בית</a></li>
+          
+          <li><a href="/7th-layer">שכבת ז'</a></li>
+          <li><a href="/eighth-grade-class">שכבת ח'</a></li>
+          <li><a href="/9th-grade-class">שכבת ט'</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact-col">
+        <h4>צור קשר</h4>
+        <ul class="footer-contact">
+          <li>
+            <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+            <span class="contact-text"><a href="mailto:info@matematikai.co.il">info@matematikai.co.il</a></span>
+          </li>
+          <li>
+            <span class="contact-icon"><i class="fas fa-phone"></i></span>
+            <span class="contact-text"><a href="tel:052-6816808">052-6816808</a></span>
+          </li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=%D7%A8%D7%97%D7%95%D7%91%20%D7%94%D7%A8%D7%A6%D7%9C%2010%2C%20%D7%AA%D7%9C%20%D7%90%D7%91%D7%99%D7%91" target="_blank" rel="noopener noreferrer"><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+            <span class="contact-text">רחוב הרצל 10, תל אביב</span></a></li>
+        </ul>
+      </div>
+      
+      
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 מתמטיקאי. כל הזכויות שמורות.</p>
+      <div class="footer-legal">
+        <a href="/privacy">מדיניות פרטיות</a>
+        <a href="/terms">תנאי שימוש</a><span class="separator">|</span>
+            <a href="/return-policy" aria-label="מדיניות החזרות">
+              מדיניות החזרות
+            </a>
+        <a href="/accessibility">נגישות</a>
+        <a href="https://zappy5.com" target="_blank" class="zappy-attribution">נוצר באמצעות Zappy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+  
+  <a href="https://wa.me/972526816808" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <div class="zappy-qv-overlay" id="zappy-qv-overlay" hidden=""></div>
+<div class="zappy-qv-modal" id="zappy-qv-modal" role="dialog" aria-modal="true" aria-label="תצוגה מהירה" hidden="">
+  <button type="button" class="zappy-qv-close" id="zappy-qv-close" aria-label="סגור">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+  </button>
+  <div class="zappy-qv-content" id="zappy-qv-content"></div>
+</div>
+    <div data-integration="accessibility:toolbar"></div>
+
+    <script src="/script.js"></script>
+
+    <script id="zappy-mobile-submenu-script">
+    (function() {
+      function initMobileSubmenuToggles() {
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('.mobile-submenu-toggle').forEach(function(btn) { btn.remove(); });
+          document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) { menu.classList.remove('mobile-expanded'); });
+          return;
+        }
+        var items = document.querySelectorAll('.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)');
+        items.forEach(function(li) {
+          if (li.querySelector('.mobile-submenu-toggle')) return;
+          var submenu = li.querySelector('.sub-menu');
+          var parentLink = li.querySelector(':scope > a');
+          if (!submenu || !parentLink) return;
+          var toggleBtn = document.createElement('button');
+          toggleBtn.className = 'mobile-submenu-toggle';
+          toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+          toggleBtn.setAttribute('type', 'button');
+          parentLink.insertAdjacentElement('afterend', toggleBtn);
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+              if (menu !== submenu) { menu.classList.remove('mobile-expanded'); var t = menu.parentElement.querySelector('.mobile-submenu-toggle'); if(t) t.classList.remove('expanded'); }
+            });
+            submenu.classList.toggle('mobile-expanded');
+            toggleBtn.classList.toggle('expanded');
+          });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
+      else { initMobileSubmenuToggles(); }
+      var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
+    })();
+    </script>
+</body>
+</html>

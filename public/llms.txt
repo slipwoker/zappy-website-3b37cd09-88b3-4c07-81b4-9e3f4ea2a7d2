@@ -50,6 +50,10 @@ https://example.com/thank-you
 https://example.com/topics/coordinate-system-first-quadrant
 מתמטיקאי - מערכת צירים – רביע ראשון
 
+### מספרים מכוונים – חלק א׳
+https://example.com/topics/signed-numbers-part-a
+מתמטיקאי - מספרים מכוונים – חלק א׳
+
 ### Courses
 https://example.com/courses
 Browse all available courses.
