@@ -694,6 +694,396 @@
               });
             })();
           </script>
+        
+
+    
+<style data-zappy-section-v2-css="true">
+/* V2 Regenerated Section CSS */
+.eighth-Grade-Class-grid-section {
+  position: relative;
+  background-color: #FFFFFF;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(24, 50, 74, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(244, 197, 66, 0.05) 0%, transparent 50%);
+  color: var(--text-dark);
+  padding: 80px 16px;
+  overflow: hidden;
+  direction: rtl;
+  text-align: right;
+}
+
+.eighth-Grade-Class-grid-section__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Header */
+.eighth-Grade-Class-grid-section .section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.eighth-Grade-Class-grid-section .section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.eighth-Grade-Class-grid-section .section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Overall Progress Bar */
+.eighth-Grade-Class-grid-section .overall-progress {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(27, 58, 107, 0.08);
+  padding: 24px 32px;
+  margin-bottom: 48px;
+  border: 1px solid var(--border-light);
+}
+
+.eighth-Grade-Class-grid-section .progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.eighth-Grade-Class-grid-section .progress-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.eighth-Grade-Class-grid-section .progress-percentage {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.eighth-Grade-Class-grid-section .progress-bar {
+  width: 100%;
+  height: 12px;
+  background-color: var(--secondary);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.eighth-Grade-Class-grid-section .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF7D 0%, #2E8B57 100%);
+  border-radius: 100px;
+  transition: width 0.6s ease;
+}
+
+/* Topics Grid */
+.eighth-Grade-Class-grid-section .topics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  direction: rtl;
+}
+
+/* Topic Card */
+.eighth-Grade-Class-grid-section .topic-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(27, 58, 107, 0.08);
+  padding: 24px;
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 0;
+}
+
+.eighth-Grade-Class-grid-section .topic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(27, 58, 107, 0.12);
+}
+
+.eighth-Grade-Class-grid-section .topic-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.eighth-Grade-Class-grid-section .topic-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--secondary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.eighth-Grade-Class-grid-section .topic-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  flex: 1;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.eighth-Grade-Class-grid-section .lesson-badge {
+  background-color: var(--accent);
+  color: var(--text-dark);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.eighth-Grade-Class-grid-section .subtopic-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  flex: 1;
+}
+
+.eighth-Grade-Class-grid-section .subtopic-list li {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eighth-Grade-Class-grid-section .subtopic-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.eighth-Grade-Class-grid-section .subtopic-list li:last-child {
+  border-bottom: none;
+}
+
+/* Mini Progress */
+.eighth-Grade-Class-grid-section .mini-progress {
+  margin-bottom: 16px;
+}
+
+.eighth-Grade-Class-grid-section .mini-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.eighth-Grade-Class-grid-section .mini-progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--secondary);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.eighth-Grade-Class-grid-section .mini-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF7D 0%, #2E8B57 100%);
+  border-radius: 100px;
+  transition: width 0.6s ease;
+}
+
+.eighth-Grade-Class-grid-section .mini-progress-fill.completed {
+  background: linear-gradient(90deg, #F5A623 0%, #F4C542 100%);
+}
+
+/* Topic Footer & Button */
+.eighth-Grade-Class-grid-section .topic-footer {
+  margin-top: auto;
+}
+
+.eighth-Grade-Class-grid-section .btn-start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.eighth-Grade-Class-grid-section .btn-start:hover {
+  background-color: var(--primary);
+  color: #FFFFFF;
+}
+
+.eighth-Grade-Class-grid-section .btn-start.completed {
+  background-color: #E8F5E9;
+  border-color: #4CAF7D;
+  color: #2E8B57;
+}
+
+.eighth-Grade-Class-grid-section .btn-start.completed:hover {
+  background-color: #4CAF7D;
+  color: #FFFFFF;
+}
+
+/* Section Bottom CTA */
+.eighth-Grade-Class-grid-section .section-cta {
+  text-align: center;
+  margin-top: 64px;
+  padding: 40px;
+  background: var(--secondary);
+  border-radius: 24px;
+}
+
+.eighth-Grade-Class-grid-section .section-cta p {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.eighth-Grade-Class-grid-section .btn-primary {
+  background: var(--accent);
+  color: var(--text-dark);
+  padding: 14px 32px;
+  border-radius: 100px;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(244, 197, 66, 0.3);
+}
+
+.eighth-Grade-Class-grid-section .btn-primary:hover {
+  background: #F5A623;
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(245, 166, 35, 0.4);
+}
+
+/* Decorative Graph Paper Background */
+.eighth-Grade-Class-grid-section .graph-paper-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C9E4F7' stroke-width='0.5'%3E%3Cpath d='M0 10h40M0 20h40M0 30h40M10 0v40M20 0v40M30 0v40'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.4;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .eighth-Grade-Class-grid-section .topics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .eighth-Grade-Class-grid-section {
+    padding: 60px 16px;
+  }
+
+  .eighth-Grade-Class-grid-section .topics-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .eighth-Grade-Class-grid-section .section-title {
+    font-size: 1.75rem;
+  }
+
+  .eighth-Grade-Class-grid-section .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .eighth-Grade-Class-grid-section .overall-progress {
+    padding: 16px 20px;
+  }
+
+  .eighth-Grade-Class-grid-section .topic-card {
+    padding: 20px;
+  }
+
+  .eighth-Grade-Class-grid-section .section-cta {
+    padding: 24px 16px;
+    margin-top: 40px;
+  }
+
+  .eighth-Grade-Class-grid-section .topic-header {
+    flex-wrap: wrap;
+  }
+
+  .eighth-Grade-Class-grid-section .topic-title {
+    font-size: 1.1rem;
+  }
+
+  .eighth-Grade-Class-grid-section .btn-primary {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .eighth-Grade-Class-grid-section {
+    padding: 40px 12px;
+  }
+
+  .eighth-Grade-Class-grid-section .section-header {
+    margin-bottom: 32px;
+  }
+
+  .eighth-Grade-Class-grid-section .overall-progress {
+    margin-bottom: 32px;
+  }
+
+  .eighth-Grade-Class-grid-section .topic-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .eighth-Grade-Class-grid-section .lesson-badge {
+    font-size: 0.75rem;
+    padding: 2px 10px;
+  }
+}
+</style>
     <link rel="stylesheet" href="/styles.css">
 
     <style id="zappy-widget-visibility">
@@ -1274,223 +1664,486 @@
   
   
 
-<section class="topics-grid-section" aria-labelledby="topics-grid-title" id="topics-grid-section">
-  <div class="topics-grid-container">
-    <h2 class="topics-grid-title" id="topics-grid-title" data-grid-item-index="0">שכבת ח'&nbsp;</h2>
-    <p class="topics-grid-subtitle" data-grid-item-index="1">14 נושאים מרכזיים במתמטיקה – בחרו נושא והתחילו לתרגל</p>
-    
-    <div class="topics-grid zappy-preserve-css-grid zappy-grid-item-nested-grid zappy-grid-item-no-stretch" id="zappy-auto-grid-1782979427625-qi145a" data-zappy-auto-grid="true" data-original-item-width="248" data-original-gap="24px" style="--zappy-grid-cols: repeat(4, minmax(0, 1fr)); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch !important;" data-grid-item-index="2" data-zappy-explicit-columns="true">
-      <!-- Topic 1: פונקציה קווית -->
-      <article class="topic-card" data-grid-item-index="0">
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <div data-zappy-zoom-wrapper="true" data-element-id="img-1782979427600-qw3a0dmhl" data-element-type="image" data-zappy-zoom-wrapper-width="246px" data-zappy-zoom-wrapper-height="170px" data-zappy-zoom-wrapper-width-mode="card-slot" data-zappy-zoom-wrapper-align="center" style="position: relative !important; overflow: hidden !important; width: 100% !important; max-width: 100% !important; margin-left: auto !important; margin-right: auto !important; height: 170px !important; display: block !important; min-height: 0px !important; max-height: none !important; padding-bottom: 0px !important;" data-zappy-card-slot-fill="1" data-zappy-zoom-clip="true" data-zappy-wrapper-margins-applied="true"><img data-placeholder="topic-linear-function" data-context="Graph of a linear function y=mx+b on a coordinate plane with blue line passing through points, showing slope and y-intercept, math illustration style" src="/assets/image-1782976218536-6o2wj0.webp?v=1782976218536" alt="פונקציה קווית – גרף ישר על מערכת צירים" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427600-qw3a0dmhl" style="object-position: 50% 50%; margin: 0px !important; left: -2% !important; top: -25.2471% !important; width: 104% !important; height: 150.494% !important; max-width: none !important; max-height: none !important; display: block !important; object-fit: cover !important;" data-zappy-zoom="1.04"></div>
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 1">1</span>
-          </p><h3 class="topic-card-heading">פונקציה קווית</h3>
-          <ul class="topic-card-list">משוואת הישר y=mx+b
-שיפוע וייצוג גרפי
-מציאת נקודות חיתוך
-הזזה של ישר</ul>
-        </div>
-      </article>
-
-      <!-- Topic 2: זוויות -->
-      <article class="topic-card" data-grid-item-index="1">
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-angles" data-context="Various angles illustrated geometrically - acute, obtuse, right angles with protractor and angle markings in orange tones, educational math illustration" src="/assets/image-1782976243953-2ksmp4.webp?v=1782976243953" alt="זוויות – סוגי זוויות בהנדסה" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427600-r94zjfne4" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 2">2</span>
-          </p><h3 class="topic-card-heading">זוויות</h3>
-          <ul class="topic-card-list">זוויות צמודות וקודקודיות
-זוויות בין ישרים מקבילים
-חישוב זוויות במשולש
-חוצה זווית</ul>
-        </div>
-      </article>
-
-      <!-- Topic 3: יחס וקנה מידה -->
-      <article class="topic-card" data-grid-item-index="2">
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-ratio-scale" data-context="Ratio and scale illustration showing a map with scale ruler, proportional comparison between small and large objects, green color theme, educational math graphic" src="/assets/image-1782976269468-253t90.webp?v=1782976269468" alt="יחס וקנה מידה – מפה עם סרגל קנה מידה" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427600-7xxt4jtsx" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 3">3</span>
-          </p><h3 class="topic-card-heading">יחס וקנה מידה</h3>
-          <ul class="topic-card-list">חישוב יחס בין גדלים
-קנה מידה במפות ותרשימים
-בעיות יחס הפוך
-יחס הזהב</ul>
-        </div>
-      </article>
-
-      <!-- Topic 4: חפיפת משולשים -->
-      <article class="topic-card" data-grid-item-index="3">
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-congruent-triangles" data-context="Two overlapping congruent triangles with corresponding sides and angles marked, geometric proof illustration in purple tones, math education style" src="/assets/image-1782976293411-9ptu35.webp?v=1782976293411" alt="חפיפת משולשים – שני משולשים חופפים" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427600-6iyyb1ny2" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 4">4</span>
-          </p><h3 class="topic-card-heading">חפיפת משולשים</h3>
-          <ul class="topic-card-list">משפטי חפיפה: צ.ז.צ, ז.צ.ז
-הוכחת חפיפת משולשים
-שימוש בחפיפה לחישובים
-חפיפת משולשים ישרי זווית</ul>
-        </div>
-      </article>
-
-      <!-- Topic 5: אי-שוויונות -->
-      <article class="topic-card" data-grid-item-index="4">
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-inequalities" data-context="Number line showing inequality solutions with open and closed circles, algebraic inequalities like x>3, red color theme, math education illustration" src="/assets/image-1782976314748-h67vfn.webp?v=1782976314748" alt="אי-שוויונות – ציר מספרים עם תחומי אי-שוויון" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427600-cuyo3gn4c" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 5">5</span>
-          </p><h3 class="topic-card-heading">אי-שוויונות</h3>
-          <ul class="topic-card-list">פתרון אי-שוויונות ממעלה ראשונה
-ייצוג על ציר המספרים
-מערכת אי-שוויונות
-אי-שוויונות עם ערך מוחלט</ul>
-        </div>
-      </article>
-
-      <!-- Topic 6: שאלות מילוליות -->
-      <article class="topic-card" data-grid-item-index="5">
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-word-problems" data-context="Word problem illustration showing a story problem with diagrams, person thinking with math symbols around, teal color theme, educational concept art" src="/assets/image-1782976361141-b9hkaq.webp?v=1782976361141" alt="שאלות מילוליות – המחשה של בעיה מילולית" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427600-3dfagnrll" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 6">6</span>
-          </p><h3 class="topic-card-heading">שאלות מילוליות</h3>
-          <ul class="topic-card-list">בניית משוואה מנתונים
-בעיות תנועה והספק
-אסטרטגיות פתרון
-בעיות קנייה ומכירה</ul>
-        </div>
-      </article>
-
-      <!-- Topic 7: תיכון במשולש -->
-      <article class="topic-card" data-grid-item-index="6">
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-triangle-median" data-context="Triangle with median drawn from vertex to midpoint of opposite side, geometric construction in indigo tones, math education illustration" src="/assets/image-1782976383139-h8lm8d.webp?v=1782976383139" alt="תיכון במשולש – קו התיכון מקודקוד לאמצע הצלע" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427600-fu65a4wnb" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 7">7</span>
-          </p><h3 class="topic-card-heading">תיכון במשולש</h3>
-          <ul class="topic-card-list">הגדרת תיכון ותכונותיו
-משפט התיכונים
-חישוב אורך תיכון
-הקשר בין תיכון לשטח</ul>
-        </div>
-      </article>
-
-      <!-- Topic 8: משולש שווי שוקיים -->
-      <article class="topic-card" data-grid-item-index="7">
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-isosceles-triangle" data-context="Isosceles triangle with equal sides marked, base angles highlighted, geometric properties illustration in amber tones, math education style" src="/assets/image-1782976408194-7y1pp2.webp?v=1782976408194" alt="משולש שווי שוקיים – תכונות המשולש" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427600-7ioqaqbzu" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 8">8</span>
-          </p><h3 class="topic-card-heading">משולש שווי שוקיים</h3>
-          <ul class="topic-card-list">תכונות משולש שווי שוקיים
-זוויות בסיס שוות
-גובה, תיכון וחוצה זווית
-היקף ושטח</ul>
-        </div>
-      </article>
-
-      <!-- Topic 9: אחוזים -->
-      <article class="topic-card" data-grid-item-index="8">
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-percentages" data-context="Percentage illustration with pie chart, percentage symbols, discount tags, and price calculations in pink tones, educational math graphic" src="/assets/image-1782976439850-d2xk42.webp?v=1782976439850" alt="אחוזים – תרשים עוגה וחישובי אחוזים" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427600-7fusueosx" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 9">9</span>
-          </p><h3 class="topic-card-heading">אחוזים</h3>
-          <ul class="topic-card-list">חישוב אחוז מכמות
-הנחות והתייקרויות
-בעיות אחוזים רב-שלביות
-ריבית דריבית</ul>
-        </div>
-      </article>
-
-      <!-- Topic 10: מערכת משוואות בשני נעלמים -->
-      <article class="topic-card" data-grid-item-index="9">
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-equation-systems" data-context="System of two linear equations with two variables, graphical representation showing intersection of two lines, cyan color theme, math education illustration" src="/assets/image-1782976479788-ngdqoc.webp?v=1782976479788" alt="מערכת משוואות – שני ישרים נחתכים בגרף" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427601-l1hyf6mlj" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 10">10</span>
-          </p><h3 class="topic-card-heading">מערכת משוואות בשני נעלמים</h3>
-          <ul class="topic-card-list">שיטת ההצבה והחיבור
-פתרון גרפי
-אין פתרון / אינסוף פתרונות
-שאלות מילוליות עם מערכת משוואות</ul>
-        </div>
-      </article>
-
-      <!-- Topic 11: דמיון משולשים -->
-      <article class="topic-card" data-grid-item-index="10">
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-similar-triangles" data-context="Two similar triangles of different sizes with proportional sides marked, geometric similarity illustration in lime green tones, math education style" src="/assets/image-1782976530482-1ks1dd.webp?v=1782976530482" alt="דמיון משולשים – שני משולשים דומים בגדלים שונים" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427601-ou9sf4lxv" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 11">11</span>
-          </p><h3 class="topic-card-heading">דמיון משולשים</h3>
-          <ul class="topic-card-list">משפטי דמיון: ז.ז, צ.ז.צ
-יחס הדמיון
-חישובי צלעות בדמיון
-דמיון במשולשים ישרי זווית</ul>
-        </div>
-      </article>
-
-      <!-- Topic 12: משפט פיתגורס -->
-      <article class="topic-card" data-grid-item-index="11" >
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-pythagorean-theorem" data-context="Right triangle with squares on each side illustrating Pythagorean theorem a²+b²=c², deep orange tones, classic geometric proof illustration" src="/assets/image-1782976553198-al8tx5.webp?v=1782976553198" alt="משפט פיתגורס – ריבועים על צלעות משולש ישר-זווית" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427601-tg4pzge1k" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 12">12</span>
-          </p><h3 class="topic-card-heading">משפט פיתגורס</h3>
-          <ul class="topic-card-list">נוסחת פיתגורס a²+b²=c²
-שימושים בגאומטריה
-משולש ישר-זווית
-מרחק בין נקודות במישור</ul>
-        </div>
-      </article>
-
-      <!-- Topic 14: סטטיסטיקה -->
-      <article class="topic-card" data-grid-item-index="12" >
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-statistics" data-context="Statistics illustration with bar chart, line graph, pie chart, and data tables, blue-grey color theme, educational data visualization style" src="/assets/image-1782976577305-feqe0p.webp?v=1782976577305" alt="סטטיסטיקה – תרשימי עמודות, קווים ועוגה" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427601-0a52g7i2i" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 14">14</span>
-          </p><h3 class="topic-card-heading">סטטיסטיקה</h3>
-          <ul class="topic-card-list">ממוצע, חציון ושכיח
-תרשימי עמודות ועוגה
-טווח ופיזור נתונים
-דיאגרמת מקל וגרף קווי</ul>
-        </div>
-      </article>
-
-      <!-- Topic 15: הסתברות -->
-      <article class="topic-card" data-grid-item-index="13" >
-        <div class="topic-card-image-wrapper" data-zappy-mobile-bleed="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;">
-          <img data-placeholder="topic-probability" data-context="Probability illustration with colorful dice, playing cards, coin flip, and probability tree diagram, yellow color theme, educational math graphic" src="/assets/image-1782976610190-8fhqi0.webp?v=1782976610190" alt="הסתברות – קוביות, מטבעות וקלפים" class="topic-card-image" loading="lazy" data-element-type="image" data-element-id="img-1782979427601-b101orinr" >
-        </div>
-        <div class="topic-card-content">
-          <p class="zappy-editable"><span class="topic-card-badge" aria-label="נושא מספר 15">15</span>
-          </p><h3 class="topic-card-heading">הסתברות</h3>
-          <ul class="topic-card-list">חישוב הסתברות בסיסית
-דיאגרמת עץ
-מאורעות תלויים ובלתי תלויים
-טבלת שכיחויות דו-ממדית</ul>
-        </div>
-      </article>
+<section class="eighth-Grade-Class-grid-section" data-layout-spec="Eighth-Grade-Class-grid" data-hero-type="text-only" id="topics-grid-section">
+  <div class="eighth-Grade-Class-grid-section__container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">מסלול הלימודים - כיתה ח'</h2>
+      <p class="section-subtitle">14 נושאים מרכזיים בתוכנית הלימודים של כיתה ח', מונגשים בצורה ברורה ומהנה. עקבו אחר ההתקדמות שלכם והשלימו את כל היחידות.</p>
     </div>
+
+    <!-- Overall Progress Bar -->
+    <div class="overall-progress">
+      <div class="progress-header">
+        <span class="progress-label">התקדמות כללית בקורס</span>
+        <span class="progress-percentage">42%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 42%;"></div>
+      </div>
+    </div>
+
+    <!-- Topics Grid -->
+    <div class="topics-grid">
+      
+      <!-- Topic Card 1 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M10 16L14 20L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="topic-title">חזקות ושורשים</h3>
+          <span class="lesson-badge">8 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>חוקי חזקות</li>
+          <li>חזקות עם מעריך שלילי</li>
+          <li>שורש ריבועי</li>
+          <li>שורש מעוקב</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>75%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 75%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 2 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="6" width="24" height="20" rx="2" stroke="currentColor" stroke-width="2"></rect>
+              <path d="M10 14L14 18L22 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="topic-title">משוואות ממעלה ראשונה</h3>
+          <span class="lesson-badge">10 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>פתרון משוואות עם נעלם אחד</li>
+          <li>משוואות עם סוגריים</li>
+          <li>משוואות עם שברים</li>
+          <li>בעיות מילוליות</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>30%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 30%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 3 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 28L28 4M4 4L28 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"></circle>
+            </svg>
+          </div>
+          <h3 class="topic-title">משוואות ממעלה שנייה</h3>
+          <span class="lesson-badge">12 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>נוסחת השורשים</li>
+          <li>טרינום</li>
+          <li>פירוק לגורמים</li>
+          <li>משוואות דו-ריבועיות</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>0%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 4 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 16H28M16 4V28" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              <rect x="8" y="8" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"></rect>
+            </svg>
+          </div>
+          <h3 class="topic-title">מערכת צירים ופונקציות</h3>
+          <span class="lesson-badge">9 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>מערכת צירים קרטזית</li>
+          <li>פונקציה קווית</li>
+          <li>שיפוע וייצוג גרפי</li>
+          <li>מציאת משוואת ישר</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>60%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 60%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 5 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 26L16 6L26 26H6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+              <path d="M12 20H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <h3 class="topic-title">משולשים ומשפט פיתגורס</h3>
+          <span class="lesson-badge">11 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>סוגי משולשים</li>
+          <li>משפט פיתגורס</li>
+          <li>משולשים שווי שוקיים</li>
+          <li>משולש ישר זווית</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>45%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 45%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 6 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="4" width="20" height="24" rx="2" stroke="currentColor" stroke-width="2"></rect>
+              <path d="M12 12H20M12 16H20M12 20H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <h3 class="topic-title">סטטיסטיקה והסתברות</h3>
+          <span class="lesson-badge">7 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>ממוצע, חציון ושכיח</li>
+          <li>טבלאות שכיחות</li>
+          <li>דיאגרמות</li>
+          <li>הסתברות בסיסית</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>90%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 90%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 7 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M16 8V16L22 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="topic-title">יחס, פרופורציה וקנה מידה</h3>
+          <span class="lesson-badge">6 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>יחס ישר</li>
+          <li>יחס הפוך</li>
+          <li>קנה מידה</li>
+          <li>בעיות תנועה</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>20%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 20%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 8 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 28H28M4 20L12 12L18 18L28 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="topic-title">אי-שוויונות</h3>
+          <span class="lesson-badge">5 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>אי-שוויונות ממעלה ראשונה</li>
+          <li>אי-שוויונות ממעלה שנייה</li>
+          <li>ייצוג על ציר המספרים</li>
+          <li>מערכת אי-שוויונות</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>10%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 10%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 9 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 4H24L28 12L16 28L4 12L8 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+              <path d="M8 12H24" stroke="currentColor" stroke-width="2"></path>
+            </svg>
+          </div>
+          <h3 class="topic-title">שטחים והיקפים</h3>
+          <span class="lesson-badge">8 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>שטח מלבן וריבוע</li>
+          <li>שטח מקבילית ומעוין</li>
+          <li>שטח טרפז</li>
+          <li>שטח עיגול</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>55%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 55%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 10 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M10 16H22M16 10V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <h3 class="topic-title">מספרים מכוונים</h3>
+          <span class="lesson-badge">6 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>חיבור וחיסור מספרים מכוונים</li>
+          <li>כפל וחילוק</li>
+          <li>ערך מוחלט</li>
+          <li>ציר המספרים</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>100%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill completed" style="width: 100%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start completed">הושלם! חזור לתרגול</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 11 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 10H26M6 16H26M6 22H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <h3 class="topic-title">ביטויים אלגבריים</h3>
+          <span class="lesson-badge">9 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>כינוס איברים דומים</li>
+          <li>פתיחת סוגריים</li>
+          <li>נוסחאות הכפל המקוצר</li>
+          <li>הוצאת גורם משותף</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>65%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 65%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 12 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M16 8V16L22 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="topic-title">טכניקה אלגברית</h3>
+          <span class="lesson-badge">10 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>הצבה בביטויים אלגבריים</li>
+          <li>פישוט ביטויים</li>
+          <li>פתרון משוואות מורכבות</li>
+          <li>בעיות מילוליות</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>35%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 35%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 13 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4H28V28H4V4Z" stroke="currentColor" stroke-width="2"></path>
+              <path d="M10 10H22M10 16H22M10 22H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+          </div>
+          <h3 class="topic-title">גופים מרחביים</h3>
+          <span class="lesson-badge">7 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>נפח תיבה וקובייה</li>
+          <li>נפח גליל</li>
+          <li>נפח פירמידה וחרוט</li>
+          <li>שטח פנים</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>15%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 15%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+      <!-- Topic Card 14 -->
+      <div class="topic-card">
+        <div class="topic-header">
+          <div class="topic-icon">
+            <svg data-element-type="icon" data-icon-type="svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 4V28M4 16H28" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              <circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="2"></circle>
+            </svg>
+          </div>
+          <h3 class="topic-title">מעגל ועיגול</h3>
+          <span class="lesson-badge">8 שיעורים</span>
+        </div>
+        <ul class="subtopic-list">
+          <li>היקף מעגל</li>
+          <li>שטח עיגול</li>
+          <li>זוויות במעגל</li>
+          <li>קשתות ומיתרים</li>
+        </ul>
+        <div class="topic-footer">
+          <div class="mini-progress">
+            <div class="mini-progress-header">
+              <span>התקדמות</span>
+              <span>50%</span>
+            </div>
+            <div class="mini-progress-bar">
+              <div class="mini-progress-fill" style="width: 50%;"></div>
+            </div>
+          </div>
+          <a href="#" class="btn-start">התחל ללמוד</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="section-cta">
+      <p>מוכנים להתחיל? בחרו נושא והתחילו ללמוד בקצב שלכם.</p>
+      <a href="#" class="btn-primary">צפה בכל הקורסים</a>
+    </div>
+
   </div>
+
+  <!-- Decorative Graph Paper Background -->
+  <div class="graph-paper-bg" aria-hidden="true"></div>
 </section>
 
 <footer class="site-footer" dir="rtl">
@@ -1606,148 +2259,6 @@
           observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
         });
       }, 500);
-    })();
-    </script>
-
-    <script>
-    (function(){
-      var _applied=false;
-      function _isHeroBg(w){var img=w.querySelector('img');if(img&&(img.getAttribute('data-hero-bg')==='true'||img.getAttribute('data-hero-background')==='true'))return true;var p=(w.style.position||'').replace(/\s*!important\s*/g,'').trim();var ww=(w.style.width||'').replace(/\s*!important\s*/g,'').trim();var hh=(w.style.height||'').replace(/\s*!important\s*/g,'').trim();return p==='absolute'&&ww==='100%'&&hh==='100%';}
-      function fixDesktopWrappers(){
-        // No-op: desktop wrapper restoration is handled by ZAPPY_PUBLISHED_ZOOM_WRAPPER_RUNTIME
-        // in script.js (restoreWrapperDimensions). The old inflation logic here was expanding
-        // small wrappers (e.g. 139px logo wrappers) to their parent width, conflicting with
-        // the correct stored dimensions.
-      }
-      function _parsePos(s){var x=50,y=50;try{var m=(s||'').match(/(-?d+(?:.d+)?)%s+(-?d+(?:.d+)?)%/);if(m){x=parseFloat(m[1]);y=parseFloat(m[2]);}}catch(e){}if(!isFinite(x))x=50;if(!isFinite(y))y=50;return{x:Math.max(0,Math.min(100,x)),y:Math.max(0,Math.min(100,y))};}
-      function _coverPct(iA,cA){if(!isFinite(iA)||iA<=0||!isFinite(cA)||cA<=0)return{w:100,h:100};if(iA>=cA)return{w:(iA/cA)*100,h:100};return{w:100,h:(cA/iA)*100};}
-      function applyMobile(){
-        if(_applied)return;_applied=true;
-        document.querySelectorAll('[data-zappy-zoom-wrapper="true"]').forEach(function(w){
-          if(_isHeroBg(w))return;
-          var cw=w.style.getPropertyValue('width');
-          var _sW=parseFloat(w.getAttribute('data-zappy-zoom-wrapper-width'))||0;
-          var _sH=parseFloat(w.getAttribute('data-zappy-zoom-wrapper-height'))||0;
-          if(!cw&&!(_sW>0&&_sH>0))return;
-          if(!w._zappyDesktop)w._zappyDesktop={wStyle:w.getAttribute('style')};
-          var img=w.querySelector('img');
-          if(!img)return;
-          if(!img._zappyDesktop)img._zappyDesktop={src:img.getAttribute('src'),style:img.getAttribute('style')};
-          var mobileZoomStr=img.getAttribute('data-zappy-mobile-zoom');
-          var mobileZoom=parseFloat(mobileZoomStr);
-          var mobileSrc=img.getAttribute('data-zappy-mobile-src');
-          var mobilePos=img.getAttribute('data-zappy-mobile-object-position');
-          var parentOvf=w.parentElement?((w.parentElement.style.overflow||'')+(window.getComputedStyle(w.parentElement).overflow||'')).trim():'';
-          var inConstrainedParent=parentOvf.indexOf('hidden')!==-1||parentOvf.indexOf('clip')!==-1;
-          if(inConstrainedParent){
-            w.style.setProperty('max-width','100%','important');
-          }else{
-            w.style.setProperty('width','100%','important');
-            w.style.setProperty('max-width','100%','important');
-          }
-          if(mobileSrc)img.src=mobileSrc;
-          function _applyZoomCrop(_img,_w,_ePos,_eZoom){
-            var rect=_w.getBoundingClientRect();
-            if(!rect||!rect.width||!rect.height)return;
-            var nW=_img.naturalWidth||0,nH=_img.naturalHeight||0;
-            if(!(nW>0&&nH>0))return;
-            var iA=nW/nH,cA=rect.width/rect.height;
-            var cv=_coverPct(iA,cA);
-            var wP=100,hP=100;
-            if(_eZoom>=1){wP=cv.w*_eZoom;hP=cv.h*_eZoom;}
-            else{var t2=(_eZoom-0.5)/0.5;if(!isFinite(t2))t2=0;t2=Math.max(0,Math.min(1,t2));wP=100+t2*(cv.w-100);hP=100+t2*(cv.h-100);}
-            var p2=_parsePos(_ePos);
-            var lP=(100-wP)*(p2.x/100);
-            var tP=(100-hP)*(p2.y/100);
-            _img.style.setProperty('position','absolute','important');
-            _img.style.setProperty('left',lP+'%','important');
-            _img.style.setProperty('top',tP+'%','important');
-            _img.style.setProperty('width',wP+'%','important');
-            _img.style.setProperty('height',hP+'%','important');
-            _img.style.setProperty('max-width','none','important');
-            _img.style.setProperty('max-height','none','important');
-            _img.style.setProperty('display','block','important');
-            _img.style.setProperty('object-fit',_eZoom<1?'fill':'cover','important');
-            _img.style.setProperty('transform','none','important');
-            _img.style.setProperty('margin','0','important');
-          }
-          if(_sW>0&&_sH>0){
-            var effZoom=(isFinite(mobileZoom)&&mobileZoom>0)?mobileZoom:(parseFloat(img.getAttribute('data-zappy-zoom'))||1);
-            var effPos=mobilePos||img.getAttribute('data-zappy-object-position')||img.style.objectPosition||'50% 50%';
-            w.style.setProperty('overflow','hidden','important');
-            w.style.setProperty('position','relative','important');
-            w.style.setProperty('width','100%','important');
-            w.style.setProperty('max-width','100%','important');
-            if(_sW>0&&_sH>0){w.style.setProperty('padding-bottom','0','important');w.style.setProperty('aspect-ratio',_sW+'/'+_sH,'important');w.style.setProperty('height','auto','important');}
-            _applyZoomCrop(img,w,effPos,effZoom);
-            if(!(img.complete&&img.naturalWidth>0)){
-              (function(_i,_w2,_p,_z){_i.addEventListener('load',function _ol(){_i.removeEventListener('load',_ol);try{_applyZoomCrop(_i,_w2,_p,_z);}catch(e){}});
-              })(img,w,effPos,effZoom);
-            }
-          }else{
-            if(!inConstrainedParent)w.style.setProperty('height','auto','important');
-            img.style.setProperty('position','relative','important');
-            img.style.setProperty('width','100%','important');
-            img.style.setProperty('height','auto','important');
-            img.style.setProperty('max-width','100%','important');
-            img.style.setProperty('max-height',inConstrainedParent?'none':'400px','important');
-            img.style.setProperty('object-fit','cover','important');
-            img.style.setProperty('left','0','important');
-            img.style.setProperty('top','0','important');
-            img.style.setProperty('transform','none','important');
-          }
-        });
-        document.querySelectorAll('img[data-zappy-mobile-src],img[data-zappy-mobile-object-position],img[data-zappy-mobile-zoom]').forEach(function(img){
-          var zw=img.closest('[data-zappy-zoom-wrapper="true"]');
-          if(zw&&!_isHeroBg(zw))return;
-          if(!img._zappyDesktop)img._zappyDesktop={src:img.getAttribute('src'),style:img.getAttribute('style')};
-          var mobileSrc=img.getAttribute('data-zappy-mobile-src');
-          var mobilePos=img.getAttribute('data-zappy-mobile-object-position');
-          var mobileZoom=parseFloat(img.getAttribute('data-zappy-mobile-zoom'));
-          if(mobileSrc)img.src=mobileSrc;
-          if(mobilePos)img.style.setProperty('object-position',mobilePos,'important');
-          if(mobileZoom>1){
-            img.style.setProperty('transform','scale('+mobileZoom+')','important');
-            img.style.setProperty('transform-origin',mobilePos||'50% 50%','important');
-            var p=img.parentElement;
-            if(p)p.style.setProperty('overflow','hidden','important');
-          }
-        });
-      }
-      function revertDesktop(){
-        if(!_applied)return;_applied=false;
-        document.querySelectorAll('[data-zappy-zoom-wrapper="true"]').forEach(function(w){
-          if(w._zappyDesktop&&w._zappyDesktop.wStyle!=null){w.setAttribute('style',w._zappyDesktop.wStyle);}
-          var img=w.querySelector('img');
-          if(img&&img._zappyDesktop){
-            if(img._zappyDesktop.src!=null)img.setAttribute('src',img._zappyDesktop.src);
-            if(img._zappyDesktop.style!=null)img.setAttribute('style',img._zappyDesktop.style);
-            else img.removeAttribute('style');
-          }
-        });
-        document.querySelectorAll('img[data-zappy-mobile-src],img[data-zappy-mobile-object-position],img[data-zappy-mobile-zoom]').forEach(function(img){
-          var zw=img.closest('[data-zappy-zoom-wrapper="true"]');
-          if(zw&&!_isHeroBg(zw))return;
-          if(img._zappyDesktop){
-            if(img._zappyDesktop.src!=null)img.setAttribute('src',img._zappyDesktop.src);
-            if(img._zappyDesktop.style!=null)img.setAttribute('style',img._zappyDesktop.style);
-            else img.removeAttribute('style');
-          }
-        });
-        _fixHeroBgWrappers();
-        fixDesktopWrappers();
-      }
-      function _fixHeroBgWrappers(){var isMob=window.innerWidth<=768;document.querySelectorAll('[data-zappy-zoom-wrapper="true"]').forEach(function(w){if(!_isHeroBg(w))return;w.style.setProperty('position','absolute','important');w.style.setProperty('top','0','important');w.style.setProperty('left','0','important');w.style.setProperty('width','100%','important');w.style.setProperty('height','100%','important');w.style.setProperty('max-width','none','important');w.style.setProperty('overflow','hidden','important');w.setAttribute('data-zappy-zoom-wrapper-width-mode','full');var img=w.querySelector('img');if(img){img.style.setProperty('width','100%','important');img.style.setProperty('height','100%','important');img.style.setProperty('object-fit','cover','important');img.style.setProperty('position','relative','important');img.style.setProperty('top','0','important');img.style.setProperty('left','0','important');img.style.setProperty('max-width','none','important');img.style.setProperty('max-height','none','important');img.style.setProperty('display','block','important');if(isMob){var mSrc=img.getAttribute('data-zappy-mobile-src');var mPos=img.getAttribute('data-zappy-mobile-object-position');var mZoom=parseFloat(img.getAttribute('data-zappy-mobile-zoom'));if(mSrc){if(!img._zappyDesktop)img._zappyDesktop={src:img.getAttribute('src'),style:img.getAttribute('style')};img.src=mSrc;}if(mPos)img.style.setProperty('object-position',mPos,'important');if(mZoom>1){img.style.setProperty('transform','scale('+mZoom+')','important');img.style.setProperty('transform-origin',mPos||'50% 50%','important');}}}});}
-      function init(){
-        _fixHeroBgWrappers();
-        var mq=window.matchMedia('(max-width:768px)');
-        function onChange(e){if(e.matches)applyMobile();else revertDesktop();}
-        if(mq.matches)applyMobile();
-        else fixDesktopWrappers();
-        try{mq.addEventListener('change',onChange);}catch(e){mq.addListener(onChange);}
-      }
-      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
-      else setTimeout(init,50);
     })();
     </script>
 </body>
