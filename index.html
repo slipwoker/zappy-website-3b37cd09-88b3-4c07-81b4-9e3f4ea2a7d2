@@ -694,6 +694,514 @@
               });
             })();
           </script>
+        
+
+    
+<style data-zappy-section-v2-css="true">
+/* V2 Regenerated Section CSS */
+.index-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  padding: 120px 24px 80px;
+  direction: rtl;
+}
+
+/* Background Image */
+.index-hero-section .hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Scrim Overlay */
+.index-hero-section .hero-scrim {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(135deg, rgba(15, 35, 71, 0.52) 30%, rgba(15, 35, 71, 0.3) 60%, rgba(15, 35, 71, 0.08) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Decorative Motifs */
+.index-hero-section .hero-decorations {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Graph Paper Grid */
+.index-hero-section .decor-graph-paper {
+  position: absolute;
+  top: -20%;
+  inset-inline-start: -10%;
+  width: 60%;
+  height: 80%;
+  background-image:
+    linear-gradient(to right, rgba(147, 197, 253, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(147, 197, 253, 0.08) 1px, transparent 1px);
+  background-size: 30px 30px;
+  transform: rotate(-5deg);
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+}
+
+/* Math Formula Scatter */
+.index-hero-section .decor-math-formulas {
+  position: absolute;
+  top: 10%;
+  inset-inline-end: -5%;
+  width: 45%;
+  height: 70%;
+  opacity: 0.1;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 30px;
+  transform: rotate(2deg);
+}
+
+.index-hero-section .formula {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.index-hero-section .formula.f1 { font-size: 2.8rem; margin-inline-start: 10%; }
+.index-hero-section .formula.f2 { font-size: 3.2rem; margin-inline-start: 40%; margin-top: 10%; }
+.index-hero-section .formula.f3 { font-size: 2.2rem; margin-inline-start: 15%; }
+.index-hero-section .formula.f4 { font-size: 4rem; margin-inline-start: 50%; }
+.index-hero-section .formula.f5 { font-size: 3.5rem; margin-inline-start: 5%; }
+.index-hero-section .formula.f6 { font-size: 2.6rem; margin-inline-start: 30%; }
+
+/* Hero Container */
+.index-hero-section .hero-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+/* Hero Text Group */
+.index-hero-section .hero-text-group {
+  flex: 1 1 50%;
+  max-width: 550px;
+  text-align: start;
+  position: relative;
+}
+
+.index-hero-section .hero-headline {font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text-light);
+  margin: 0 0 20px;}
+
+/* Hand-drawn Underline Accent */
+.index-hero-section .accent-underline {
+  position: absolute;
+  bottom: -10px;
+  inset-inline-start: 0;
+  width: 220px;
+  height: 20px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.index-hero-section .accent-underline svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.index-hero-section .hero-subtitle {
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 30px 0 32px;
+  max-width: 480px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* CTA Group */
+.index-hero-section .hero-cta-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.index-hero-section .btn-primary {
+  background: var(--accent);
+  color: var(--text-dark);
+  padding: 14px 32px;
+  border-radius: 100px;
+  border: none;
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 24px rgba(244, 197, 66, 0.35);
+}
+
+.index-hero-section .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(244, 197, 66, 0.5);
+}
+
+.index-hero-section .btn-secondary {
+  background: transparent;
+  color: var(--text-light);
+  padding: 14px 32px;
+  border-radius: 100px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(4px);
+}
+
+.index-hero-section .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
+  transform: translateY(-3px);
+}
+
+/* Hero Dashboard Panel */
+.index-hero-section .hero-dashboard {
+  flex: 1 1 45%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Grade Cards */
+.index-hero-section .grade-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.index-hero-section .grade-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px 12px;
+  text-decoration: none;
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  min-width: 0;
+}
+
+.index-hero-section .grade-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--accent);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.index-hero-section .grade-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.index-hero-section .grade-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.index-hero-section .grade-label {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-light);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.index-hero-section .grade-desc {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+}
+
+/* Progress Section */
+.index-hero-section .progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.index-hero-section .progress-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.index-hero-section .progress-title {
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.index-hero-section .progress-percent {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.index-hero-section .progress-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.index-hero-section .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, #FFD166 100%);
+  border-radius: 100px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.index-hero-section .progress-hint {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  text-align: center;
+}
+
+/* Stats Grid */
+.index-hero-section .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.index-hero-section .stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.index-hero-section .stat-number {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-light);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.index-hero-section .stat-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.03em;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .index-hero-section .hero-container {
+    gap: 40px;
+  }
+  .index-hero-section .hero-headline {
+    font-size: 2.8rem;
+  }
+  .index-hero-section .hero-dashboard {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .index-hero-section {
+    padding: 100px 16px 60px;
+    min-height: auto;
+  }
+
+  .index-hero-section .hero-container {
+    flex-direction: column;
+    gap: 40px;
+    align-items: stretch;
+  }
+
+  .index-hero-section .hero-text-group {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .index-hero-section .hero-headline {
+    font-size: 2.4rem;
+    text-align: center;
+  }
+
+  .index-hero-section .accent-underline {
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+  }
+
+  .index-hero-section .hero-subtitle {
+    max-width: 100%;
+    text-align: center;
+    margin: 30px auto 32px;
+  }
+
+  .index-hero-section .hero-cta-group {
+    justify-content: center;
+  }
+
+  .index-hero-section .hero-dashboard {
+    max-width: 100%;
+  }
+
+  .index-hero-section .grade-cards {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .index-hero-section .grade-card {
+    flex-direction: row;
+    text-align: start;
+    gap: 16px;
+    padding: 16px 20px;
+    align-items: center;
+  }
+
+  .index-hero-section .grade-icon {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .index-hero-section .grade-card .grade-label,
+  .index-hero-section .grade-card .grade-desc {
+    text-align: start;
+  }
+
+  .index-hero-section .stats-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px;
+  }
+
+  .index-hero-section .stat-item {
+    padding: 12px 6px;
+  }
+
+  .index-hero-section .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .index-hero-section .decor-math-formulas {
+    display: none;
+  }
+
+  .index-hero-section .decor-graph-paper {
+    width: 80%;
+    inset-inline-start: -20%;
+  }
+}
+
+@media (max-width: 480px) {
+  .index-hero-section .hero-headline {
+    font-size: 2rem;
+  }
+
+  .index-hero-section .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .index-hero-section .btn-primary,
+  .index-hero-section .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .index-hero-section .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .index-hero-section .stat-item {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px 16px;
+  }
+}
+/* ZAPPY_POSTGEN_GUARD_HERO_FONT_CAP:index-hero */
+.hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 48px !important; line-height: 1.2 !important; }
+@media (max-width: 1024px) {
+  .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 36px !important; }
+}
+@media (max-width: 768px) {
+  .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 28px !important; }
+}
+
+/* ZAPPY_POSTGEN_GUARD_HERO_TYPO:בית-hero (index-hero) — stripped 1 jarring hero headline effect(s) */
+
+</style>
     <link rel="stylesheet" href="/styles.css">
 
     <style id="zappy-widget-visibility">
@@ -1255,46 +1763,114 @@
 </script>
   
   <main id="main">
-    <section data-band-index="0" class="index-hero-section" data-layout-spec="בית-hero" data-hero-type="fullscreen-scrim" id="index-hero-section">
-    <!-- Background Image -->
-    <img loading="eager" fetchpriority="high" data-hero-bg="true" class="hero-bg-image" data-placeholder="index-hero-image-1" data-context="A bright, warm, realistic study desk scene from a top-down slightly angled perspective. A wooden desk surface is covered with graph paper, a notebook with handwritten Hebrew math notes, geometric compass arcs, scattered pencils, a ruler, and an open laptop showing an abstract, colorful math lesson interface with graphs and equations. Soft natural window light illuminates the scene, blending with subtle coordinate grid lines and faint floating math symbols (x, y, f(x), √) in the air. The overall mood is inviting, academic but playful, perfect for middle school students." width="1200" height="600" src="/assets/site-index-hero-image-1.webp" alt="שולחן כתיבה לימודי עם מחברת גרפים, עפרונות, מחשב נייד וכלים גיאומטריים ללימודי מתמטיקה לחטיבת הביניים" data-hero-background="true" data-element-type="image" data-element-id="img-1782845554074-7ouw4353k" style="pointer-events: auto !important; object-position: 50% 50%;">
+    <section class="index-hero-section" data-layout-spec="בית-hero" data-hero-type="side-by-side" id="index-hero-section">
+  <!-- Background Image -->
+  <img data-context="A warm, engaging digital illustration of a middle school student sitting at a desk with a laptop, surrounded by floating, colorful 3D geometric shapes, math formulas, and glowing graph paper grid lines. The scene uses the brand color palette of dark blue (#18324A), light blue (#EEF7FF), and yellow (#F4C542). The student looks curious and confident, representing a modern, interactive Israeli online math learning platform." width="1200" height="600" src="/assets/education-section-בית-hero-index-hero-image-1.webp" alt="תלמיד חטיבת ביניים לומד מתמטיקה אונליין עם צורות גאומטריות צפות" class="hero-bg">
 
-    <!-- Scrim Overlay for Text Legibility -->
-    <div class="hero-scrim" aria-hidden="true"></div>
+  <!-- Scrim Overlay -->
+  <div class="hero-scrim" aria-hidden="true"></div>
 
-    <!-- Overlay Content Group -->
-    <div class="hero-overlay-group">
-        <h1 class="hero-headline" >קורס דיגיטלי במתמטיקה — לתלמידי חטיבת הביניים, מאות שיעורי וידאו</h1>
-        
-        <h3 class="hero-subtitle" >קורס מקיף לתלמידי חטיבת הביניים (ז'-ט') עם סרטוני וידאו ברורים, תרגול מובנה והתאמה מלאה לתוכנית הלימודים החדשה. בחרו את השכבה שלכם והתחילו ללמוד.</h3>
-        
-        <p class="hero-description">15 נושאי לימוד בכל שכבה • 4–6 תתי-נושאים בכל פרק • סרטון וידאו אישי לכל תת-נושא • מעקב התקדמות ומשוב מיידי</p>
-
-        <div class="hero-cta-group"><a href="/7th-layer" class="hero-cta-primary btn-primary" data-element-type="button" data-element-id="btn-1782845554066-uxuds34n4" data-native-element="true" style="outline: none; border-color: rgb(25, 173, 184) !important; color: rgb(255, 255, 255) !important; background-color: rgb(25, 173, 184) !important; background-image: none !important;">שכבת ז'&nbsp;</a>
-            <a href="/eighth-grade-class" class="hero-cta-secondary btn-secondary" style="color: rgb(255, 255, 255) !important; outline: none; border-color: rgb(24, 141, 191) !important; background-color: rgb(24, 141, 191) !important; background-image: none !important;" data-element-type="button" data-element-id="btn-1782845554066-04tpftas5" data-native-element="true">שכבת ח'</a>
-            <a href="/9th-grade-class" class="hero-cta-secondary btn-secondary" style="color: rgb(255, 255, 255) !important; outline: none; border-color: rgb(5, 125, 127) !important; background-color: rgb(5, 125, 127) !important; background-image: none !important;" data-element-type="button" data-element-id="btn-1782845554066-87xqzv5ta" data-native-element="true">שכבת ט'&nbsp;</a></div>
+  <!-- Decorative Motifs -->
+  <div class="hero-decorations" aria-hidden="true">
+    <!-- Graph Paper Grid -->
+    <div class="decor-graph-paper"></div>
+    <!-- Math Formula Scatter -->
+    <div class="decor-math-formulas">
+      <span class="formula f1">y = mx + b</span>
+      <span class="formula f2">πr²</span>
+      <span class="formula f3">a² + b² = c²</span>
+      <span class="formula f4">△</span>
+      <span class="formula f5">∑</span>
+      <span class="formula f6">f(x)</span>
     </div>
+  </div>
 
-    <!-- Bottom Divider: Torn Notebook Paper Edge -->
-    <div class="hero-divider-wrapper" aria-hidden="true">
-        <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Base torn paper shape -->
-            <path class="divider-paper" d="M0,80 L0,35 Q30,28 60,38 T120,32 Q150,38 180,30 T240,36 Q270,28 300,34 T360,30 Q390,36 420,28 T480,34 Q510,38 540,30 T600,36 Q630,28 660,34 T720,30 Q750,36 780,28 T840,34 Q870,38 900,30 T960,36 Q990,28 1020,34 T1080,30 Q1110,36 1140,28 T1200,35 L1200,80 Z" fill="var(--bg-light)"></path>
-            <!-- Faint graph grid lines on the torn edge -->
-            <g stroke="var(--border-light)" stroke-width="0.5" opacity="0.4">
-                <path d="M0,40 L1200,40"></path>
-                <path d="M0,48 L1200,48"></path>
-                <path d="M0,56 L1200,56"></path>
-                <path d="M0,64 L1200,64"></path>
-                <path d="M0,72 L1200,72"></path>
-                <path d="M200,35 L200,80"></path>
-                <path d="M400,30 L400,80"></path>
-                <path d="M600,36 L600,80"></path>
-                <path d="M800,34 L800,80"></path>
-                <path d="M1000,30 L1000,80"></path>
-            </g>
+  <!-- Hero Content -->
+  <div class="hero-container">
+    <div class="hero-text-group">
+      <h1 class="hero-headline">
+        מתמטיקה לכיתות ז'-ט'<br>בדרך שכיף ללמוד
+      </h1>
+      <!-- Hand-drawn underline accent -->
+      <div class="accent-underline" aria-hidden="true">
+        <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 200 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 6.5C20 2 60 1 100 4.5C140 8 180 2 196 6" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" fill="none"></path>
         </svg>
+      </div>
+      <h3 class="hero-subtitle">
+        מאות שיעורי וידאו, תרגול אינטראקטיבי ומסלול למידה מובנה – כל מה שצריך כדי להצליח במתמטיקה בחטיבת הביניים.
+      </h3>
+      <div class="hero-cta-group">
+        <a href="#" class="btn-primary">התחילו ללמוד בחינם</a>
+        <a href="#" class="btn-secondary">איך זה עובד?</a>
+      </div>
     </div>
+
+    <!-- Course Dashboard Panel -->
+    <div class="hero-dashboard">
+      <!-- Grade Level Cards -->
+      <div class="grade-cards">
+        <a href="#" class="grade-card">
+          <div class="grade-icon">
+            <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <span class="grade-label">שכבת ז'</span>
+          <span class="grade-desc">יסודות האלגברה וגאומטריה</span>
+        </a>
+        <a href="#" class="grade-card">
+          <div class="grade-icon">
+            <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 12H18L15 21L9 3L6 12H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <span class="grade-label">שכבת ח'</span>
+          <span class="grade-desc">משוואות, פונקציות וסטטיסטיקה</span>
+        </a>
+        <a href="#" class="grade-card">
+          <div class="grade-icon">
+            <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"></circle>
+              <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <span class="grade-label">שכבת ט'</span>
+          <span class="grade-desc">טריגונומטריה והכנה לבגרות</span>
+        </a>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-section">
+        <div class="progress-header">
+          <span class="progress-title">התקדמות כללית</span>
+          <span class="progress-percent">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" style="width: 0%;"></div>
+        </div>
+        <p class="progress-hint">בחרו שכבת גיל כדי להתחיל</p>
+      </div>
+
+      <!-- Course Stats -->
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">12</span>
+          <span class="stat-label">נושאים</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">85+</span>
+          <span class="stat-label">שיעורים</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">300+</span>
+          <span class="stat-label">סרטונים</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
     <section class="featured-products-section" id="featured-products" data-zappy-dynamic="true">

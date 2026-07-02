@@ -4,6 +4,17 @@
     <title>מתמטיקאי</title>
     <link>https://example.com</link>
     <description>Product feed for מתמטיקאי</description>
-    <lastBuildDate>Thu, 02 Jul 2026 11:23:59 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 12:05:25 GMT</lastBuildDate>
+    <item>
+      <g:id>b4a47207-b727-4db1-9833-29ae11a6eed5</g:id>
+      <g:title>משוואות</g:title>
+      <g:description>משוואות</g:description>
+      <g:link>https://example.com/product/mshvvavt-lxp5hw</g:link>
+      <g:availability>in_stock</g:availability>
+      <g:price>0.00 ILS</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>מתמטיקאי</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
+    </item>
   </channel>
 </rss>
