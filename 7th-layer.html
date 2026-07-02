@@ -694,6 +694,371 @@
               });
             })();
           </script>
+        
+
+    
+<style data-zappy-section-v2-css="true">
+/* V2 Regenerated Section CSS */
+.s-7th-Layer-section-0-section {
+  background-color: #FFFFFF;
+  color: var(--text-dark);
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: visible;
+  direction: rtl;
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+}
+
+.s-7th-Layer-section-0-section__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Overall Progress Header */
+.s-7th-Layer-section-0-section__overall-progress {
+  margin-bottom: 48px;
+}
+
+.s-7th-Layer-section-0-section__progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.s-7th-Layer-section-0-section__title {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+  line-height: 1.3;
+  position: relative;
+  display: inline-block;
+}
+
+.s-7th-Layer-section-0-section__title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+.s-7th-Layer-section-0-section__completion-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--secondary);
+  padding: 8px 20px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.s-7th-Layer-section-0-section__progress-bar-wrapper {
+  width: 100%;
+  height: 12px;
+  background: var(--border-light);
+  border-radius: 100px;
+  overflow: hidden;
+  box-shadow: var(--shadow-inner);
+}
+
+.s-7th-Layer-section-0-section__progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF7D 0%, #2E8B57 100%);
+  border-radius: 100px;
+  transition: width 0.6s ease;
+  box-shadow: 0 0 12px rgba(76, 175, 125, 0.4);
+}
+
+/* Topics Grid */
+.s-7th-Layer-section-0-section__topics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  direction: rtl;
+}
+
+/* Topic Card */
+.s-7th-Layer-section-0-section__topic-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(27,58,107,0.08);
+  padding: 1.5rem 1.5rem 2rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-right: 4px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.s-7th-Layer-section-0-section__topic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(27,58,107,0.12);
+}
+
+.s-7th-Layer-section-0-section__topic-card--locked {
+  opacity: 0.7;
+  border-right-color: var(--border-light);
+  background: #F7F8FA;
+}
+
+.s-7th-Layer-section-0-section__topic-card--locked:hover {
+  transform: none;
+  box-shadow: 0 4px 24px rgba(27,58,107,0.08);
+}
+
+.s-7th-Layer-section-0-section__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.s-7th-Layer-section-0-section__topic-number {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: var(--secondary);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(24, 50, 74, 0.1);
+}
+
+.s-7th-Layer-section-0-section__topic-card--locked .s-7th-Layer-section-0-section__topic-number {
+  color: var(--text-muted);
+  background: #E2E8F0;
+}
+
+.s-7th-Layer-section-0-section__badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.s-7th-Layer-section-0-section__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  background: var(--secondary);
+  padding: 4px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.s-7th-Layer-section-0-section__badge--video {
+  color: var(--primary);
+  background: rgba(24, 50, 74, 0.08);
+}
+
+.s-7th-Layer-section-0-section__topic-card--locked .s-7th-Layer-section-0-section__badge {
+  color: var(--text-muted);
+  background: #E2E8F0;
+}
+
+.s-7th-Layer-section-0-section__topic-title {
+  font-family: 'Assistant', 'Rubik', sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.s-7th-Layer-section-0-section__topic-card--locked .s-7th-Layer-section-0-section__topic-title {
+  color: var(--text-muted);
+}
+
+.s-7th-Layer-section-0-section__subtopics-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  flex-grow: 1;
+}
+
+.s-7th-Layer-section-0-section__subtopics-list li {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.7;
+  padding: 4px 0;
+  padding-inline-start: 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.s-7th-Layer-section-0-section__subtopics-list li::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.s-7th-Layer-section-0-section__topic-card--locked .s-7th-Layer-section-0-section__subtopics-list li {
+  color: var(--text-muted);
+}
+
+.s-7th-Layer-section-0-section__topic-card--locked .s-7th-Layer-section-0-section__subtopics-list li::before {
+  background: var(--border-light);
+}
+
+/* Mini Progress Bar */
+.s-7th-Layer-section-0-section__mini-progress {
+  width: 100%;
+  height: 6px;
+  background: var(--border-light);
+  border-radius: 100px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.s-7th-Layer-section-0-section__mini-progress-bar {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 100px;
+  transition: width 0.4s ease;
+}
+
+.s-7th-Layer-section-0-section__topic-card--locked .s-7th-Layer-section-0-section__mini-progress-bar {
+  background: #CBD5E1;
+}
+
+/* Button */
+.s-7th-Layer-section-0-section__btn {
+  background: var(--primary);
+  color: #FFFFFF;
+  padding: 12px 28px;
+  border-radius: 100px;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(24, 50, 74, 0.2);
+  font-family: 'Heebo', 'Noto Sans Hebrew', sans-serif;
+}
+
+.s-7th-Layer-section-0-section__btn:hover {
+  background: #0F2347;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(24, 50, 74, 0.3);
+}
+
+.s-7th-Layer-section-0-section__btn:disabled {
+  background: #CBD5E1;
+  color: #94A3B8;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.s-7th-Layer-section-0-section__btn:disabled:hover {
+  background: #CBD5E1;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Decorative Image */
+.s-7th-Layer-section-0-section__decorative-image {
+  margin-top: 48px;
+  text-align: center;
+  position: relative;
+}
+
+.s-7th-Layer-section-0-section__decorative-image img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(27,58,107,0.12);
+  opacity: 0.95;
+}
+
+/* ============================= */
+/* RESPONSIVE: Mobile (max-width: 768px) */
+/* ============================= */
+@media (max-width: 768px) {
+  .s-7th-Layer-section-0-section {
+    padding: 100px 16px 60px;
+  }
+
+  .s-7th-Layer-section-0-section__topics-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .s-7th-Layer-section-0-section__progress-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .s-7th-Layer-section-0-section__title {
+    font-size: 1.75rem;
+  }
+
+  .s-7th-Layer-section-0-section__completion-text {
+    font-size: 0.9rem;
+    padding: 6px 16px;
+  }
+
+  .s-7th-Layer-section-0-section__topic-card {
+    padding: 1.25rem;
+  }
+
+  .s-7th-Layer-section-0-section__topic-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .s-7th-Layer-section-0-section__decorative-image img {
+    max-width: 280px;
+  }
+}
+
+/* ============================= */
+/* RESPONSIVE: Large Desktop (min-width: 1200px) */
+/* ============================= */
+@media (min-width: 1200px) {
+  .s-7th-Layer-section-0-section__topics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+</style>
     <link rel="stylesheet" href="/styles.css">
 
     <style id="zappy-widget-visibility">
@@ -1266,250 +1631,352 @@
 
 
 
-  <section class="seventh-grade-topics" aria-labelledby="seventh-grade-heading" id="seventh-grade-topics" style="opacity: 1;">
-  <div class="topics-container">
-    <header class="topics-header">
-      <h2 id="seventh-grade-heading" class="topics-title" >&nbsp;שכבת ז'&nbsp;</h2>
-      
-    </header>
+  <section class="s-7th-Layer-section-0-section" data-layout-spec="7th-Layer-section-0" data-hero-type="text-only" id="seventh-grade-topics">
+  <div class="s-7th-Layer-section-0-section__container">
+    
+    <!-- Overall Progress Header -->
+    <div class="s-7th-Layer-section-0-section__overall-progress">
+      <div class="s-7th-Layer-section-0-section__progress-header">
+        <h2 class="s-7th-Layer-section-0-section__title">מסלול הלימודים - כיתה ז'</h2>
+        <span class="s-7th-Layer-section-0-section__completion-text">הושלמו 4/14 נושאים</span>
+      </div>
+      <div class="s-7th-Layer-section-0-section__progress-bar-wrapper">
+        <div class="s-7th-Layer-section-0-section__progress-bar" style="width: 28%;"></div>
+      </div>
+    </div>
 
-    <div class="topics-grid zappy-preserve-css-grid" id="zappy-auto-grid-1782844527101-3jblpw" data-zappy-auto-grid="true" data-original-item-width="254" data-original-gap="28px" style="display: grid; --zappy-grid-cols: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); align-items: stretch !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);" data-zappy-explicit-columns="true">
+    <!-- Topics Grid -->
+    <div class="s-7th-Layer-section-0-section__topics-grid">
+      
       <!-- Topic 1 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 1: מספרים מכוונים ופעולות חשבון" data-grid-item-index="0"><a href="/topics/coordinate-system-first-quadrant" class="topic-card-link" data-grid-item-index="0" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;" data-zappy-mobile-bleed="1">
-        <div class="topic-card-header">
-          <p><span class="topic-number">01</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526932-o4oi34nxr" data-icon-type="svg">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="8" x2="12" y2="16"></line>
-              <line x1="8" y1="12" x2="16" y2="12"></line>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">01</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              12 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-coordinate-system-1-1782881531989-gp4pba.webp?v=1782881531989" alt="מערכת צירים - רביע ראשון" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782905216002-3e3uf5ft6" >
-        <h3 class="topic-name" >מערכת צירים – הרביע הראשון</h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item">מערכת צירים - הקדמה</li><li class="subtopic-item">מציאת נקודות על מערכת צירים</li><li class="subtopic-item">קנה מידה&nbsp;</li><li class="subtopic-item">שיעורי נקודות על הצירים</li><li class="subtopic-item">חישוב אורכים ושטחים</li></ul>
-      </a></article>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">מספרים שלמים ופעולות חשבון</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>חיבור וחיסור מספרים מכוונים</li>
+          <li>כפל וחילוק במספרים שליליים</li>
+          <li>סדר פעולות חשבון</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 100%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn">התחל ללמוד</button>
+      </article>
 
       <!-- Topic 2 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 2: חוקי חזקות ושורשים" data-grid-item-index="1"><a href="/topics/signed-numbers-part-a" class="topic-card-link" data-grid-item-index="1" style="margin-left: -28px !important; margin-right: -24px !important; margin-top: -24px !important; width: calc(100% + 52px) !important; max-width: calc(100% + 52px) !important;" data-zappy-mobile-bleed="1">
-        <div class="topic-card-header">
-          <p><span class="topic-number">02</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526932-5evwijc7p" data-icon-type="svg">
-              <polyline points="4 17 10 11 4 5"></polyline>
-              <line x1="12" y1="19" x2="20" y2="19"></line>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">02</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              10 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-directed-numbers-1-1782881550966-ds96m2.webp?v=1782881550966" alt="מספרים מכוונים - חלק א'" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782977715009-qlrphrjqx" style="object-fit: cover; object-position: 50% 50%;">
-        <h3 class="topic-name" >מספרים מכוונים - חלק א'</h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item">ציר המספרים</li><li class="subtopic-item">מספרים נגדיים וערך מוחלט</li><li class="subtopic-item">חיבור וחיסור מספרים מכוונים</li><li class="subtopic-item">חיסור מספרים מכוונים והשמטת סוגריים&nbsp;</li></ul>
-      </a></article>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">שברים פשוטים ועשרוניים</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>המרה בין שברים לעשרוניים</li>
+          <li>חיבור וחיסור שברים</li>
+          <li>השוואת שברים</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 80%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn">התחל ללמוד</button>
+      </article>
 
       <!-- Topic 3 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 3: שברים פשוטים ועשרוניים" data-grid-item-index="2"><a href="/topics/coordinate-system-four-quadrants" class="topic-card-link" data-grid-item-index="2">
-        <div class="topic-card-header">
-          <p><span class="topic-number">03</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526932-n9xst5csa" data-icon-type="svg">
-              <circle cx="12" cy="5" r="2"></circle>
-              <line x1="12" y1="7" x2="12" y2="17"></line>
-              <circle cx="12" cy="19" r="2"></circle>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card s-7th-Layer-section-0-section__topic-card--locked">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">03</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              15 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-coordinate-system-2-1782881570409-dz34c3.webp?v=1782881570409" alt="מערכת צירים - 4 הרביעים" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782901112528-i8ze1o2au" >
-        <h3 class="topic-name" >מערכת צירים - 4 הרביעים</h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item">חלוקת מערכת צירים ל-4 רביעים</li><li class="subtopic-item">מציאת נקודות&nbsp;</li><li class="subtopic-item">חישוב אורכים ושטחים</li><li class="subtopic-item">בעיות מילוליות על מערכת הצירים</li></ul>
-      </a></article>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">אחוזים</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>הקשר בין אחוזים ושברים</li>
+          <li>חישוב ערך האחוז</li>
+          <li>בעיות אחוזים יישומיות</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 0%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn" disabled="">התחל ללמוד</button>
+      </article>
 
       <!-- Topic 4 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 4: אחוזים ויחס" data-grid-item-index="3"><a href="#" class="topic-card-link" data-grid-item-index="3">
-        <div class="topic-card-header">
-          <p><span class="topic-number">04</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526932-amh5z2zx5" data-icon-type="svg">
-              <line x1="19" y1="5" x2="5" y2="19"></line>
-              <circle cx="6.5" cy="6.5" r="2.5"></circle>
-              <circle cx="17.5" cy="17.5" r="2.5"></circle>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">04</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              8 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-directed-numbers-2-1782881594570-0hfhjm.webp?v=1782881594570" alt="מספרים מכוונים - חלק ב'" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782901112528-bampddqxy" >
-        <h3 class="topic-name" >מספרים מכוונים - חלק ב'<br></h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item">כפל וחילוק מספרים מכוונים</li><li class="subtopic-item">סדר פעולות חשבון כולל קו שבר</li><li class="subtopic-item">חזקות עם מספרים מכוונים</li></ul>
-      </a></article>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">משוואות ואי-שוויונות</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>פתרון משוואות בנעלם אחד</li>
+          <li>אי-שוויונות פשוטים</li>
+          <li>בניית משוואות מבעיות מילוליות</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 55%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn">התחל ללמוד</button>
+      </article>
 
       <!-- Topic 5 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 5: קנה מידה ופרופורציה" data-grid-item-index="4"><a href="#" class="topic-card-link" data-grid-item-index="4">
-        <div class="topic-card-header">
-          <p><span class="topic-number">05</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526933-7fqm9qf1z" data-icon-type="svg">
-              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-              <line x1="3" y1="9" x2="21" y2="9"></line>
-              <line x1="9" y1="3" x2="9" y2="21"></line>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card s-7th-Layer-section-0-section__topic-card--locked">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">05</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              14 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-powers-roots-1782881616243-382u2y.webp?v=1782881616243" alt="חזקות ושורשים" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782901112528-gi9jeaiyh" >
-        <h3 class="topic-name" >חזקות ושורשים</h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item">העלאת שבר בחזקה</li><li class="subtopic-item">סדר פעולות חשבון עם שברים</li><li class="subtopic-item">מספרים מכוונים עם חזקות</li><li class="subtopic-item">השורש הריבועי</li><li class="subtopic-item">מספרים רציונליים ומספרים אי רציונליים</li></ul>
-      </a></article>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">יחס, פרופורציה וקנה מידה</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>מציאת יחסים</li>
+          <li>טבלאות פרופורציה</li>
+          <li>חישובי קנה מידה במפות</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 0%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn" disabled="">התחל ללמוד</button>
+      </article>
 
       <!-- Topic 6 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 6: מבוא לאלגברה — ביטויים אלגבריים" data-grid-item-index="5"><a href="#" class="topic-card-link" data-grid-item-index="5">
-        <div class="topic-card-header">
-          <p><span class="topic-number">06</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526933-j4xnplyag" data-icon-type="svg">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">06</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              9 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-angles-1-1782881636289-p8y5nz.webp?v=1782881636289" alt="זוויות - חלק א'" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782901112528-po55xoad8" >
-        <h3 class="topic-name" >זוויות - חלק א'</h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item">הזווית הישרה</li><li class="subtopic-item">סימון זוויות</li><li class="subtopic-item">השוואת זוויות&nbsp;</li><li class="subtopic-item">מדידת זוויות בעזרת מד זווית</li><li class="subtopic-item">חוצה זווית&nbsp;</li><li class="subtopic-item">חיבור וחיסור זוויות&nbsp;</li><li class="subtopic-item">זוויות צמודות וקודקודיות</li></ul>
-      </a></article>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">גיאומטריה - מצולעים</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>סוגי משולשים</li>
+          <li>מרובעים ותכונותיהם</li>
+          <li>חישוב זוויות במצולעים</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 30%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn">התחל ללמוד</button>
+      </article>
 
       <!-- Topic 7 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 7: פישוט ביטויים והצבה" data-grid-item-index="6">
-        <div class="topic-card-header">
-          <p><span class="topic-number">07</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526933-712fxxg8w" data-icon-type="svg">
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card s-7th-Layer-section-0-section__topic-card--locked">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">07</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              11 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-triangles-1-1782881657772-2m67i7.webp?v=1782881657772" alt="משולשים" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782901112528-0mt4vhsj4" >
-        <h3 class="topic-name" >משולשים&nbsp;</h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item">משולש שווה שוקיים</li><li class="subtopic-item">משולש שווה צלעות</li></ul>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">שטחים והיקפים</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>שטח מלבן וריבוע</li>
+          <li>שטח מקבילית ומשולש</li>
+          <li>שטחים מורכבים</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 0%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn" disabled="">התחל ללמוד</button>
       </article>
 
       <!-- Topic 8 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 8: משוואות ממעלה ראשונה" data-grid-item-index="7">
-        <div class="topic-card-header">
-          <p><span class="topic-number">08</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526934-97uohs6z5" data-icon-type="svg">
-              <line x1="4" y1="12" x2="20" y2="12"></line>
-              <circle cx="12" cy="12" r="8"></circle>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card s-7th-Layer-section-0-section__topic-card--locked">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">08</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              13 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-angles-2-1782881700098-qmctbp.webp?v=1782881700098" alt="זוויות - חלק ב'" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782901112528-awaltssgb" >
-        <h3 class="topic-name" >זוויות - חלק ב'</h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item">סכום זוויות במשולש</li><li class="subtopic-item">חוצה זווית במשולש</li><li class="subtopic-item">סכום זוויות במרובע</li></ul>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">סטטיסטיקה והסתברות</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>ממוצע, חציון ושכיח</li>
+          <li>תרשימי עמודות ועוגה</li>
+          <li>הסתברות בסיסית</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 0%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn" disabled="">התחל ללמוד</button>
       </article>
 
       <!-- Topic 9 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 9: אי-שוויונות ממעלה ראשונה" data-grid-item-index="8">
-        <div class="topic-card-header">
-          <p><span class="topic-number">09</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526934-78spoye30" data-icon-type="svg">
-              <polyline points="4 15 12 7 20 15"></polyline>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card s-7th-Layer-section-0-section__topic-card--locked">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">09</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              7 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-transformations-1782881721057-alws97.webp?v=1782881721057" alt="טרנספורמציות גיאומטריות במישור" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782901112528-l752yrs0n" >
-        <h3 class="topic-name" >טרנספורמציות גיאומטריות במישור<br></h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item">הזזה של צורה</li><li class="subtopic-item">שיקוף של צורה</li><li class="subtopic-item">סיבוב של צורה</li></ul>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">חזקות ושורשים</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>כתיב חזקות</li>
+          <li>חוקי חזקות בסיסיים</li>
+          <li>שורש ריבועי</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 0%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn" disabled="">התחל ללמוד</button>
       </article>
 
       <!-- Topic 10 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 10: שאלות מילוליות בסיסיות" data-grid-item-index="9">
-        <div class="topic-card-header">
-          <p><span class="topic-number">10</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526934-a5a7x8j6u" data-icon-type="svg">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-              <polyline points="14 2 14 8 20 8"></polyline>
-              <line x1="16" y1="13" x2="8" y2="13"></line>
-              <line x1="16" y1="17" x2="8" y2="17"></line>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">10</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              6 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-area-perimeter-1782881743282-1v4fmh.webp?v=1782881743282" alt="שטחים והיקפים - מלבן וריבוע" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782901112528-k32y3qcdq" >
-        <h3 class="topic-name" >שטחים והיקפים - מלבן וריבוע</h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item">היקף ושטח של ריבוע ומלבן&nbsp;</li><li class="subtopic-item">היקף ושטח של צורות מורכבות</li></ul>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">ביטויים אלגבריים</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>כינוס איברים דומים</li>
+          <li>פתיחת סוגריים</li>
+          <li>הצבה בנוסחאות</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 100%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn">התחל ללמוד</button>
       </article>
 
       <!-- Topic 11 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 11: מושגי יסוד בגאומטריה — נקודה, ישר, זווית" data-grid-item-index="10">
-        <div class="topic-card-header">
-          <p><span class="topic-number">11</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526934-27dnfnduk" data-icon-type="svg">
-              <circle cx="12" cy="12" r="3"></circle>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card s-7th-Layer-section-0-section__topic-card--locked">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">11</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              9 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-triangles-2-1782881763136-micati.webp?v=1782881763136" alt="משולשים - שטחים" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782901112528-522rd13ks" >
-        <h3 class="topic-name" >משולשים</h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item">שטח משולש ישר זווית</li><li class="subtopic-item">גובה במשולש&nbsp;</li><li class="subtopic-item">שטח משולש חד זווית</li><li class="subtopic-item">שטח משולש קהה זווית</li><li class="subtopic-item">שטחי מרובעים שאלכסוניהם מאונכים זה לזה&nbsp;</li></ul>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">מערכת צירים וגרפים</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>נקודות במערכת צירים</li>
+          <li>גרף ישר</li>
+          <li>קריאת גרפים</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 0%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn" disabled="">התחל ללמוד</button>
       </article>
 
       <!-- Topic 12 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 12: זוויות צמודות, קודקודיות ומתחלפות" data-grid-item-index="11">
-        <div class="topic-card-header">
-          <p><span class="topic-number">12</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526934-6jeds8xrn" data-icon-type="svg">
-              <line x1="12" y1="2" x2="12" y2="22"></line>
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card s-7th-Layer-section-0-section__topic-card--locked">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">12</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              10 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-algebraic-expressions-1782881785430-p6yaws.webp?v=1782881785430" alt="משתנים וביטויים אלגברים" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782901112529-olml64vce" >
-        <h3 class="topic-name" >משתנים וביטויים אלגברים<br></h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item">הצבה בביטוי אלגברי</li><li class="subtopic-item">שיוויון ביטויים אלגברים וכינוס איברים</li><li class="subtopic-item">חוק הפילוג</li></ul>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">נפחים</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>נפח תיבה</li>
+          <li>נפח פירמידה</li>
+          <li>יחידות נפח</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 0%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn" disabled="">התחל ללמוד</button>
       </article>
 
       <!-- Topic 13 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 13: משולשים — סוגים, זוויות, שטח והיקף"  data-grid-item-index="12">
-        <div class="topic-card-header">
-          <p><span class="topic-number">13</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526934-8k3emktzs" data-icon-type="svg">
-              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card s-7th-Layer-section-0-section__topic-card--locked">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">13</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              8 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-equations-1782881804211-108qnt.webp?v=1782881804211" alt="משוואות" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782901112529-629yzilof" >
-        <h3 class="topic-name" >משוואות&nbsp;</h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item"><br></li></ul>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">פונקציות</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>מושג הפונקציה</li>
+          <li>תיאור פונקציה בטבלה</li>
+          <li>תיאור פונקציה בגרף</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 0%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn" disabled="">התחל ללמוד</button>
       </article>
 
       <!-- Topic 14 -->
-      
-
-      <!-- Topic 15 -->
-      <article class="topic-card" tabindex="0" aria-label="נושא 15: מבוא למערכת צירים וגרפים"  data-grid-item-index="13">
-        <div class="topic-card-header">
-          <p ><span class="topic-number">14</span>
-          </p><div class="topic-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-element-type="icon" data-element-id="icon-1782844526934-a1kxyt66x" data-icon-type="svg">
-              <line x1="4" y1="20" x2="20" y2="20"></line>
-              <line x1="4" y1="20" x2="4" y2="4"></line>
-              <polyline points="8 16 12 10 16 14 20 8"></polyline>
-            </svg>
+      <article class="s-7th-Layer-section-0-section__topic-card s-7th-Layer-section-0-section__topic-card--locked">
+        <div class="s-7th-Layer-section-0-section__card-header">
+          <span class="s-7th-Layer-section-0-section__topic-number">14</span>
+          <div class="s-7th-Layer-section-0-section__badges">
+            <span class="s-7th-Layer-section-0-section__badge s-7th-Layer-section-0-section__badge--video">
+              <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"></path></svg>
+              12 שיעורים
+            </span>
           </div>
         </div>
-        <img src="/assets/topic-word-problems-1782881828386-rv3jkg.webp?v=1782881828386" alt="שאלות מילוליות" class="topic-image" loading="lazy" data-element-type="image" data-element-id="img-1782901112529-n9b24qfk0" >
-        <h3 class="topic-name" >שאלות מילוליות</h3>
-        <ul class="topic-subtopics" ><li class="subtopic-item"><br></li></ul>
+        <h3 class="s-7th-Layer-section-0-section__topic-title">בעיות מילוליות מסכמות</h3>
+        <ul class="s-7th-Layer-section-0-section__subtopics-list">
+          <li>אסטרטגיות לפתרון בעיות</li>
+          <li>בעיות תנועה</li>
+          <li>בעיות קנייה ומכירה</li>
+        </ul>
+        <div class="s-7th-Layer-section-0-section__mini-progress">
+          <div class="s-7th-Layer-section-0-section__mini-progress-bar" style="width: 0%;"></div>
+        </div>
+        <button class="s-7th-Layer-section-0-section__btn" disabled="">התחל ללמוד</button>
       </article>
+
     </div>
 
-    <div class="topics-image-area">
-      
+    <!-- Decorative Image Placeholder -->
+    <div class="s-7th-Layer-section-0-section__decorative-image">
+      <img data-context="A playful illustration of a 7th grade student celebrating math success, surrounded by floating geometric shapes, numbers, and a glowing progress bar, in a modern flat-vector style with the brand blue and yellow colors" width="600" height="400" src="/assets/education-section-7th-Layer-section-0-s-7th-Layer-section-0-image-1.webp" alt="תלמידת כיתה ז חוגגת הצלחה במתמטיקה עם צורות גיאומטריות מרחפות">
     </div>
+
   </div>
 </section>
 
