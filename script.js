@@ -12954,6 +12954,135 @@ async function loadRelatedProducts(currentProduct, t) {
   } catch (e) {}
 })();
 
+/* ZAPPY_ANNOUNCEMENT_HEADER_SYNC_V1 */
+(function(){
+  if (window.__zappyAnnouncementHeaderSyncV1) return;
+  window.__zappyAnnouncementHeaderSyncV1 = true;
+
+  function primaryHeader() {
+    var selectors = [
+      'nav#navbar',
+      'nav.navbar',
+      '.navbar:not(.zappy-catalog-menu)',
+      'nav[class*="nav"]',
+      'header.navbar',
+      'header:not([class*="gallery"]):not([class*="hero"]):not([class*="section"])'
+    ];
+    for (var i = 0; i < selectors.length; i++) {
+      var el = document.querySelector(selectors[i]);
+      if (!el) continue;
+      if (el.classList && el.classList.contains('zappy-catalog-menu')) continue;
+      if (el.id === 'zappy-catalog-menu') continue;
+      if (el.classList && el.classList.contains('mobile-search-panel')) continue;
+      if (el.tagName === 'HEADER' && el.closest('section')) continue;
+      if (el.classList && (
+        el.classList.contains('lookbook-gallery-header') ||
+        el.classList.contains('hero-header') ||
+        el.classList.contains('section-header') ||
+        el.classList.contains('page-header')
+      )) continue;
+      return el;
+    }
+    return null;
+  }
+
+  function visibleHeight(el) {
+    if (!el) return 0;
+    var cs;
+    try { cs = window.getComputedStyle(el); } catch (e) {}
+    if (cs && (cs.display === 'none' || cs.visibility === 'hidden')) return 0;
+    var r = el.getBoundingClientRect ? el.getBoundingClientRect() : null;
+    return Math.ceil((r && r.height) || el.offsetHeight || 0);
+  }
+
+  function sync() {
+    var header = primaryHeader();
+    var bar = document.querySelector('.zappy-announcement-bar');
+    var catalog = document.querySelector('.zappy-catalog-menu');
+    var barHeight = visibleHeight(bar);
+    if (!header) {
+      if (barHeight > 0) document.body.style.setProperty('padding-top', barHeight + 'px', 'important');
+      return;
+    }
+
+    header.style.setProperty('position', 'fixed', 'important');
+    header.style.setProperty('top', barHeight + 'px', 'important');
+    header.style.setProperty('left', '0', 'important');
+    header.style.setProperty('right', '0', 'important');
+    header.style.setProperty('z-index', '100000', 'important');
+    header.style.marginBottom = '0';
+
+    var headerHeight = visibleHeight(header);
+    var totalHeight = barHeight + headerHeight;
+    if (catalog && visibleHeight(catalog) > 0) {
+      catalog.style.marginTop = '0';
+      catalog.style.setProperty('top', totalHeight + 'px', 'important');
+      totalHeight += visibleHeight(catalog);
+    }
+
+    document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+    document.documentElement.style.setProperty('--total-header-height', totalHeight + 'px');
+    document.documentElement.style.setProperty('--zappy-mobile-menu-top', (barHeight + headerHeight) + 'px');
+    document.body.style.setProperty('padding-top', totalHeight + 'px', 'important');
+  }
+
+  var timer = null;
+  function schedule(delay) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(sync, delay || 0);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){ schedule(0); });
+  } else {
+    schedule(0);
+  }
+  window.addEventListener('load', function(){ schedule(0); });
+  window.addEventListener('resize', function(){ schedule(50); }, { passive: true });
+  window.addEventListener('zappy:languageChanged', function(){ schedule(50); });
+  window.addEventListener('languageChanged', function(){ schedule(50); });
+  [50, 150, 350, 750, 1500, 3000].forEach(function(ms){ setTimeout(sync, ms); });
+
+  try {
+    new MutationObserver(function(mutations) {
+      for (var i = 0; i < mutations.length; i++) {
+        var mutation = mutations[i];
+        var t = mutation.target;
+        var classes = t && t.classList;
+        if (mutation.type === 'childList') {
+          for (var j = 0; j < mutation.addedNodes.length; j++) {
+            var node = mutation.addedNodes[j];
+            var nodeClasses = node && node.classList;
+            if (nodeClasses && (
+              nodeClasses.contains('zappy-announcement-bar') ||
+              nodeClasses.contains('zappy-catalog-menu') ||
+              nodeClasses.contains('navbar')
+            )) {
+              schedule(0);
+              return;
+            }
+          }
+        }
+        if (
+          (t === document.body && mutation.attributeName === 'class') ||
+          (classes && (
+          classes.contains('zappy-announcement-bar') ||
+          classes.contains('zappy-catalog-menu')
+        ))
+        ) {
+          schedule(0);
+          return;
+        }
+      }
+    }).observe(document.body || document.documentElement, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class', 'style']
+    });
+  } catch (e) {}
+})();
+
 /* ZAPPY_CUSTOMER_DISCOUNT_CONFIG_FALLBACK_V3 */
 
 /* ZAPPY_CUSTOMER_DISCOUNT_PRODUCT_DETAIL_RACE_V1 */
