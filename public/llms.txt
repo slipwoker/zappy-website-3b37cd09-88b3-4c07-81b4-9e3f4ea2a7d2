@@ -22,23 +22,23 @@ https://example.com/eighth-grade-class
 https://example.com/9th-grade-class
 צריכים עזרה במשוואות? רוצים לשמוע עוד על התוכנית? צרו קשר עם צוות מתמטיקאי ונשמח לחזור אליכם במהירות עם כל התשובות. ההצלחה שלכם במתמטיקה מתחילה כאן.
 
-### עגלת קניות
+### Cart
 https://example.com/cart
 עגלת הקניות שלך
 
-### תשלום
+### Checkout
 https://example.com/checkout
 תשלום
 
-### התחברות
+### Login
 https://example.com/login
 התחברות לקוחות
 
-### החשבון שלי
+### Account
 https://example.com/account
 החשבון שלי
 
-### ההזמנה התקבלה!
+### Order Success
 https://example.com/order-success
 תודה שנרשמת לקורס
 
